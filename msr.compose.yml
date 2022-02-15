@@ -1,0 +1,22 @@
+version: '3'
+services:        
+    msr:
+      container_name: msr
+      image: msr-demo
+      stdin_open: true # docker run -i
+      tty: true        # docker run -t
+      hostname: localhost
+      ports:
+        - "5555:5555"
+        - "9999:9999"
+      environment:
+        - INSTANCE_NAME=default
+        - JAVA_HOME=/opt/softwareag/jvm/jvm
+        - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+        - LD_LIBRARY_PATH=/opt/softwareag/IntegrationServer/instances/default/lib/jars/
+#      volumes:
+#        - /Users/julien/Documents/Docker/Docker_Data-Shared:/opt/shared
+      command:
+        - /bin/bash
+
+

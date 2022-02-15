@@ -1,0 +1,74 @@
+---
+swagger: "2.0"
+info:
+  description: "demo Hybride"
+  version: "1"
+  title: " "
+host: "france.int-aws-us.webmethods.io"
+basePath: "/integration/restv2/development/fl2d53548d632c55a41f0879/demoHybride"
+schemes:
+- "https"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+  /getSAPInfo:
+    get:
+      operationId: "getSAPInfo_GET_1"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/body"
+      responses:
+        "200":
+          description: "OK"
+        "401":
+          description: "Access Denied"
+      security:
+      - _basicAuth: []
+  /write:
+    get:
+      summary: "write by MFT"
+      operationId: "write_GET_2"
+      parameters:
+      - name: "data"
+        in: "query"
+        required: true
+        type: "string"
+      - name: "ofset"
+        in: "query"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/body_1"
+      responses:
+        "200":
+          description: "OK"
+        "401":
+          description: "Access Denied"
+      security:
+      - _basicAuth: []
+securityDefinitions:
+  _basicAuth:
+    type: "basic"
+definitions:
+  raw_1: {}
+  raw: {}
+  body:
+    required:
+    - "raw"
+    properties:
+      raw:
+        $ref: "#/definitions/raw"
+  body_1:
+    required:
+    - "raw"
+    properties:
+      raw:
+        $ref: "#/definitions/raw_1"

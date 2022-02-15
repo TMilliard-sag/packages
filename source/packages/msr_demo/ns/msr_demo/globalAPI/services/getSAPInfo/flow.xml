@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FLOW VERSION="3.0" CLEANUP="true">
+
+  <!-- nodes -->
+
+<INVOKE TIMEOUT="" SERVICE="msr_demo.SAP_services:getSAPInfo" VALIDATE-IN="$none" VALIDATE-OUT="$none">
+  <COMMENT></COMMENT>
+</INVOKE>
+
+<BRANCH TIMEOUT="" SWITCH="/SAPResult">
+  <COMMENT></COMMENT>
+
+  <!-- nodes -->
+
+<INVOKE NAME="{&#34;headers&#34;:{&#34;Content-Type&#34;:&#34;text/plain&#34;},&#34;data&#34;:&#34;&#34;,&#34;content_type&#34;:&#34;text/plain&#34;}" TIMEOUT="" SERVICE="msr_demo.SAP_services:getSAPInfo" VALIDATE-IN="$none" VALIDATE-OUT="$none">
+  <COMMENT></COMMENT>
+</INVOKE>
+</BRANCH>
+</FLOW>

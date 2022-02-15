@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<IDataXMLCoder version="1.0">
+  <record javaclass="com.wm.data.ISMemDataImpl">
+    <array name="IntegrationLiveConnections" type="record" depth="1">
+      <record javaclass="com.wm.data.ISMemDataImpl">
+        <value name="aliasName">Johns Macintosh</value>
+        <value name="description">John's Computer</value>
+        <value name="stage">stage00</value>
+        <value name="stageDisplay">Development</value>
+        <value name="realmUrls"></value>
+        <value name="onPremiseHosts"></value>
+        <null name="filter"/>
+        <number name="windowSize" type="java.lang.Integer">5</number>
+        <number name="retry" type="java.lang.Long">5</number>
+        <value name="runAsUser">Administrator</value>
+        <jboolean name="isEnabled">true</jboolean>
+        <record name="properties" javaclass="com.wm.data.ISMemDataImpl">
+        </record>
+        <number name="lastUploadedTime" type="java.lang.Long">1578480496652</number>
+        <number name="lastSavedTime" type="java.lang.Long">1576503880542</number>
+        <number name="timeToLive" type="java.lang.Long">60000</number>
+        <number name="timeToLiveCache" type="java.lang.Long">60</number>
+        <value name="lastUploadedTimeStr">2020-01-08 11:48:16 CET</value>
+        <jboolean name="uploadPending">false</jboolean>
+      </record>
+    </array>
+  </record>
+</IDataXMLCoder>

@@ -1,0 +1,2 @@
+JAVA_VERSION="11.0.10"
+MODULES="java.base java.datatransfer java.logging java.management java.security.sasl java.naming java.rmi java.transaction.xa java.xml java.sql"

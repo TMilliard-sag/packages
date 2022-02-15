@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.force.com/2009/06/asyncapi/dataload"
+	xmlns:tns="http://www.force.com/2009/06/asyncapi/dataload" elementFormDefault="qualified">
+
+	<include schemaLocation="AsyncApi.xsd"/>
+	
+	<element name="result-list" type="tns:ResultList" />
+
+	<complexType name="ResultList">
+		<sequence>
+			<element name="result" type="string" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>
+
+
+

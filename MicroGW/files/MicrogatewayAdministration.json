@@ -1,0 +1,278 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "The Microgateway exposes a REST API for administration purpose. The methods of the API allow to query the status, the provisioned assets, and the configure settings of a running Microgateway instance. If there are credentials configured in the Microgateway configuration, the Administration API requires a basic authentication.",
+    "version" : "1.0",
+    "title" : "Microgateway Administration"
+  },
+  "basePath" : "/rest/microgateway",
+  "schemes" : [ "http" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/settings" : {
+      "get" : {
+        "description" : "Retrieves the configured settings of the Microgateway.",
+        "operationId" : "GetSettings",
+        "consumes" : [ ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "The response provides all the configured settings.",
+			"schema" : {
+              "$ref" : "#/definitions/SettingsDef"
+            },
+			"examples" : {
+              "application/json" : "{\r\n   \"Fault Properties\": {\r\n      \"defaultErrorMessage\": \"...\" \r\n   },\r\n   \"Extended Settings\": {\r\n      \"apiKeyHeader\": \"x-Gateway-APIKey\",\r\n      \"...\": \"...\"\r\n   }, \r\n   \"ElasticSearch Properties\": {\r\n   },  \r\n   \"Gateway Destination Properties\": {\r\n   }, \r\n   \"Microgateway Settings\": {\r\n   },   \r\n   \"Service Registries\": [],   \r\n   \"AWS Configurations\": [], \r\n   \"Security Settings\": {\r\n   }\r\n}"
+            }
+          },
+		  "401" : {
+            "description" : "This response indicates that invalid administrator credentials have been provided for the request."
+          },
+		  "500" : {
+            "description" : "This response indicates that the server has encountered an error while returning the requested information."
+          }
+        }
+      }
+    },
+    "/status" : {
+      "get" : {
+        "description" : "Retrieves a status message showing the version of the Microgateway.",
+        "operationId" : "GetStatus",
+        "consumes" : [ ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "The response provides the status information of a Microgateway.",
+			"schema" : {
+              "$ref" : "#/definitions/StatusDef"
+            },
+			"examples" : {
+              "application/json" : "{\r\n   \"description\": \"webMethods Microgateway\", \r\n   \"publisher\": \"Software AG\", \r\n   \"version\": \"10.4.0.0.377\" \r\n}"
+            }
+          },
+          "401" : {
+            "description" : "This response indicates that invalid administrator credentials have been provided for the request."
+          },
+		  "500" : {
+            "description" : "This response indicates that the server has encountered an error while returning the requested information."
+          }
+        }
+      }
+    },
+    "/assets" : {
+      "get" : {
+        "description" : "Discover all available apis, applications and policies, the microgateway is startet with.",
+        "operationId" : "ListAllAssets",
+        "consumes" : [ ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "The response provides the provisioned APIs, policies and applications.",
+			"schema" : {
+              "$ref" : "#/definitions/AssetDef"
+            },
+			"examples" : {
+              "application/json" : "{\r\n  \"apis\": [\r\n      {\r\n         \"apiName\": \"my_api_name\",\r\n         \"apiVersion\": \"1.0\",\r\n         \"apiDescription\": \"description of the api\",\r\n         \"...\": \"...\"\r\n      }\r\n   ], \r\n   \"applications\": [], \r\n   \"policies\": [], \r\n   \"aliases\": [] \r\n}"
+            }
+          },
+		  "401" : {
+            "description" : "This response indicates that invalid administrator credentials have been provided for the request."
+          },
+		  "500" : {
+            "description" : "This response indicates that the server has encountered an error while returning the requested information."
+          }
+        }
+      }
+    },
+	"/shutdown" : {
+      "post" : {
+        "description" : "Shutdown the microgateway server.",
+        "operationId" : "ShutdownServer",
+        "consumes" : [ ],
+		"produces" : [ ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "The shutdown request was setup successfully."
+          },
+		  "401" : {
+            "description" : "This response indicates that invalid administrator credentials have been provided for the request."
+          },
+		  "404" : {
+            "description" : "The server's anchor file was not found."
+          },
+		  "409" : {
+            "description" : "There is a problem by manipulating the server's anchor file."
+          },
+		  "500" : {
+            "description" : "This response indicates that the server has encountered an error while returning the requested information."
+          }
+        }
+      }
+    }
+  },
+   "definitions" : {
+    "StatusDef" : {
+      "type" : "object",
+      "properties" : {
+        "description" : {
+          "type" : "string",
+          "description" : "Shows the product name."
+        },
+        "publisher" : {
+          "type" : "string",
+          "description" : "Shows the product publisher, usually: Software AG."
+        },
+        "version" : {
+          "type" : "string",
+          "description" : "Shows the current product version."
+        }
+      },
+      "description" : "This defines the request structure of a microgateway status call"
+    },
+    "AssetDef" : {
+      "type" : "object",
+      "properties" : {
+        "apis" : {
+          "type" : "array",
+          "description" : "All successfully deployed APIs.",
+		  "items": {
+		    "$ref" : "#/definitions/ApiDef"
+		  }
+        },
+        "applications" : {
+          "type" : "array",
+          "description" : "All successfully deployed applications.",
+		  "items": {
+		    "$ref" : "#/definitions/AppDef"
+		  }
+        },
+		"policies" : {
+          "type" : "array",
+          "description" : "All successfully deployed global policies.",
+		  "items": {
+		    "$ref" : "#/definitions/PolDef"
+		  }
+        },
+		"aliases" : {
+          "type" : "array",
+          "description" : "All used aliases.",
+		  "items": {
+		    "$ref" : "#/definitions/AliasDef"
+		  }
+        }
+      },
+      "description" : "This defines the request structure of a complete asset overview together with their related structures, such as associated applications or global policies."
+    },
+	"ApiDef" : {
+      "type" : "object",
+      "properties" : {
+        "apiName" : {
+          "type" : "string"
+        },
+        "apiVersion" : {
+          "type" : "string"
+        },
+		"type" : {
+          "type" : "string"
+        },
+		"systemVersion" : {
+          "type" : "integer"
+        },
+		"id" : {
+          "type" : "string"
+        },
+		"httpEndpoint" : {
+          "type" : "string"
+        },
+		"httpsEndpoint" : {
+          "type" : "string"
+        },
+		"scopes" : {
+          "type" : "object"
+        },
+		"policyActions" : {
+          "type" : "object"
+        }
+      },
+      "description" : "This defines the request structure of a single asset."
+    },
+	"AppDef" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        }
+      },
+      "description" : "This defines the request structure of a single application."
+    },
+	"PolDef" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        }
+      },
+      "description" : "This defines the request structure of a single global policy."
+    },
+	"AliasDef" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        },
+	    "type" : {
+          "type" : "string"
+        }
+      },
+      "description" : "This defines the request structure of an alias."
+    },
+	"SettingsDef" : {
+      "type" : "object",
+      "properties" : {
+        "Fault Properties" : {
+          "type" : "object",
+		  "description" : "Fault property values as key/value entries."
+        },
+        "Extended Settings" : {
+          "type" : "object",
+		  "description" : "API Gateway property values as key/value entries."
+        },
+	    "ElasticSearch Properties" : {
+          "type" : "object" ,
+		  "description" : "Properties defining the parameters for using an ElasticSearch as key/value entries."
+        },
+		"Gateway Destination Properties" : {
+          "type" : "object",
+		  "description" : "Properties defining the API Gateway destination as key/value entries."
+        },
+		"Microgateway Settings" : {
+          "type" : "object",
+		  "description" : "Microgateway runtime and enviroment properties as key/value entries."
+        },
+		"Service Registries" : {
+          "type" : "object",
+		  "description" : "Defintition of service registries."
+        },
+		"AWS Configurations" : {
+          "type" : "object",
+		  "description" : "AWS instance configuration details"
+        },
+		"Security Settings" : {
+          "type" : "object",
+		  "description" : "Security parameters."
+        }
+      },
+      "description" : "This defines the request structure of a settings request."
+    }
+  }
+}

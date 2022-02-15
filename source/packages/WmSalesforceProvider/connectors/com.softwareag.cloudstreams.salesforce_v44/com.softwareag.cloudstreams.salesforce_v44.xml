@@ -1,0 +1,1303 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<soap-connector xmlns="http://www.softwareag.com/cloudstreams/metadata/handler/model" group="Salesforce" version="44" id="com.softwareag.cloudstreams.salesforce_v44" displayName="Salesforce CRM" name="Salesforce CRM">
+    <description>Salesforce Provider XML for SOAP</description>
+    <connections>
+        <connection type="sagcloud" displayName="Credentials" name="SalesforceConnection_soap">
+            <description>Connection for Salesforce back-end using SOAP</description>
+			<interoperability>
+				<refs>
+					<ref type="connection" values="*"/>
+				</refs>
+			</interoperability>
+            <groups>
+                <group type="connection" displayName="Connection" name="connection">
+					<fields>
+						<field defaultValue="https://login.salesforce.com/services/Soap/u/44.0" name="cn.providerUrl"/>
+						<field defaultValue="180000" name="cn.connectTimeout" displayName="Connection TimeOut"/>
+						<field defaultValue="300000" name="cn.keepAliveInterval" displayName="Keep Alive Interval" isOverride="true"/>
+                        <field defaultValue="180000" name="cn.readTimeout" displayName="Socket Read Timeout"/>
+						<field defaultValue="3" name="cn.retryCount" displayName="Connection Retry Count"/>
+                        <field defaultValue="true" name="cn.retryIfRequestSentOk" displayName="Retry on Response Failure"/>
+					</fields>
+				</group>
+                <group type="credentials" displayName="Credentials" name="credentials">
+					<fields>
+						<field name="cr.username" isRequired="true"/>
+						<field name="cr.password" isRequired="true"/>
+					</fields>
+				</group>
+				<group type="requestHeaders" displayName="Request Headers" name="requestHeaders">
+					<fields>
+						<field defaultValue="Content-Type,SOAPAction" name="rh.requestHeaderNames"/>
+						<field defaultValue="text/xml,login" name="rh.requestHeaderValues"/>
+					</fields>
+				</group>
+                <group type="protocol" displayName="Transport Protocol" name="protocol"/>
+				<group type="custom" name="custom" displayName="Custom">
+                    <description>Custom variable to hold temporary server url for internal use only</description>
+                    <fields>
+                        <field defaultValue="" name="cx.tempProviderUrl" isHidden="true"/>                   
+                    </fields>
+                </group>
+				<group type="connectionManager" displayName="Connection Manager" name="connectionManager">
+					<fields>
+                        <field defaultValue="true" name="poolable"/>                
+						<field defaultValue="1" name="minimumPoolSize"/>
+						<field defaultValue="10" name="maximumPoolSize"/>
+						<field defaultValue="1" name="poolIncrementSize"/>                
+						<field defaultValue="1000" name="blockTimeout"/>
+						<field defaultValue="1000" name="expireTimeout"/>
+						<field defaultValue="0" name="startupRetryCount"/>                
+						<field defaultValue="10" name="startupBackoffSecs"/>
+						<field defaultValue="fixed" name="timeoutType"/>
+						<field defaultValue="14" name="sessionExpiry"/>
+                    </fields>
+				</group>
+            </groups>
+            <start>
+                <operation type="LOGIN" displayName="Salesforce Login operation" name="SforceService:login">
+                    <description>Login operation</description>
+                    <mappings>
+                        <map context="IN" isRequired="true" displayName="Login call input 1" name="start_operation_input_1">
+                            <description>Login call input - username</description>
+                            <source type="IDATA">cr.username</source>
+                            <target type="XPATH">
+								<xpath>tns:login/tns:username</xpath>
+                            </target>
+                        </map>
+                        <map context="IN" isRequired="true" displayName="Login call input 2" name="start_operation_input_2">
+                            <description>Login call input - password</description>
+                            <source type="IDATA">cr.password</source>
+                            <target type="XPATH">
+								<xpath>tns:login/tns:password</xpath>
+                            </target>
+                        </map>
+                        <map context="OUT" isRequired="true" displayName="Login call output 1" name="store_provider_url_in_temp">
+                            <description>Store Provider Url in temporary variable</description>
+							<source type="IDATA">cn.providerUrl</source>
+                            <target type="IDATA">cx.tempProviderUrl</target>
+                        </map>
+                        <map context="OUT" isRequired="true" displayName="Login call output 1" name="start_operation_output_1">
+                            <description>Login call output - serverUrl</description>
+                            <source type="XPATH">
+								<xpath>tns:loginResponse/tns:result/tns:serverUrl</xpath>
+                            </source>
+                            <target type="IDATA">cn.providerUrl</target>
+                        </map>
+						<map context="OUT" isRequired="true" name="UpdateServerUrl" displayName="Update Server url">
+				                <description>Update provider url if required</description>
+				               <source type="SERVICE">
+				                 <service nsName="wm.cloudstreams.salesforce.utils:UpdateServerUrl">
+				                  <arg name="responseUrl">${cn.providerUrl}</arg>
+				                  <arg name="tempProviderUrl">${cx.tempProviderUrl}</arg>
+				                 </service>
+				                </source>
+				               <target type="IDATA">cn.providerUrl</target>
+						</map>
+                        <map context="OUT" isRequired="true" displayName="Login call output 2" name="start_operation_output_2">
+                            <description>Login call output - sessionId</description>
+                            <source type="XPATH">
+								<xpath>tns:loginResponse/tns:result/tns:sessionId</xpath>
+                            </source>
+                            <target type="IDATA">cn.sessionToken</target>
+                        </map>
+						<!-- This mapping is useful when we don't get any fault string in-spite of login failure. 
+						If any fault string while login, it is handled by default -->
+						<map context="OUT" isRequired="false" displayName="Login call output 1 in case of fault"
+							name="start_operation_output_3">
+							<description>Login call output - errorMessage</description>
+							<source type="SERVICE">
+								<service nsName="wmSalesforceConnector_v44.util.services:getLoginError">
+									<hint>ERROR_MSG</hint>
+								</service>
+							</source>
+							<target type="IDATA">cx.faultString</target>
+						</map>
+                    </mappings>
+                </operation>
+            </start>
+            <stop>
+                <!--<operation type="LOGOUT" displayName="SalesForce Logout operation" name="SforceService:logout">
+                    <description>LOGOUT operation</description>
+                    <mappings>
+                        <map context="IN" isRequired="true" displayName="Logout call input" name="stop_operation_input_1">
+                            <description>Logout call input</description>
+                            <source type="IDATA">cn.sessionToken</source>
+                            <target type="XPATH">
+								<xpath>tns:SessionHeader/tns:sessionId</xpath>
+                            </target>
+                        </map>
+                    </mappings>
+                </operation>-->
+            </stop>
+        </connection>
+		<connection type="sagcloud_oauth_v20_authorization_code" name="sagcloud_oauth_2_web_server_authentication" displayName="OAuth V2.0 (Authorization Code Flow)">
+			<description>Connection using OAuth 2.0 Web Server Authentication Flow</description>
+			<interoperability>
+				<refs>
+					<ref type="connection" values="*"/>
+				</refs>
+			</interoperability>
+			<groups>
+				<group type="connection" name="web_server_authentication" displayName="OAuth 2.0 Web Server Authentication">
+					<fields>
+						<field defaultValue="https://&lt;instance&gt;.salesforce.com/services/Soap/u/44.0" name="cn.providerUrl" displayName="Server URL" />
+						<field defaultValue="180000" name="cn.connectTimeout" displayName="Connection TimeOut" />
+						<field defaultValue="300000" name="cn.keepAliveInterval" displayName="Keep Alive Interval" isOverride="true"/>
+						<field defaultValue="180000" name="cn.readTimeout" displayName="Socket Read Timeout" />
+						<field defaultValue="3" name="cn.retryCount" displayName="Connection Retry Count" />
+						<field defaultValue="true" name="cn.retryIfRequestSentOk" displayName="Retry on Response Failure" />
+					</fields>
+				</group>
+				<group type="oauth_v20_authorization_code" name="oauth_v20_authorization_code" displayName="OAuth V2.0 (Web Server Authentication Flow)">
+					<description>Define configurations needed for the OAuth version 2.0 authentication scheme.</description>
+					<fields>
+						
+						<field name="oauth_v20.scope" displayName="Scope" defaultValue="offline_access api refresh_token" modelType="Meta" />
+						<field name="oauth_v20.authorizationServerUrl" displayName="Authorization Server URL" isHidden="true" defaultValue="https://login.salesforce.com/services/oauth2/authorize" modelType="Meta" />
+						<field name="oauth_v20.authenticationServerUrl" displayName="Authentication Server URL" isHidden="true" defaultValue="https://login.salesforce.com/services/oauth2/token" modelType="Meta" />
+						<field name="oauth_v20.accessTokenRefreshURL" displayName="Refresh URL" defaultValue="https://login.salesforce.com/services/oauth2/token" isRequired="true" isOverride="true" />
+						<field name="oauth_v20.refreshAccessToken" displayName="Refresh Access Token" defaultValue="true" isRequired="true" isOverride="true"/>
+						<field name="oauth.consumerSecret" displayName="Consumer Secret" modelType="Basic" isRequired="true" isOverride="true"/>
+						<field name="oauth_v20.refreshToken" displayName="Refresh Token" isRequired="true" isOverride="true"/>
+						<field defaultValue="Body Query String" name="oauth_v20.accessTokenRefreshURLRequest" displayName="Refresh URL Request" isOverride="true"/>
+						<field name="cx.grant_type" defaultValue="refresh_token" displayName="Grant Type" isRequired="false" isHidden="false"/>
+													
+					</fields>
+				</group>
+				<group type="connectionManager" displayName="Connection Manager" name="connectionManager">
+					<fields>
+                        <field defaultValue="true" name="poolable"/>                
+						<field defaultValue="1" name="minimumPoolSize"/>
+						<field defaultValue="10" name="maximumPoolSize"/>
+						<field defaultValue="1" name="poolIncrementSize"/>                
+						<field defaultValue="1000" name="blockTimeout"/>
+						<field defaultValue="1000" name="expireTimeout"/>
+						<field defaultValue="0" name="startupRetryCount"/>                
+						<field defaultValue="10" name="startupBackoffSecs"/>
+						<field defaultValue="auto" name="timeoutType"/>
+						<field defaultValue="0" name="sessionExpiry"/>
+                    </fields>
+				</group>
+			</groups>
+			<start />
+			<stop />
+		</connection>
+		<connection type="sagcloud_oauth_v20_jwt" name="sagcloud_oauth_v20_jwt" displayName="OAuth V2.0 (JWT Flow)">
+			<description>Connection using OAuth 2.0 JWT Bearer Token Flow</description>
+			<interoperability>
+				<refs>
+					<ref type="connection" values="*"/>
+				</refs>
+			</interoperability>
+			<groups>
+				<group type="connection" name="jwt_token" displayName="OAuth 2.0 JWT Token Flow">
+					<fields>
+						<field defaultValue="https://&lt;instance&gt;.salesforce.com/services/Soap/u/44.0" name="cn.providerUrl" displayName="Server URL" />
+						<field defaultValue="180000" name="cn.connectTimeout" displayName="Connection TimeOut" />
+						<field defaultValue="180000" name="cn.readTimeout" displayName="Socket Read Timeout" />
+						<field defaultValue="300000" name="cn.keepAliveInterval" displayName="Keep Alive Interval" isOverride="true"/>
+						<field defaultValue="8192" name="cn.sockBuffSize" displayName="Socket Buffer Size" />
+						<field defaultValue="4" name="cn.retryCount"/>
+                        <field defaultValue="true" name="cn.retryIfRequestSentOk"/>
+					</fields>
+				</group>
+				<group type="oauth_v20_jwt" name="oauth_v20_jwt" displayName="OAuth V2.0 (JWT Token Flow)">
+					<description>Define configurations needed for the OAuth version 2.0 authentication scheme.</description>
+					<fields>
+						<field name="jwt.authenticationServerUrl" displayName="Authentication Server URL" isHidden="true" defaultValue="https://login.salesforce.com/services/oauth2/token" modelType="Meta" />
+						<field name="jwt.claim.aud" displayName="Audience" defaultValue="https://login.salesforce.com" isHidden="true" modelType="Meta" />
+						<field name="jwt.claim.exp" displayName="Expiration Time (mins)" defaultValue="60" modelType="Meta" />
+						<field name="jwt.header.alg" displayName="Signing with" defaultValue="RS256" isHidden="true" allowedValues="RS256,RS356" modelType="Meta" />
+					</fields>
+				</group>
+				<group type="connectionManager" displayName="Connection Manager" name="connectionManager">
+					<fields>
+                        <field defaultValue="true" name="poolable"/>                
+						<field defaultValue="1" name="minimumPoolSize"/>
+						<field defaultValue="10" name="maximumPoolSize"/>
+						<field defaultValue="1" name="poolIncrementSize"/>                
+						<field defaultValue="1000" name="blockTimeout"/>
+						<field defaultValue="1000" name="expireTimeout"/>
+						<field defaultValue="0" name="startupRetryCount"/>                
+						<field defaultValue="10" name="startupBackoffSecs"/>
+						<field defaultValue="auto" name="timeoutType"/>
+						<field defaultValue="0" name="sessionExpiry"/>
+                    </fields>
+				</group>
+			</groups>
+			<start />
+			<stop />
+		</connection>
+    </connections>
+    <services>
+		<service xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="SOAPServiceType" wsdlLocation="partner-v44.wsdl" name="SforceService"
+			displayName="Sforce SOAP API">
+	        <description>Salesforce.com Partner SOAP API v44</description>
+			<properties>
+				<!-- Content model compliance used for document type generation  -->
+				<property name="soap.model.compliance" value="none"/>
+			</properties>
+            <documentModel nsName="wmSalesforceConnector_v44.doctypes" packageName="wmSalesforceConnector_v44">
+                <abstractObject type="businessObject" name="docTypeRef_ens_sObject">
+                    <lookup ref="wmSalesforceConnector_v44.lookup:businessObjectList" type="boList"/>
+                    <lookup ref="wmSalesforceConnector_v44.lookup:businessObjectDescribe" type="boDescribe"/>
+                </abstractObject>
+                <abstractObject type="schemaObject" name="docTypeRef_tns_Error" defaultValue="docTypeRef_tns_DuplicateError" isFixed ="true">
+                    <lookup ref="wm.cloudstreams.service.common:soList" type="soList"/>
+                    <lookup ref="wm.cloudstreams.service.common:soDescribe" type="soDescribe"/>
+                </abstractObject>
+				<abstractObject type="dynamicObject" name="dObject" >
+					<lookup ref="wmSalesforceConnector_v44.lookup:dboList" type="dboList"/>
+					<lookup ref="wmSalesforceConnector_v44.lookup:dboDescribe" type="dboDescribe"/>
+					<lookup ref="wmSalesforceConnector_v44.lookup:dboInteractions" type="dboInteractions"/>					
+				</abstractObject>
+            </documentModel>
+			<operations>
+				<mappings>
+					<map context="IN" isRequired="true" isFixed="true" displayName="Operations mapping input" name="operations_mapping_input_1" connection-context="sagcloud">
+						<description>Session id to be used for all operations</description>
+						<source type="IDATA">cn.sessionToken</source>
+						<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Header_SessionHeader">
+							<xpath>tns:SessionHeader/tns:sessionId</xpath>
+						</target>
+					</map>
+					<map context="IN" isRequired="true" isFixed="true" displayName="accessTokenToSessionID" name="accessTokenToSessionID" connection-context="sagcloud_oauth_v20_authorization_code">
+						<description>Session id to be used for all operations</description>
+						<source type="IDATA">oauth.accessToken</source>
+						<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Header_SessionHeader">
+							<xpath>tns:SessionHeader/tns:sessionId</xpath>
+						</target>
+					</map>
+					<map context="IN" isRequired="true" isFixed="true" displayName="JWTTokenToSessionID" name="JWTTokenToSessionID" connection-context="sagcloud_oauth_v20_jwt">
+						<description>Session id to be used for all operations</description>
+						<source type="IDATA">oauth.accessToken</source>
+						<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Header_SessionHeader">
+							<xpath>tns:SessionHeader/tns:sessionId</xpath>
+						</target>
+					</map>
+				</mappings>
+				<operation name="login" type="LOGIN" isHidden="true">
+					<description>Login to the Salesforce.com SOAP Api</description>
+				</operation>
+				<operation name="describeSObject" type="METADATA" isHidden="true">
+					<description>Describe an sObject</description>
+				</operation>
+				<operation name="describeSObjects" type="METADATA" isHidden="true">
+					<description>Describe a number sObjects</description>
+				</operation>
+				<operation name="describeGlobal" type="METADATA" isHidden="true">
+					<description>Describe the Global state</description>
+				</operation>
+				<operation name="describeDataCategoryGroups" type="METADATA" isHidden="true">
+					<description>Describe all the data category groups available for a given set of types</description>
+				</operation>
+				<operation name="describeDataCategoryGroupStructures" type="METADATA" isHidden="true" >
+					<description>Describe the data category group structures for a given set of pair of types and data category group name</description>
+				</operation>
+				<operation name="describeDataCategoryMappings" type="METADATA" isHidden="true">
+					<description>Describe the data category group mappings structures for a given set of pair of types and data category group name</description>
+				</operation>
+				<operation name="describeKnowledgeSettings" type="METADATA" isHidden="true">
+					<description>Retrieves the Knowledge language settings in the organization</description>
+				</operation>
+				<operation name="describeLayout" type="METADATA" isHidden="true" >
+					<description>Describe the layout of an sObject</description>
+				</operation>
+				<operation name="describeSoqlListViews" type="METADATA" isHidden="true">
+					<description>Retrieves the SOQL query and other information about a list view</description>
+				</operation>
+                <operation name="executeListView" type="SIMPLE" isHidden="true">
+					<description>Executes a list view’s SOQL query to retrieve data, labels, and actions from a list view</description>
+				</operation>
+				<operation name="describeSoftphoneLayout" type="METADATA" isHidden="true">
+					<description>Describe the layout of the SoftPhone</description>
+				</operation>
+				<operation name="describeTabs" type="METADATA" isHidden="true">
+					<description>Describe the tabs that appear on a users page</description>
+				</operation>
+				<operation name="describeGlobalTheme" type="METADATA" isHidden="true">
+				<description>Describe the Global Theme</description>
+				</operation>
+				<operation name="describeTheme" type="METADATA" isHidden="true">
+					<description>Describe the Theme</description>
+				</operation>
+				<operation name="describeSearchableEntities" type="METADATA" isHidden="true">
+					<description></description>
+				</operation>
+				<operation name="describeCompactLayouts" type="METADATA" isHidden="true">
+					<description></description>
+				</operation>
+				<operation name="describeApprovalLayout" type="METADATA" isHidden="true">
+					<description></description>
+				</operation>
+				<operation name="describeAllTabs" type="METADATA" isHidden="true">
+					<description></description>
+				</operation>
+				<operation name="describePrimaryCompactLayouts" type="METADATA" isHidden="true">
+					<description></description>
+				</operation>
+				<operation name="describeSObjectListViews" type="METADATA" isHidden="true">
+					<description></description>
+				</operation>
+				<operation type="SIMPLE" name="describeAppMenu" displayName="describeAppMenu">
+					<description>Describe the App Menu</description>
+				</operation>
+				<operation name="describeSearchLayouts" type="METADATA" isHidden="true">
+				<description>Describe the Search Layout</description>
+				</operation>
+				<operation name="describeSearchScopeOrder" type="METADATA" isHidden="true">
+				<description>Describe the Search Scope Order</description>
+				</operation>
+				<operation name="create" type="COMPLEX">
+					<description>Create a set of new sObjects</description>
+					<mappings>
+						<map context="IN" isRequired="true" isFixed="false" displayName="Field Truncation Header" name="allowFieldTruncation">
+							<description>If this header value is true then it truncates data if the data is too long and does not fit into the given field </description>
+							<source type="LITERAL">false</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Header_AllowFieldTruncationHeader">
+								<xpath>tns:AllowFieldTruncationHeader/tns:allowFieldTruncation</xpath>
+							</target>
+						</map>
+						<map context="IN" isRequired="true" isFixed="false" displayName="AllOrNone Header" name="allOrNone">
+							<description>The AllOrNoneHeader header allows a call to roll back all changes unless all records are processed successfully</description>
+							<source type="LITERAL">false</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Header_AllOrNoneHeader">
+								<xpath>tns:AllOrNoneHeader/tns:allOrNone</xpath>
+							</target>
+						</map>
+						<map context="IN" isRequired="true" isFixed="true" displayName="Type to SObject type" name="create_mapping_input_1">
+							<description>Set type to SObject</description>
+							<source type="PARAMETER">core.businessObject</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Soap_create_Input">
+								<xpath>tns:create/tns:sObjects/ens:type</xpath>
+							</target>
+						</map>
+						<map context="IN" isRequired="true" isFixed="true" displayName="ID to null" name="create_mapping_input_2">
+							<description>Set Id to null</description>
+							<source type="LITERAL">${null}</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Soap_create_Input">
+								<xpath>tns:create/tns:sObjects/ens:Id</xpath>
+							</target>
+						</map>
+					</mappings>
+				</operation>
+				<operation name="update" type="COMPLEX">
+					<description>Update a set of sObjects</description>
+					<lookups>       
+						<lookup name="ids" ref="wmSalesforceConnector_v44.lookup:idLookup" type="optionsList">  
+							<args>
+								<arg name="businessObject" type="IDATA">core.businessObject</arg>												
+							</args>
+						</lookup> 
+					</lookups> 
+					<mappings>
+						<map context="IN" isRequired="true" isFixed="false" displayName="Field Truncation Header" name="allowFieldTruncation">
+							<description>If this header value is true then it truncates data if the data is too long and does not fit into the given field </description>
+							<source type="LITERAL">false</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Header_AllowFieldTruncationHeader">
+								<xpath>tns:AllowFieldTruncationHeader/tns:allowFieldTruncation</xpath>
+							</target>
+						</map>
+						<map context="IN" isRequired="true" isFixed="false" displayName="AllOrNone Header" name="allOrNone">
+							<description>The AllOrNoneHeader header allows a call to roll back all changes unless all records are processed successfully</description>
+							<source type="LITERAL">false</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Header_AllOrNoneHeader">
+								<xpath>tns:AllOrNoneHeader/tns:allOrNone</xpath>
+							</target>
+						</map>
+						<map context="IN" isRequired="true" isFixed="true" displayName="Type to SObject type" name="update_mapping_input_1">
+							<description>Set type to SObject</description>
+							<source type="PARAMETER">core.businessObject</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Soap_update_Input">
+								<xpath>tns:update/tns:sObjects/ens:type</xpath>
+							</target>
+						</map>
+						<map context="IN" isRequired="true" isFixed="true" displayName="Id Lookup Mapping" name="id_lookup_mapping">
+							<description>Look up for ids</description>
+							<source type="LOOKUP">ids</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Soap_update_Input">
+								<xpath>tns:update/tns:sObjects[]/ens:Id</xpath>
+							</target>
+						</map>
+					</mappings>					
+				</operation>
+				<operation name="upsert" type="COMPLEX">
+					<description>Update or insert a set of sObjects based on object id</description>
+					<mappings>
+						<map context="IN" isRequired="true" isFixed="false" displayName="Field Truncation Header" name="allowFieldTruncation">
+							<description>If this header value is true then it truncates data if the data is too long and does not fit into the given field </description>
+							<source type="LITERAL">false</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Header_AllowFieldTruncationHeader">
+								<xpath>tns:AllowFieldTruncationHeader/tns:allowFieldTruncation</xpath>
+							</target>
+						</map>
+						<map context="IN" isRequired="true" isFixed="false" displayName="AllOrNone Header" name="allOrNone">
+							<description>The AllOrNoneHeader header allows a call to roll back all changes unless all records are processed successfully</description>
+							<source type="LITERAL">false</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Header_AllOrNoneHeader">
+								<xpath>tns:AllOrNoneHeader/tns:allOrNone</xpath>
+							</target>
+						</map>
+						<map context="IN" isRequired="true" isFixed="true" displayName="Type to SObject type" name="upsert_mapping_input_1">
+							<description>Set type to SObject</description>
+							<source type="PARAMETER">core.businessObject</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Soap_upsert_Input">
+								<xpath>tns:upsert/tns:sObjects/ens:type</xpath>
+							</target>
+						</map>
+						<map context="IN" isRequired="true" displayName="ID to null" name="upsert_mapping_input_2">
+							<description>Set Id to null</description>
+							<source type="LITERAL">${null}</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Soap_upsert_Input">
+								<xpath>tns:upsert/tns:sObjects/ens:Id</xpath>
+							</target>
+						</map>
+					</mappings>
+				</operation>
+				<operation name="merge" type="COMPLEX">
+					<description>Merge and update a set of sObjects based on object id</description>
+					<mappings>
+						<map context="IN" isRequired="true" isFixed="true" displayName="Type to SObject type" name="merge_mapping_input_1">
+							<description>Set type to SObject</description>
+							<source type="PARAMETER">core.businessObject</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Soap_merge_Input">
+								<xpath>tns:merge/tns:request/tns:masterRecord/ens:type</xpath>
+							</target>
+						</map>
+					</mappings>
+				</operation>
+				<operation name="delete" type="SIMPLE">
+				    <description>Delete a set of sObjects based on object id</description>
+					<lookups>       
+						<lookup name="ids" ref="wmSalesforceConnector_v44.lookup:idLookup" type="optionsList">  
+							<args>
+								<arg name="businessObject" type="PARAMETER">businessObject</arg>										
+							</args>
+						</lookup> 
+						<lookup name="businessObjectList" ref="wmSalesforceConnector_v44.lookup:businessObjectList" type="boList"/>
+					</lookups>                      
+					<!-- mappings for Delete operation -->
+					<mappings>
+						<map context="IN" isRequired="true" isFixed="true" displayName="Id Lookup Mapping" name="id_lookup_mapping">
+							<description>Look up for ids</description>
+							<source type="LOOKUP">ids</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Soap_delete_Input">
+								<xpath>tns:delete/tns:ids</xpath>
+							</target>
+						</map>
+						<map context="IN" isRequired="true" isFixed="true" displayName="Id Lookup Mapping" name="id_lookup_mapping">
+							<description>Look up for ids</description>
+							<source type="LOOKUP">businessObjectList</source>
+							<target type="PARAMETER">businessObject</target>
+						</map>
+						
+					</mappings>  
+					<parameters>
+						<parameter name="businessObject" isRequired="false" style="Custom">
+							<description>Specifies business object for which records have to be deleted</description>
+						</parameter>
+					</parameters>				
+				</operation>
+				<operation name="undelete" type="SIMPLE">
+					<description>Undelete a set of sObjects</description>
+				</operation>
+				<operation name="emptyRecycleBin" type="SIMPLE">
+					<description>Empty a set of sObjects from the recycle bin</description>
+				</operation>
+				<operation name="retrieve" type="COMPLEX">
+					<description>Get a set of sObjects</description>
+					<lookups>       
+						<lookup name="ids" ref="wmSalesforceConnector_v44.lookup:idLookup" type="optionsList">  
+							<args>
+								<arg name="businessObject" type="IDATA">core.businessObject</arg>
+							</args>
+						</lookup> 
+						<lookup name="businessObjectList" ref="wmSalesforceConnector_v44.lookup:businessObjectList" type="boList"/>
+					</lookups>  
+					<mappings>
+						<map context="IN" isRequired="true" isFixed="true" displayName="retrieve Input Mapping 2" name="retrieve_mapping_input_2">
+							<description>Set field list</description>
+							<source type="SERVICE">
+								<service nsName="pub.cloudstreams.util.services.map:delimitedString">
+									<hint>core.objectFieldList</hint>
+									<arg name="input">${core.objectFieldList}</arg>
+									<arg name="delimiter">,</arg>
+								</service>
+							</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Soap_retrieve_Input">
+								<xpath>tns:retrieve/tns:fieldList</xpath>
+							</target>
+						</map>
+						<map context="IN" isRequired="true" isFixed="true" displayName="Type to SObject type" name="retrieve_mapping_input_1">
+							<description>Set type to sObjectType</description>
+							<source type="PARAMETER">core.businessObject</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Soap_retrieve_Input">
+								<xpath>tns:retrieve/tns:sObjectType</xpath>
+							</target>
+						</map>
+						<map context="IN" isRequired="true" isFixed="true" displayName="Id Lookup Mapping" name="id_lookup_mapping">
+							<description>Look up for ids</description>
+							<source type="LOOKUP">ids</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Soap_retrieve_Input">
+								<xpath>tns:retrieve/tns:ids</xpath>
+							</target>
+						</map>
+						<map context="IN" isRequired="true" isFixed="true" displayName="Id Lookup Mapping" name="id_lookup_mapping">
+							<description>Look up for ids</description>
+							<source type="LOOKUP">businessObjectList</source>
+							<target type="PARAMETER">businessObject</target>
+						</map>
+						
+					</mappings>
+				</operation>
+				<operation name="process" type="SIMPLE" isHidden="true">
+					<description>Submit an entity to a workflow process or process a workitem</description>
+				</operation>
+				<operation name="convertLead" type="SIMPLE">
+					<description>Convert a set of leads</description>
+				</operation>
+				<operation name="logout" type="LOGOUT" isHidden="true">
+					<description>Logout the current user, invalidating the current session</description>
+					<mappings>
+						<map context="IN" isRequired="true" displayName="logout" name="logout">
+							<description>Set logout to null</description>
+							<source type="LITERAL">${null}</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Soap_logout_Input">
+								<xpath>tns:logout/*body</xpath>
+							</target>
+						</map>
+					</mappings>				
+				</operation>
+				<operation name="invalidateSessions" type="SIMPLE">
+					<description>Logs out and invalidates session ids</description>
+				</operation>
+				<operation name="getDeleted" type="SIMPLE">
+					<description>Get the IDs for deleted sObjects</description>
+					<lookups>       
+						<lookup name="businessObjectList" ref="wmSalesforceConnector_v44.lookup:businessObjectList" type="boList"/>
+					</lookups>
+					<mappings>
+						<map context="IN" isRequired="true" isFixed="true" displayName="Id Lookup Mapping" name="id_lookup_mapping">
+							<description>Look up for ids</description>
+							<source type="LOOKUP">businessObjectList</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Soap_delete_Input">
+								<xpath>tns:getDeleted/tns:sObjectType</xpath>
+							</target>
+						</map>
+					</mappings>
+				</operation>
+				<operation name="getUpdated" type="SIMPLE">
+					<description>Get the IDs for updated sObjects</description>
+					<lookups>       
+						<lookup name="businessObjectList" ref="wmSalesforceConnector_v44.lookup:businessObjectList" type="boList"/>
+					</lookups>
+					<mappings>
+						<map context="IN" isRequired="true" isFixed="true" displayName="Id Lookup Mapping" name="id_lookup_mapping">
+							<description>Look up for ids</description>
+							<source type="LOOKUP">businessObjectList</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Soap_delete_Input">
+								<xpath>tns:getUpdated/tns:sObjectType</xpath>
+							</target>
+						</map>
+					</mappings>
+				</operation>
+				<operation name="query" type="COMPLEX">
+					<description>Create a Query Cursor</description>
+					<properties>
+						<property name="allowFieldCustomization" value="true"/>
+						<property name="fieldExpansionLevel" value="5"/>
+					</properties>					
+					<mappings>
+						<map context="IN" isRequired="true" isFixed="false" displayName="QueryOptions Header" name="batchSize">
+							<description>The batch size for the number of records returned in a query call.</description>
+							<source type="LITERAL">500</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Header_QueryOptions">
+								<xpath>tns:QueryOptions/tns:batchSize</xpath>
+							</target>
+						</map>
+						<map context="IN" isRequired="true" isFixed="true" displayName="query" name="query">
+							<description>Set the query string</description>
+							<source type="SERVICE">
+								<service nsName="wmSalesforceConnector_v44.util.services:queryFormatter">
+									<hint>SELECT [${core.objectFieldList}] | [${select}] FROM ${core.businessObject} [[WHERE ${where}] [LIMIT ${limit}]] | [${filter}]</hint>
+									<arg name="businessObject">${core.businessObject}</arg>
+									<arg name="fieldList">${core.objectFieldList}</arg>
+									<arg name="select">${select}</arg>
+									<arg name="where">${where}</arg>
+									<arg name="limit">${limit}</arg>
+									<arg name="customFilter">${filter}</arg>
+								</service>
+							</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Soap_query_Input">
+								<xpath>tns:query/tns:queryString</xpath>
+							</target>
+						</map>
+					</mappings>
+					<parameters>
+						<parameter name="select" isRequired="false" style="SOAP">
+							<description>custom select field list with optional subquery</description>
+						</parameter>
+						<parameter name="where" isRequired="false" style="SOAP">
+							<description>where clause for query operation</description>
+						</parameter>
+						<parameter name="limit" isRequired="false" style="SOAP">
+							<description>limit parameter for query operation</description>
+						</parameter>						
+						<parameter name="filter" isRequired="false" style="SOAP">
+							<description>custom filter condition. If specified overrides 'where' and 'limit' parameters</description>
+						</parameter>
+					</parameters>
+				</operation>
+				<operation name="queryAll" type="COMPLEX">
+					<description>Create a Query Cursor, including deleted sObjects</description>
+					<properties>
+						<property name="allowFieldCustomization" value="true"/>
+						<property name="fieldExpansionLevel" value="5"/>
+					</properties>					
+					<mappings>
+						<map context="IN" isRequired="true" isFixed="true" displayName="queryAll" name="queryAll">
+							<description>Set the query string</description>
+							<source type="SERVICE">
+								<service nsName="wmSalesforceConnector_v44.util.services:queryFormatter">
+									<hint>SELECT [${core.objectFieldList}] | [${select}] FROM ${core.businessObject} [[WHERE ${where}] [LIMIT ${limit}]] | [${filter}]</hint>
+									<arg name="businessObject">${core.businessObject}</arg>
+									<arg name="fieldList">${core.objectFieldList}</arg>
+									<arg name="select">${select}</arg>
+									<arg name="where">${where}</arg>
+									<arg name="limit">${limit}</arg>
+									<arg name="customFilter">${filter}</arg>
+								</service>
+							</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Soap_query_Input">
+								<xpath>tns:queryAll/tns:queryString</xpath>
+							</target>
+						</map>
+					</mappings>
+					<parameters>
+						<parameter name="select" isRequired="false" style="SOAP">
+							<description>custom select field list with optional subquery</description>
+						</parameter>
+						<parameter name="where" isRequired="false" style="SOAP">
+							<description>where clause for query operation</description>
+						</parameter>
+						<parameter name="limit" isRequired="false" style="SOAP">
+							<description>limit parameter for query operation</description>
+						</parameter>						
+						<parameter name="filter" isRequired="false" style="SOAP">
+							<description>custom filter condition. If specified overrides 'where' and 'limit' parameters</description>
+						</parameter>
+					</parameters>
+				</operation>
+				<operation name="queryMore" type="COMPLEX">
+					<description>Gets the next batch of sObjects from a query</description>
+					<properties>
+						<property name="allowFieldCustomization" value="true"/>
+						<property name="fieldExpansionLevel" value="5"/>
+					</properties>					
+				</operation>
+				<operation name="search" type="COMPLEX">
+					<description>Search for sObjects</description>
+				</operation>
+				<operation name="getServerTimestamp" type="SIMPLE">
+					<description>Gets server timestamp</description>
+					<mappings>
+						<map context="IN" isRequired="true" displayName="getServerTimestamp" name="getServerTimestamp">
+							<description>Set getServerTimestamp to null</description>
+							<source type="LITERAL">${null}</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Soap_getServerTimestamp_Input">
+								<xpath>tns:getServerTimestamp/*body</xpath>
+							</target>
+						</map>
+					</mappings>				
+				</operation>
+				<operation name="setPassword" type="SIMPLE">
+					<description>Set a user's password</description>
+				</operation>
+				<operation name="changeOwnPassword" type="SIMPLE" isHidden="true">
+					<description>No description</description>
+				</operation>
+				<operation name="resetPassword" type="SIMPLE">
+					<description>Reset a user's password</description>
+				</operation>
+				<operation name="getUserInfo" type="SIMPLE">
+					<description>Returns standard information relevant to the current user</description>
+					<mappings>
+						<map context="IN" isRequired="true" displayName="getUserInfo" name="getUserInfo">
+							<description>Set getUserInfo to null</description>
+							<source type="LITERAL">${null}</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Soap_getUserInfo_Input">
+								<xpath>tns:getUserInfo/*body</xpath>
+							</target>
+						</map>
+					</mappings>				
+				</operation>
+				<operation name="sendEmail" type="SIMPLE" isHidden="true">
+					<description>Send outbound email</description>
+				</operation>
+				<operation name="renderEmailTemplate" type="SIMPLE" isHidden="true">
+					<description>Replaces merge fields in text bodies of email templates with values from Salesforce records, even for polymorphic fields</description>
+				</operation>
+				<operation name="renderStoredEmailTemplate" type="SIMPLE" isHidden="true">
+					<description>No description</description>
+				</operation>
+				<operation name="performQuickActions" type="COMPLEX" isHidden="true">
+					<description>Perform Quick Actions</description>
+					<mappings>
+						<map context="IN" isRequired="true" isFixed="true" displayName="Type to SObject type" name="create_mapping_input_1">
+							<description>Set type to SObject</description>
+							<source type="PARAMETER">core.businessObject</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Soap_performQuickActions_Input">
+								<xpath>tns:performQuickActions/tns:quickActions/tns:records/ens:type</xpath>
+							</target>
+						</map>
+						<map context="IN" isRequired="true" isFixed="true" displayName="ID to null" name="create_mapping_input_2">
+							<description>Set Id to null</description>
+							<source type="LITERAL">${null}</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Soap_performQuickActions_Input">
+								<xpath>tns:performQuickActions/tns:quickActions/tns:records/ens:Id</xpath>
+							</target>
+						</map>
+					</mappings>
+				</operation>
+				<operation name="describeQuickActions" type="SIMPLE" isHidden="true">
+				<description>Describe Quick Actions</description>
+				</operation>
+				<operation name="describeQuickActionsForRecordType" type="SIMPLE" isHidden="true">
+				<description>Describe Quick Actions</description>
+				</operation>
+				<operation name="retrieveQuickActionTemplates" type="SIMPLE" isHidden="true">
+				<description></description>
+				</operation>
+				<operation name="retrieveMassQuickActionTemplates" type="SIMPLE" isHidden="true">
+				<description></description>
+				</operation>
+				<operation name="describeVisualForce" type="SIMPLE" isHidden="true">
+				<description></description>
+				</operation>
+				<operation name="describeAvailableQuickActions" type="SIMPLE" isHidden="true">
+				<description>Describe Available Quick Actions</description>
+				</operation>
+				<operation name="sendEmailMessage" type="SIMPLE" isHidden="true" >
+				<description>Sends Email Messages</description>
+				</operation>
+				<operation name="findDuplicates" type="COMPLEX">
+					<description>Performs rule-based searches for duplicate records using array of sObjects</description>
+					<mappings>
+						<map context="IN" isRequired="true" isFixed="true" displayName="Type to SObject type" name="create_mapping_input_1">
+							<description>Set type to SObject</description>
+							<source type="PARAMETER">core.businessObject</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Soap_findDuplicates_Input">
+								<xpath>tns:findDuplicates/tns:sObjects/ens:type</xpath>
+							</target>
+						</map>
+						<map context="IN" isRequired="true" isFixed="true" displayName="ID to null" name="create_mapping_input_2">
+							<description>Set Id to null</description>
+							<source type="LITERAL">${null}</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Soap_findDuplicates_Input">
+								<xpath>tns:findDuplicates/tns:sObjects/ens:Id</xpath>
+							</target>
+						</map>
+					</mappings>
+				</operation>
+				<operation name="findDuplicatesByIds" type="COMPLEX">
+					<description>Performs rule-based searches for duplicate records using array of IDs</description>
+				</operation>
+                <operation name="describeNouns" type="METADATA" isHidden="true">
+					<description>No description</description>
+				</operation>
+				<operation name="deleteByExample" type="SIMPLE" isHidden="true">
+					<description>To delete big object data from your org using an sObject as a template for what to delete.</description>
+				</operation>
+				<operation name="createMultiple" type="DYNAMIC">
+					<description>Create multiple set of new sObjects</description>
+					<properties>
+						<!--  includeRecordNumbers indicates if Record Number column to be included or not -->
+						<property name="includeRecordNumbers" value="false"/>					
+						<!--  allowMutipleAbstractObjects allow multiple dynamic abstract objects -->
+						<property name="allowMutipleAbstractObjects" value="false"/>
+						<!--  allow multiple operations e.g. Create, Update, Delete -->
+						<property name="allowMultipleInteractions" value="false"/>
+						<!--  allow object collection e.g. Account[]-->
+						<property name="allowObjectCollection" value="true"/>
+						<!--  allow linking between two objects e.g. If 'Account' creation requires 'Contact' then these can be linked.-->
+						<property name="allowObjectLink" value="false"/>
+						<!-- if record number column is required then set recordPrefix value is required. -->
+						<!--property name="recordPrefix" value="record"/-->
+						<property name="allowDuplicate" value="false"/>
+						<!-- Allow duplicate objects in a single call. -->
+					</properties>
+					<mappings>
+						<map context="IN" isRequired="true" isFixed="false" displayName="Field Truncation Header" name="allowFieldTruncation">
+							<description>If this header value is true then it truncates data if the data is too long and does not fit into the given field </description>
+							<source type="LITERAL">false</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Header_AllowFieldTruncationHeader">
+								<xpath>tns:AllowFieldTruncationHeader/tns:allowFieldTruncation</xpath>
+							</target>
+						</map>
+						<map context="IN" isRequired="true" isFixed="false" displayName="AllOrNone Header" name="allOrNone">
+							<description>The AllOrNoneHeader header allows a call to roll back all changes unless all records are processed successfully</description>
+							<source type="LITERAL">false</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Header_AllOrNoneHeader">
+								<xpath>tns:AllOrNoneHeader/tns:allOrNone</xpath>
+							</target>
+						</map>
+					</mappings>
+					<handler nsName="wm.cloudstreams.salesforce.CreateInteractionHandler" type="java">
+						<references>
+							<reference name="dObject" type="abstractObject" displayName="Business Object"/>
+						</references>					
+					</handler>
+					<inputSignature>
+						<headers>wmSalesforceConnector_v44.doctypes:Header_SessionHeader</headers>
+						<headers>wmSalesforceConnector_v44.doctypes:Header_CallOptions</headers>
+						<headers>wmSalesforceConnector_v44.doctypes:Header_AssignmentRuleHeader</headers>
+						<headers>wmSalesforceConnector_v44.doctypes:Header_MruHeader</headers>
+						<headers>wmSalesforceConnector_v44.doctypes:Header_AllowFieldTruncationHeader</headers>
+						<headers>wmSalesforceConnector_v44.doctypes:Header_DisableFeedTrackingHeader</headers>
+						<headers>wmSalesforceConnector_v44.doctypes:Header_StreamingEnabledHeader</headers>
+						<headers>wmSalesforceConnector_v44.doctypes:Header_AllOrNoneHeader</headers>
+						<headers>wmSalesforceConnector_v44.doctypes:Header_DebuggingHeader</headers>
+						<headers>wmSalesforceConnector_v44.doctypes:Header_PackageVersionHeader</headers>
+						<headers>wmSalesforceConnector_v44.doctypes:Header_EmailHeader</headers>
+						<body>wmSalesforceConnector_v44.doctypes:Soap_create_Input</body>
+					</inputSignature>
+					<outputSignature>
+						<headers>wmSalesforceConnector_v44.doctypes:Header_DebuggingInfo</headers>
+						<headers>wmSalesforceConnector_v44.doctypes:Header_LimitInfoHeader</headers>
+						<body>wmSalesforceConnector_v44.doctypes:Soap_create_Output</body>
+						<faults>wmSalesforceConnector_v44.doctypes:InvalidSObjectFault</faults>
+						<faults>wmSalesforceConnector_v44.doctypes:UnexpectedErrorFault</faults>
+						<faults>wmSalesforceConnector_v44.doctypes:InvalidIdFault</faults>
+						<faults>wmSalesforceConnector_v44.doctypes:InvalidFieldFault</faults>
+					</outputSignature>										
+				</operation>
+				
+				<operation name="updateMultiple" type="DYNAMIC">
+					<description>Update multiple set of sObjects</description>
+					<properties>
+						<!--  includeRecordNumbers indicates if Record Number column to be included or not -->
+						<property name="includeRecordNumbers" value="false"/>					
+						<!--  allowMutipleAbstractObjects allow multiple dynamic abstract objects -->
+						<property name="allowMutipleAbstractObjects" value="false"/>
+						<!--  allow multiple operations e.g. Create, Update, Delete -->
+						<property name="allowMultipleInteractions" value="false"/> 
+						<!--  allow object collection e.g. Account[]-->
+						<property name="allowObjectCollection" value="true"/>
+						<!--  allow linking between two objects e.g. If 'Account' creation requires 'Contact' then these can be linked.-->
+						<property name="allowObjectLink" value="false"/>
+						<!-- if record number column is required then set recordPrefix value is required. -->
+						<!--property name="recordPrefix" value="record"/-->
+						<property name="allowDuplicate" value="false"/>
+						<!-- Allow duplicate objects in a single call. -->
+					</properties>
+					<mappings>
+						<map context="IN" isRequired="true" isFixed="false" displayName="Field Truncation Header" name="allowFieldTruncation">
+							<description>If this header value is true then it truncates data if the data is too long and does not fit into the given field </description>
+							<source type="LITERAL">false</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Header_AllowFieldTruncationHeader">
+								<xpath>tns:AllowFieldTruncationHeader/tns:allowFieldTruncation</xpath>
+							</target>
+						</map>
+						<map context="IN" isRequired="true" isFixed="false" displayName="AllOrNone Header" name="allOrNone">
+							<description>The AllOrNoneHeader header allows a call to roll back all changes unless all records are processed successfully</description>
+							<source type="LITERAL">false</source>
+							<target type="XPATH" documentRef="wmSalesforceConnector_v44.doctypes:Header_AllOrNoneHeader">
+								<xpath>tns:AllOrNoneHeader/tns:allOrNone</xpath>
+							</target>
+						</map>
+					</mappings>
+					<handler nsName="wm.cloudstreams.salesforce.UpdateInteractionHandler" type="java">
+						<references>
+							<reference name="dObject" type="abstractObject" displayName="Business Object"/>
+						</references>					
+					</handler>
+					<inputSignature>
+						<headers>wmSalesforceConnector_v44.doctypes:Header_SessionHeader</headers>
+						<headers>wmSalesforceConnector_v44.doctypes:Header_CallOptions</headers>
+						<headers>wmSalesforceConnector_v44.doctypes:Header_AssignmentRuleHeader</headers>
+						<headers>wmSalesforceConnector_v44.doctypes:Header_MruHeader</headers>
+						<headers>wmSalesforceConnector_v44.doctypes:Header_AllowFieldTruncationHeader</headers>
+						<headers>wmSalesforceConnector_v44.doctypes:Header_DisableFeedTrackingHeader</headers>
+						<headers>wmSalesforceConnector_v44.doctypes:Header_StreamingEnabledHeader</headers>
+						<headers>wmSalesforceConnector_v44.doctypes:Header_AllOrNoneHeader</headers>
+						<headers>wmSalesforceConnector_v44.doctypes:Header_DebuggingHeader</headers>
+						<headers>wmSalesforceConnector_v44.doctypes:Header_PackageVersionHeader</headers>
+						<headers>wmSalesforceConnector_v44.doctypes:Header_EmailHeader</headers>
+						<headers>wmSalesforceConnector_v44.doctypes:Header_OwnerChangeOptions</headers>
+						<body>wmSalesforceConnector_v44.doctypes:Soap_update_Input</body>
+					</inputSignature>
+					<outputSignature>
+						<headers>wmSalesforceConnector_v44.doctypes:Header_DebuggingInfo</headers>
+						<headers>wmSalesforceConnector_v44.doctypes:Header_LimitInfoHeader</headers>
+						<body>wmSalesforceConnector_v44.doctypes:Soap_update_Output</body>
+						<faults>wmSalesforceConnector_v44.doctypes:InvalidSObjectFault</faults>
+						<faults>wmSalesforceConnector_v44.doctypes:UnexpectedErrorFault</faults>
+						<faults>wmSalesforceConnector_v44.doctypes:InvalidIdFault</faults>
+						<faults>wmSalesforceConnector_v44.doctypes:InvalidFieldFault</faults>
+					</outputSignature>										
+				</operation>
+			</operations>
+		</service>
+	</services>
+	
+	<listeners>
+    <!-- HTTP LongPolling Comet - Salesforce usecase -->
+    <listener displayName="Salesforce Push Topic Event " name="SalesforcePushTopicEvent">
+        <description>Listens to incoming streaming notifications for changes to Salesforce data that match a SOQL query you define, in a secure and scalable way.</description>
+		
+		 <properties>
+            <!-- Event processing mode in a cluster  -->
+            <property name="event.clusterMode" value="multiNode"/>
+		</properties>
+		
+        <connections>
+			<connection displayName="Bayeux HTTP Long-Polling Connection" name="BayeuxHTTPLongPollingConnection" type="bayeux_http_long_polling">
+				<description>Streaming connection description</description>
+				<groups>
+					<group name="httpParams" type="httpParams" displayName="HTTP Parameter Configuration">
+						<fields>
+							<field name="hp.endpoint" displayName="Streaming API Endpoint" defaultValue="https://{instance}.salesforce.com/cometd/44.0"/>
+						</fields>
+					</group>
+					<group type="bayeux" name="bayeux" displayName="Bayeux Configuration">
+						<fields>
+							<field name="bu.backoffIncrement" displayName="Backoff Increment" defaultValue="1000" />
+							<field name="bu.maxBackoff" displayName="Max Backoff" defaultValue="30000" />
+							<field name="bu.maxMessageSize" displayName="Max Message Size" defaultValue="1048576" />
+						</fields>
+					</group>
+					<group type="custom" name="Bayeux Extension Configuration" displayName="Bayeux Extension Configuration">
+						<description>Bayeux Extension Configuration</description>
+						<fields>
+							<field name="cx.replayOptions" displayName="Replay Options" defaultValue="NEW" allowedValues="NEW, ALL"/>                   
+						</fields>
+					</group>
+					<group name="errorHandler" type="errorHandler" displayName="Error Callback Configuration">
+						<fields>
+							<field name="eh.isEnabled" displayName="Enabled" defaultValue="true"/>
+							<field name="eh.retryCount" displayName="Retry Count" defaultValue="3" />
+							<field name="eh.errorHandlerServiceName" displayName="Error Handler Service Name" defaultValue="wmSalesforceConnector_v44.util.listener.services:listenerErrorHandler"/>
+							<field name="eh.callbackServiceName" displayName="Callback Service Name" defaultValue="wmSalesforceConnector_v44.util.listener.services:listenerCallBackService"/>
+							<field name="eh.runAsUser" displayName="Run As User" defaultValue=""/>
+						</fields>
+					</group>	
+				</groups>
+				<start>
+					<operation type="ISSERVICE" displayName="Salesforce Login operation"   
+					    name="wm.cloudstreams.listener.metadata.connection:registerExtension">
+						<description>Login operation</description>      
+						<mappings>
+							<map context="IN" isRequired="true" displayName="Replay Extension name mapping" name="Replay Id name mapping">
+								<description>Replay Extension parameter mapping</description>
+								 <source type="LITERAL">replayExt</source>
+								 <target type="XPATH">
+									<xpath>extensionInput/name</xpath>
+								 </target>									 
+							</map>
+							<map context="IN" isRequired="true" displayName="Replay Extension parameter mapping" name="Replay Id param mapping">
+								<description>Replay Extension parameter mapping</description>
+								 <source type="IDATA">cx.replayOptions</source>
+								 <target type="XPATH">
+									<xpath>extensionInput/properties</xpath>
+								 </target>	
+							</map>					
+						</mappings>	
+					</operation>
+				</start>
+			</connection>
+        </connections> 		
+       <subscribers>            
+           <!-- Subscriber Definitions -->
+           <subscriber displayName="Push Topic Subscriber" name="PushTopic Subscriber" path="/topic/{pushTopicName}">
+                <description>Listens to a single PushTopic channel</description>                
+                <parameters>
+                    <parameter name="pushTopicName" isRequired="true" style="URI_CONTEXT" defaultValue="">
+                       <description>PushTopic name</description>
+                    </parameter>                  
+                </parameters>
+                <!--Document type shipped with the provider/connector, template for the document type instance generated along with the listener node -->
+                <event namespace="wmSalesforceConnector_v44.document.listener:pushTopicEventResponse" type="document">
+					<extractor source="json">                
+						<attributes>
+							<attribute name="channel" path="/channel" id="true"/>
+							<attribute name="replayId" path="/data/event/replayId" id="true"/>
+						</attributes>        
+					</extractor>
+					<preProcessors>
+						<processor name="DuplicateChecker"/>
+					</preProcessors>         
+				</event>
+            </subscriber>
+         </subscribers>
+    </listener>
+	
+	<listener displayName="Salesforce Platform Event" name="SalesforcePlatformEvent">
+        <description>Listens to incoming platform event notifications for changes to Salesforce data that match a SOQL query you define, in a secure and scalable way.</description>
+		
+		<properties>
+            <!-- Event processing mode in a cluster  -->
+            <property name="event.clusterMode" value="multiNode"/>
+		</properties>
+		
+        <connections>
+			<connection displayName="Bayeux HTTP Long-Polling Connection" name="BayeuxHTTPLongPollingConnection" type="bayeux_http_long_polling">
+				<description>Streaming connection description</description>
+				<groups>
+					<group name="httpParams" type="httpParams" displayName="HTTP Parameter Configuration">
+						<fields>
+							<field name="hp.endpoint" displayName="Streaming API Endpoint" defaultValue="https://{instance}.salesforce.com/cometd/44.0"/>		
+						</fields>
+					</group>
+					<group type="bayeux" name="bayeux" displayName="Bayeux Configuration">
+						<fields>
+							<field name="bu.handshakeRetry" displayName="Handshake Retry" defaultValue="5" />
+							<field name="bu.handshakeRetryInterval" displayName="Handshake Retry Interval(ms)" defaultValue="10000" />
+							<field name="bu.handshakeTimeout" displayName="Handshake Timeout(ms)" defaultValue="30000" />
+						</fields>
+					</group>  
+					<group type="custom" name="Bayeux Extension Configuration" displayName="Bayeux Extension Configuration">
+						<description>Bayeux Extension Configuration</description>
+						<fields>
+							<field name="cx.replayOptions" displayName="Replay Options" defaultValue="NEW" allowedValues="NEW, ALL"/>                   
+						</fields>
+					</group>
+					<group name="errorHandler" type="errorHandler" displayName="Error Callback Configuration">
+						<fields>
+							<field name="eh.isEnabled" displayName="Enabled" defaultValue="true"/>
+							<field name="eh.retryCount" displayName="Retry Count" defaultValue="3" />
+							<field name="eh.errorHandlerServiceName" displayName="Error Handler Service Name" defaultValue="wmSalesforceConnector_v44.util.listener.services:listenerErrorHandler"/>
+							<field name="eh.callbackServiceName" displayName="Callback Service Name" defaultValue="wmSalesforceConnector_v44.util.listener.services:listenerCallBackService"/>
+							<field name="eh.runAsUser" displayName="Run As User" defaultValue=""/>
+						</fields>
+					</group>	
+				</groups>
+				<start>
+					<operation type="ISSERVICE" displayName="Salesforce Login operation"   
+					    name="wm.cloudstreams.listener.metadata.connection:registerExtension">
+						<description>Login operation</description>      
+						<mappings>
+							<map context="IN" isRequired="true" displayName="Replay Extension name mapping" name="Replay Id name mapping">
+								<description>Replay Extension parameter mapping</description>
+								 <source type="LITERAL">replayExt</source>
+								 <target type="XPATH">
+									<xpath>extensionInput/name</xpath>
+								 </target>									 
+							</map>
+							<map context="IN" isRequired="true" displayName="Replay Extension parameter mapping" name="Replay Id param mapping">
+								<description>Replay Extension parameter mapping</description>
+								 <source type="IDATA">cx.replayOptions</source>
+								 <target type="XPATH">
+									<xpath>extensionInput/properties</xpath>
+								 </target>	
+							</map>					
+						</mappings>	
+					</operation>
+				</start>
+			</connection>
+        </connections> 		
+       <subscribers>            
+           <!-- Subscriber Definitions -->	
+           <subscriber displayName="Platform Event Subscriber" name="platformEventSubscriber" path="/event/{eventName}">
+                <description>Listens to Platform Events</description>                
+                <parameters>
+                    <parameter name="eventName" isRequired="true" style="URI_CONTEXT" defaultValue="">
+                       <description>Event name</description>
+                    </parameter>                  
+                </parameters>
+                <!--Document type shipped with the provider/connector, template for the document type instance generated along with the listener node -->
+                <event namespace="wmSalesforceConnector_v44.document.listener:platformEventResponse" type="document">
+					<extractor source="json">                
+						<attributes>
+							<attribute name="channel" path="/channel" id="true"/>
+							<attribute name="replayId" path="/data/event/replayId" id="true"/>
+						</attributes>        
+					</extractor>
+					<preProcessors>
+						<processor name="DuplicateChecker"/>
+					</preProcessors>
+				</event>
+            </subscriber>
+         </subscribers>
+    </listener>
+	
+	<listener displayName="Salesforce Change Data Capture Event" name="SalesforceCDCEvent">
+        <description>Change Data Capture publishes change events, which represent changes to Salesforce records.</description>
+		
+		<properties>
+            <!-- Event processing mode in a cluster  -->
+            <property name="event.clusterMode" value="multiNode"/>
+		</properties>
+		
+        <connections>
+			<connection displayName="Bayeux HTTP Long-Polling Connection" name="BayeuxHTTPLongPollingConnection" type="bayeux_http_long_polling">
+				<description>Streaming connection description</description>
+				<groups>
+					<group name="httpParams" type="httpParams" displayName="HTTP Parameter Configuration">
+						<fields>
+							<field name="hp.endpoint" displayName="Streaming API Endpoint" defaultValue="https://{instance}.salesforce.com/cometd/44.0"/>						
+						</fields>
+					</group>
+					<group type="bayeux" name="bayeux" displayName="Bayeux Configuration">
+						<fields>
+							<field name="bu.handshakeRetry" displayName="Handshake Retry" defaultValue="5" />
+							<field name="bu.handshakeRetryInterval" displayName="Handshake Retry Interval(ms)" defaultValue="10000" />
+							<field name="bu.handshakeTimeout" displayName="Handshake Timeout(ms)" defaultValue="30000" />
+						</fields>
+					</group>
+					<group type="custom" name="Bayeux Extension Configuration" displayName="Bayeux Extension Configuration">
+						<description>Bayeux Extension Configuration</description>
+						<fields>
+							<field name="cx.replayOptions" displayName="Replay Options" defaultValue="NEW" allowedValues="NEW, ALL"/>                   
+						</fields>
+					</group>	
+					<group name="errorHandler" type="errorHandler" displayName="Error Callback Configuration">
+						<fields>
+							<field name="eh.isEnabled" displayName="Enabled" defaultValue="true"/>
+							<field name="eh.retryCount" displayName="Retry Count" defaultValue="3" />
+							<field name="eh.errorHandlerServiceName" displayName="Error Handler Service Name" defaultValue="wmSalesforceConnector_v44.util.listener.services:listenerErrorHandler"/>
+							<field name="eh.callbackServiceName" displayName="Callback Service Name" defaultValue="wmSalesforceConnector_v44.util.listener.services:listenerCallBackService"/>
+							<field name="eh.runAsUser" displayName="Run As User" defaultValue=""/>
+						</fields>
+					</group>	
+				</groups>
+				<start>
+					<operation type="ISSERVICE" displayName="Salesforce Login operation"   
+					    name="wm.cloudstreams.listener.metadata.connection:registerExtension">
+						<description>Login operation</description>      
+						<mappings>
+							<map context="IN" isRequired="true" displayName="Replay Extension name mapping" name="Replay Id name mapping">
+								<description>Replay Extension parameter mapping</description>
+								 <source type="LITERAL">replayExt</source>
+								 <target type="XPATH">
+									<xpath>extensionInput/name</xpath>
+								 </target>									 
+							</map>
+							<map context="IN" isRequired="true" displayName="Replay Extension parameter mapping" name="Replay Id param mapping">
+								<description>Replay Extension parameter mapping</description>
+								 <source type="IDATA">cx.replayOptions</source>
+								 <target type="XPATH">
+									<xpath>extensionInput/properties</xpath>
+								 </target>	
+							</map>					
+						</mappings>	
+					</operation>
+				</start>
+			</connection>
+        </connections> 		
+       <subscribers>            
+           <!-- Subscriber Definitions -->	
+           <subscriber displayName="Change Data Capture Event Subscriber" name="ChangeDataCaptureEventSubscriber" path="/data/{ChangeEvents}">
+                <description>Listens to a Change Data Capture Event</description>                
+                <parameters>
+                    <parameter name="ChangeEvents" isRequired="true" style="URI_CONTEXT" defaultValue="">
+                       <description>Provide ChangeEvent, ObjectNameChangeEvent or CustomObjectName__ChangeEvent</description>
+                    </parameter>                  
+                </parameters>
+                <!--Document type shipped with the provider/connector, template for the document type instance generated along with the listener node -->
+                <event namespace="wmSalesforceConnector_v44.document.listener:cdcEventResponse" type="document">
+				<extractor source="json">                
+						<attributes>
+							<attribute name="channel" path="/channel" id="true"/>
+							<attribute name="replayId" path="/data/event/replayId" id="true"/>
+						</attributes>        
+					</extractor>
+					<preProcessors>
+						<processor name="DuplicateChecker"/>
+					</preProcessors>
+				</event>
+            </subscriber>
+         </subscribers>
+    </listener>
+	
+	<listener displayName="Salesforce Generic Event" name="SalesforceGenericEvent">
+        <description>Use generic events to send custom notifications that are not tied to Salesforce data changes. Use generic streaming when you want to send and receive custom notifications.</description>
+		
+		<properties>
+            <!-- Event processing mode in a cluster  -->
+            <property name="event.clusterMode" value="multiNode"/>
+		</properties>
+		
+        <connections>
+			<connection displayName="Bayeux HTTP Long-Polling Connection" name="BayeuxHTTPLongPollingConnection" type="bayeux_http_long_polling">
+				<description>Streaming connection description</description>
+				<groups>
+					<group name="httpParams" type="httpParams" displayName="HTTP Parameter Configuration">
+						<fields>
+							<field name="hp.endpoint" displayName="Streaming API Endpoint" defaultValue="https://{instance}.salesforce.com/cometd/44.0"/>				
+						</fields>
+					</group>
+					<group type="bayeux" name="bayeux" displayName="Bayeux Configuration">
+						<fields>
+							<field name="bu.handshakeRetry" displayName="Handshake Retry" defaultValue="5" />
+							<field name="bu.handshakeRetryInterval" displayName="Handshake Retry Interval(ms)" defaultValue="10000" />
+							<field name="bu.handshakeTimeout" displayName="Handshake Timeout(ms)" defaultValue="30000" />
+						</fields>
+					</group>
+					<group type="custom" name="Bayeux Extension Configuration" displayName="Bayeux Extension Configuration">
+						<description>Bayeux Extension Configuration</description>
+						<fields>
+							<field name="cx.replayOptions" displayName="Replay Options" defaultValue="NEW" allowedValues="NEW, ALL"/>                   
+						</fields>
+					</group>
+					<group name="errorHandler" type="errorHandler" displayName="Error Callback Configuration">
+						<fields>
+							<field name="eh.isEnabled" displayName="Enabled" defaultValue="true"/>
+							<field name="eh.retryCount" displayName="Retry Count" defaultValue="3" />
+							<field name="eh.errorHandlerServiceName" displayName="Error Handler Service Name" defaultValue="wmSalesforceConnector_v44.util.listener.services:listenerErrorHandler"/>
+							<field name="eh.callbackServiceName" displayName="Callback Service Name" defaultValue="wmSalesforceConnector_v44.util.listener.services:listenerCallBackService"/>
+							<field name="eh.runAsUser" displayName="Run As User" defaultValue=""/>
+						</fields>
+					</group>	
+				</groups>
+				<start>
+					<operation type="ISSERVICE" displayName="Salesforce Login operation"   
+					    name="wm.cloudstreams.listener.metadata.connection:registerExtension">
+						<description>Login operation</description>      
+						<mappings>
+							<map context="IN" isRequired="true" displayName="Replay Extension name mapping" name="Replay Id name mapping">
+								<description>Replay Extension parameter mapping</description>
+								 <source type="LITERAL">replayExt</source>
+								 <target type="XPATH">
+									<xpath>extensionInput/name</xpath>
+								 </target>									 
+							</map>
+							<map context="IN" isRequired="true" displayName="Replay Extension parameter mapping" name="Replay Id param mapping">
+								<description>Replay Extension parameter mapping</description>
+								 <source type="IDATA">cx.replayOptions</source>
+								 <target type="XPATH">
+									<xpath>extensionInput/properties</xpath>
+								 </target>	
+							</map>					
+						</mappings>	
+					</operation>
+				</start>
+			</connection>
+        </connections> 		
+       <subscribers>            
+           <!-- Subscriber Definitions -->	
+           <subscriber displayName="Generic Event Subscriber" name="genericEventSubscriber" path="/u/notifications/{GenericStreamingChannel}">
+                <description>Listens to Generic Event</description>                
+                <parameters>
+                    <parameter name="GenericStreamingChannel" isRequired="true" style="URI_CONTEXT" defaultValue="">
+                       <description>Provide GenericStreamingChannel</description>
+                    </parameter>                  
+                </parameters>
+                <!--Document type shipped with the provider/connector, template for the document type instance generated along with the listener node -->
+                <event namespace="wmSalesforceConnector_v44.document.listener:genericEventResponse" type="document">
+					<extractor source="json">                
+						<attributes>
+							<attribute name="channel" path="/channel" id="true"/>
+							<attribute name="replayId" path="/data/event/replayId" id="true"/>
+						</attributes>        
+					</extractor>
+					<preProcessors>
+						<processor name="DuplicateChecker"/>
+					</preProcessors>
+				</event>
+            </subscriber>
+         </subscribers>
+    </listener>
+	
+</listeners>
+</soap-connector>

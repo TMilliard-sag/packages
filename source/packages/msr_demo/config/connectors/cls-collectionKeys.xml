@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<services>
+    <cloudstreamsCollectionKeys serviceName="WmCloudStreams.SoapVS">
+        <servicesKeys>
+            <keyDetails collectionKey="msr_demo.adapterService:getCRM" connectorServiceName="msr_demo.adapterService:getCRM"/>
+            <keyDetails collectionKey="msr_demo.adapterService:getIds" connectorServiceName="msr_demo.adapterService:getIds"/>
+            <keyDetails collectionKey="msr_demo.adapterService:getThierry" connectorServiceName="msr_demo.adapterService:getThierry"/>
+            <keyDetails collectionKey="msr_demo.adapterService:getUserInfoDetails" connectorServiceName="msr_demo.adapterService:getUserInfoDetails"/>
+            <keyDetails collectionKey="msr_demo.adapterService:updateCRM" connectorServiceName="msr_demo.adapterService:updateCRM"/>
+        </servicesKeys>
+    </cloudstreamsCollectionKeys>
+</services>

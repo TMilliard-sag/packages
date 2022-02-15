@@ -1,0 +1,678 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <record name="record" javaclass="com.wm.util.Values">
+    <value name="node_type">record</value>
+    <value name="node_nsName">WmSalesforceBulkConnector_V29.customDoctypes:docTypeRef_tns_GetUserInfoResult</value>
+    <value name="node_pkg">WmSalesforceConnector_v29</value>
+    <value name="is_public">false</value>
+    <value name="field_type">record</value>
+    <value name="field_dim">0</value>
+    <value name="nillable">true</value>
+    <value name="form_qualified">false</value>
+    <value name="is_global">false</value>
+    <value name="field_min">1</value>
+    <value name="field_max">1</value>
+    <value name="field_enhanced">true</value>
+    <value name="field_is_attribute">false</value>
+    <value name="field_is_text">false</value>
+    <value name="any_mode">0</value>
+    <value name="any_mode_uris"></value>
+    <array name="rec_fields" type="record" depth="1">
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="is_public">false</value>
+        <value name="field_name">tns:accessibilityMode</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <record name="field_content_type" javaclass="com.wm.util.Values">
+          <value name="contentType">1</value>
+          <value name="internalType">reference</value>
+          <value name="dataTypeVersion">dtVersion2</value>
+          <array name="targetNames" type="record" depth="1">
+            <record javaclass="com.wm.util.Values">
+              <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+              <value name="ncName">boolean</value>
+            </record>
+          </array>
+        </record>
+        <value name="nillable">false</value>
+        <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+        <value name="form_qualified">true</value>
+        <value name="is_global">false</value>
+        <value name="field_min">1</value>
+        <value name="field_max">1</value>
+        <value name="field_enhanced">true</value>
+        <value name="field_is_attribute">false</value>
+        <value name="field_is_text">false</value>
+        <value name="any_mode">0</value>
+        <value name="any_mode_uris"></value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="is_public">false</value>
+        <value name="field_name">tns:currencySymbol</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <record name="field_content_type" javaclass="com.wm.util.Values">
+          <value name="contentType">1</value>
+          <value name="internalType">reference</value>
+          <value name="dataTypeVersion">dtVersion2</value>
+          <array name="targetNames" type="record" depth="1">
+            <record javaclass="com.wm.util.Values">
+              <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+              <value name="ncName">string</value>
+            </record>
+          </array>
+        </record>
+        <value name="nillable">true</value>
+        <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+        <value name="form_qualified">true</value>
+        <value name="is_global">false</value>
+        <value name="field_min">1</value>
+        <value name="field_max">1</value>
+        <value name="field_enhanced">true</value>
+        <value name="field_is_attribute">false</value>
+        <value name="field_is_text">false</value>
+        <value name="any_mode">0</value>
+        <value name="any_mode_uris"></value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="is_public">false</value>
+        <value name="field_name">tns:orgAttachmentFileSizeLimit</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <record name="field_content_type" javaclass="com.wm.util.Values">
+          <value name="contentType">1</value>
+          <value name="internalType">reference</value>
+          <value name="dataTypeVersion">dtVersion2</value>
+          <array name="targetNames" type="record" depth="1">
+            <record javaclass="com.wm.util.Values">
+              <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+              <value name="ncName">int</value>
+            </record>
+          </array>
+        </record>
+        <value name="nillable">false</value>
+        <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+        <value name="form_qualified">true</value>
+        <value name="is_global">false</value>
+        <value name="field_min">1</value>
+        <value name="field_max">1</value>
+        <value name="field_enhanced">true</value>
+        <value name="field_is_attribute">false</value>
+        <value name="field_is_text">false</value>
+        <value name="any_mode">0</value>
+        <value name="any_mode_uris"></value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="is_public">false</value>
+        <value name="field_name">tns:orgDefaultCurrencyIsoCode</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <record name="field_content_type" javaclass="com.wm.util.Values">
+          <value name="contentType">1</value>
+          <value name="internalType">reference</value>
+          <value name="dataTypeVersion">dtVersion2</value>
+          <array name="targetNames" type="record" depth="1">
+            <record javaclass="com.wm.util.Values">
+              <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+              <value name="ncName">string</value>
+            </record>
+          </array>
+        </record>
+        <value name="nillable">true</value>
+        <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+        <value name="form_qualified">true</value>
+        <value name="is_global">false</value>
+        <value name="field_min">1</value>
+        <value name="field_max">1</value>
+        <value name="field_enhanced">true</value>
+        <value name="field_is_attribute">false</value>
+        <value name="field_is_text">false</value>
+        <value name="any_mode">0</value>
+        <value name="any_mode_uris"></value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="is_public">false</value>
+        <value name="field_name">tns:orgDisallowHtmlAttachments</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <record name="field_content_type" javaclass="com.wm.util.Values">
+          <value name="contentType">1</value>
+          <value name="internalType">reference</value>
+          <value name="dataTypeVersion">dtVersion2</value>
+          <array name="targetNames" type="record" depth="1">
+            <record javaclass="com.wm.util.Values">
+              <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+              <value name="ncName">boolean</value>
+            </record>
+          </array>
+        </record>
+        <value name="nillable">false</value>
+        <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+        <value name="form_qualified">true</value>
+        <value name="is_global">false</value>
+        <value name="field_min">1</value>
+        <value name="field_max">1</value>
+        <value name="field_enhanced">true</value>
+        <value name="field_is_attribute">false</value>
+        <value name="field_is_text">false</value>
+        <value name="any_mode">0</value>
+        <value name="any_mode_uris"></value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="is_public">false</value>
+        <value name="field_name">tns:orgHasPersonAccounts</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <record name="field_content_type" javaclass="com.wm.util.Values">
+          <value name="contentType">1</value>
+          <value name="internalType">reference</value>
+          <value name="dataTypeVersion">dtVersion2</value>
+          <array name="targetNames" type="record" depth="1">
+            <record javaclass="com.wm.util.Values">
+              <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+              <value name="ncName">boolean</value>
+            </record>
+          </array>
+        </record>
+        <value name="nillable">false</value>
+        <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+        <value name="form_qualified">true</value>
+        <value name="is_global">false</value>
+        <value name="field_min">1</value>
+        <value name="field_max">1</value>
+        <value name="field_enhanced">true</value>
+        <value name="field_is_attribute">false</value>
+        <value name="field_is_text">false</value>
+        <value name="any_mode">0</value>
+        <value name="any_mode_uris"></value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="is_public">false</value>
+        <value name="field_name">tns:organizationId</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <record name="field_content_type" javaclass="com.wm.util.Values">
+          <value name="contentType">1</value>
+          <value name="internalType">reference</value>
+          <value name="dataTypeVersion">dtVersion2</value>
+          <array name="targetNames" type="record" depth="1">
+            <record javaclass="com.wm.util.Values">
+              <value name="xmlns">urn:partner.soap.sforce.com</value>
+              <value name="ncName">ID</value>
+            </record>
+          </array>
+          <value name="schemaDomain">d2630f1f5fd8f6e713a4f0c68c4</value>
+        </record>
+        <value name="nillable">false</value>
+        <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+        <value name="form_qualified">true</value>
+        <value name="is_global">false</value>
+        <value name="field_min">1</value>
+        <value name="field_max">1</value>
+        <value name="field_enhanced">true</value>
+        <value name="field_is_attribute">false</value>
+        <value name="field_is_text">false</value>
+        <value name="any_mode">0</value>
+        <value name="any_mode_uris"></value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="is_public">false</value>
+        <value name="field_name">tns:organizationMultiCurrency</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <record name="field_content_type" javaclass="com.wm.util.Values">
+          <value name="contentType">1</value>
+          <value name="internalType">reference</value>
+          <value name="dataTypeVersion">dtVersion2</value>
+          <array name="targetNames" type="record" depth="1">
+            <record javaclass="com.wm.util.Values">
+              <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+              <value name="ncName">boolean</value>
+            </record>
+          </array>
+        </record>
+        <value name="nillable">false</value>
+        <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+        <value name="form_qualified">true</value>
+        <value name="is_global">false</value>
+        <value name="field_min">1</value>
+        <value name="field_max">1</value>
+        <value name="field_enhanced">true</value>
+        <value name="field_is_attribute">false</value>
+        <value name="field_is_text">false</value>
+        <value name="any_mode">0</value>
+        <value name="any_mode_uris"></value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="is_public">false</value>
+        <value name="field_name">tns:organizationName</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <record name="field_content_type" javaclass="com.wm.util.Values">
+          <value name="contentType">1</value>
+          <value name="internalType">reference</value>
+          <value name="dataTypeVersion">dtVersion2</value>
+          <array name="targetNames" type="record" depth="1">
+            <record javaclass="com.wm.util.Values">
+              <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+              <value name="ncName">string</value>
+            </record>
+          </array>
+        </record>
+        <value name="nillable">false</value>
+        <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+        <value name="form_qualified">true</value>
+        <value name="is_global">false</value>
+        <value name="field_min">1</value>
+        <value name="field_max">1</value>
+        <value name="field_enhanced">true</value>
+        <value name="field_is_attribute">false</value>
+        <value name="field_is_text">false</value>
+        <value name="any_mode">0</value>
+        <value name="any_mode_uris"></value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="is_public">false</value>
+        <value name="field_name">tns:profileId</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <record name="field_content_type" javaclass="com.wm.util.Values">
+          <value name="contentType">1</value>
+          <value name="internalType">reference</value>
+          <value name="dataTypeVersion">dtVersion2</value>
+          <array name="targetNames" type="record" depth="1">
+            <record javaclass="com.wm.util.Values">
+              <value name="xmlns">urn:partner.soap.sforce.com</value>
+              <value name="ncName">ID</value>
+            </record>
+          </array>
+          <value name="schemaDomain">d2630f1f5fd8f6e713a4f0c68c4</value>
+        </record>
+        <value name="nillable">false</value>
+        <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+        <value name="form_qualified">true</value>
+        <value name="is_global">false</value>
+        <value name="field_min">1</value>
+        <value name="field_max">1</value>
+        <value name="field_enhanced">true</value>
+        <value name="field_is_attribute">false</value>
+        <value name="field_is_text">false</value>
+        <value name="any_mode">0</value>
+        <value name="any_mode_uris"></value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="is_public">false</value>
+        <value name="field_name">tns:roleId</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <record name="field_content_type" javaclass="com.wm.util.Values">
+          <value name="contentType">1</value>
+          <value name="internalType">reference</value>
+          <value name="dataTypeVersion">dtVersion2</value>
+          <array name="targetNames" type="record" depth="1">
+            <record javaclass="com.wm.util.Values">
+              <value name="xmlns">urn:partner.soap.sforce.com</value>
+              <value name="ncName">ID</value>
+            </record>
+          </array>
+          <value name="schemaDomain">d2630f1f5fd8f6e713a4f0c68c4</value>
+        </record>
+        <value name="nillable">true</value>
+        <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+        <value name="form_qualified">true</value>
+        <value name="is_global">false</value>
+        <value name="field_min">1</value>
+        <value name="field_max">1</value>
+        <value name="field_enhanced">true</value>
+        <value name="field_is_attribute">false</value>
+        <value name="field_is_text">false</value>
+        <value name="any_mode">0</value>
+        <value name="any_mode_uris"></value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="is_public">false</value>
+        <value name="field_name">tns:sessionSecondsValid</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <record name="field_content_type" javaclass="com.wm.util.Values">
+          <value name="contentType">1</value>
+          <value name="internalType">reference</value>
+          <value name="dataTypeVersion">dtVersion2</value>
+          <array name="targetNames" type="record" depth="1">
+            <record javaclass="com.wm.util.Values">
+              <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+              <value name="ncName">int</value>
+            </record>
+          </array>
+        </record>
+        <value name="nillable">false</value>
+        <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+        <value name="form_qualified">true</value>
+        <value name="is_global">false</value>
+        <value name="field_min">1</value>
+        <value name="field_max">1</value>
+        <value name="field_enhanced">true</value>
+        <value name="field_is_attribute">false</value>
+        <value name="field_is_text">false</value>
+        <value name="any_mode">0</value>
+        <value name="any_mode_uris"></value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="is_public">false</value>
+        <value name="field_name">tns:userDefaultCurrencyIsoCode</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <record name="field_content_type" javaclass="com.wm.util.Values">
+          <value name="contentType">1</value>
+          <value name="internalType">reference</value>
+          <value name="dataTypeVersion">dtVersion2</value>
+          <array name="targetNames" type="record" depth="1">
+            <record javaclass="com.wm.util.Values">
+              <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+              <value name="ncName">string</value>
+            </record>
+          </array>
+        </record>
+        <value name="nillable">true</value>
+        <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+        <value name="form_qualified">true</value>
+        <value name="is_global">false</value>
+        <value name="field_min">1</value>
+        <value name="field_max">1</value>
+        <value name="field_enhanced">true</value>
+        <value name="field_is_attribute">false</value>
+        <value name="field_is_text">false</value>
+        <value name="any_mode">0</value>
+        <value name="any_mode_uris"></value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="is_public">false</value>
+        <value name="field_name">tns:userEmail</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <record name="field_content_type" javaclass="com.wm.util.Values">
+          <value name="contentType">1</value>
+          <value name="internalType">reference</value>
+          <value name="dataTypeVersion">dtVersion2</value>
+          <array name="targetNames" type="record" depth="1">
+            <record javaclass="com.wm.util.Values">
+              <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+              <value name="ncName">string</value>
+            </record>
+          </array>
+        </record>
+        <value name="nillable">false</value>
+        <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+        <value name="form_qualified">true</value>
+        <value name="is_global">false</value>
+        <value name="field_min">1</value>
+        <value name="field_max">1</value>
+        <value name="field_enhanced">true</value>
+        <value name="field_is_attribute">false</value>
+        <value name="field_is_text">false</value>
+        <value name="any_mode">0</value>
+        <value name="any_mode_uris"></value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="is_public">false</value>
+        <value name="field_name">tns:userFullName</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <record name="field_content_type" javaclass="com.wm.util.Values">
+          <value name="contentType">1</value>
+          <value name="internalType">reference</value>
+          <value name="dataTypeVersion">dtVersion2</value>
+          <array name="targetNames" type="record" depth="1">
+            <record javaclass="com.wm.util.Values">
+              <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+              <value name="ncName">string</value>
+            </record>
+          </array>
+        </record>
+        <value name="nillable">false</value>
+        <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+        <value name="form_qualified">true</value>
+        <value name="is_global">false</value>
+        <value name="field_min">1</value>
+        <value name="field_max">1</value>
+        <value name="field_enhanced">true</value>
+        <value name="field_is_attribute">false</value>
+        <value name="field_is_text">false</value>
+        <value name="any_mode">0</value>
+        <value name="any_mode_uris"></value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="is_public">false</value>
+        <value name="field_name">tns:userId</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <record name="field_content_type" javaclass="com.wm.util.Values">
+          <value name="contentType">1</value>
+          <value name="internalType">reference</value>
+          <value name="dataTypeVersion">dtVersion2</value>
+          <array name="targetNames" type="record" depth="1">
+            <record javaclass="com.wm.util.Values">
+              <value name="xmlns">urn:partner.soap.sforce.com</value>
+              <value name="ncName">ID</value>
+            </record>
+          </array>
+          <value name="schemaDomain">d2630f1f5fd8f6e713a4f0c68c4</value>
+        </record>
+        <value name="nillable">false</value>
+        <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+        <value name="form_qualified">true</value>
+        <value name="is_global">false</value>
+        <value name="field_min">1</value>
+        <value name="field_max">1</value>
+        <value name="field_enhanced">true</value>
+        <value name="field_is_attribute">false</value>
+        <value name="field_is_text">false</value>
+        <value name="any_mode">0</value>
+        <value name="any_mode_uris"></value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="is_public">false</value>
+        <value name="field_name">tns:userLanguage</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <record name="field_content_type" javaclass="com.wm.util.Values">
+          <value name="contentType">1</value>
+          <value name="internalType">reference</value>
+          <value name="dataTypeVersion">dtVersion2</value>
+          <array name="targetNames" type="record" depth="1">
+            <record javaclass="com.wm.util.Values">
+              <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+              <value name="ncName">string</value>
+            </record>
+          </array>
+        </record>
+        <value name="nillable">false</value>
+        <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+        <value name="form_qualified">true</value>
+        <value name="is_global">false</value>
+        <value name="field_min">1</value>
+        <value name="field_max">1</value>
+        <value name="field_enhanced">true</value>
+        <value name="field_is_attribute">false</value>
+        <value name="field_is_text">false</value>
+        <value name="any_mode">0</value>
+        <value name="any_mode_uris"></value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="is_public">false</value>
+        <value name="field_name">tns:userLocale</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <record name="field_content_type" javaclass="com.wm.util.Values">
+          <value name="contentType">1</value>
+          <value name="internalType">reference</value>
+          <value name="dataTypeVersion">dtVersion2</value>
+          <array name="targetNames" type="record" depth="1">
+            <record javaclass="com.wm.util.Values">
+              <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+              <value name="ncName">string</value>
+            </record>
+          </array>
+        </record>
+        <value name="nillable">false</value>
+        <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+        <value name="form_qualified">true</value>
+        <value name="is_global">false</value>
+        <value name="field_min">1</value>
+        <value name="field_max">1</value>
+        <value name="field_enhanced">true</value>
+        <value name="field_is_attribute">false</value>
+        <value name="field_is_text">false</value>
+        <value name="any_mode">0</value>
+        <value name="any_mode_uris"></value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="is_public">false</value>
+        <value name="field_name">tns:userName</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <record name="field_content_type" javaclass="com.wm.util.Values">
+          <value name="contentType">1</value>
+          <value name="internalType">reference</value>
+          <value name="dataTypeVersion">dtVersion2</value>
+          <array name="targetNames" type="record" depth="1">
+            <record javaclass="com.wm.util.Values">
+              <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+              <value name="ncName">string</value>
+            </record>
+          </array>
+        </record>
+        <value name="nillable">false</value>
+        <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+        <value name="form_qualified">true</value>
+        <value name="is_global">false</value>
+        <value name="field_min">1</value>
+        <value name="field_max">1</value>
+        <value name="field_enhanced">true</value>
+        <value name="field_is_attribute">false</value>
+        <value name="field_is_text">false</value>
+        <value name="any_mode">0</value>
+        <value name="any_mode_uris"></value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="is_public">false</value>
+        <value name="field_name">tns:userTimeZone</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <record name="field_content_type" javaclass="com.wm.util.Values">
+          <value name="contentType">1</value>
+          <value name="internalType">reference</value>
+          <value name="dataTypeVersion">dtVersion2</value>
+          <array name="targetNames" type="record" depth="1">
+            <record javaclass="com.wm.util.Values">
+              <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+              <value name="ncName">string</value>
+            </record>
+          </array>
+        </record>
+        <value name="nillable">false</value>
+        <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+        <value name="form_qualified">true</value>
+        <value name="is_global">false</value>
+        <value name="field_min">1</value>
+        <value name="field_max">1</value>
+        <value name="field_enhanced">true</value>
+        <value name="field_is_attribute">false</value>
+        <value name="field_is_text">false</value>
+        <value name="any_mode">0</value>
+        <value name="any_mode_uris"></value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="is_public">false</value>
+        <value name="field_name">tns:userType</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <record name="field_content_type" javaclass="com.wm.util.Values">
+          <value name="contentType">1</value>
+          <value name="internalType">reference</value>
+          <value name="dataTypeVersion">dtVersion2</value>
+          <array name="targetNames" type="record" depth="1">
+            <record javaclass="com.wm.util.Values">
+              <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+              <value name="ncName">string</value>
+            </record>
+          </array>
+        </record>
+        <value name="nillable">false</value>
+        <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+        <value name="form_qualified">true</value>
+        <value name="is_global">false</value>
+        <value name="field_min">1</value>
+        <value name="field_max">1</value>
+        <value name="field_enhanced">true</value>
+        <value name="field_is_attribute">false</value>
+        <value name="field_is_text">false</value>
+        <value name="any_mode">0</value>
+        <value name="any_mode_uris"></value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="is_public">false</value>
+        <value name="field_name">tns:userUiSkin</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <record name="field_content_type" javaclass="com.wm.util.Values">
+          <value name="contentType">1</value>
+          <value name="internalType">reference</value>
+          <value name="dataTypeVersion">dtVersion2</value>
+          <array name="targetNames" type="record" depth="1">
+            <record javaclass="com.wm.util.Values">
+              <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+              <value name="ncName">string</value>
+            </record>
+          </array>
+        </record>
+        <value name="nillable">false</value>
+        <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+        <value name="form_qualified">true</value>
+        <value name="is_global">false</value>
+        <value name="field_min">1</value>
+        <value name="field_max">1</value>
+        <value name="field_enhanced">true</value>
+        <value name="field_is_attribute">false</value>
+        <value name="field_is_text">false</value>
+        <value name="any_mode">0</value>
+        <value name="any_mode_uris"></value>
+      </record>
+    </array>
+    <record name="schemaType" javaclass="com.wm.util.Values">
+      <value name="xmlns">urn:partner.soap.sforce.com</value>
+      <value name="ncName">GetUserInfoResult</value>
+    </record>
+    <value name="schemaDomain">d2630f1f5fd8f6e713a4f0c68c4</value>
+    <value name="schemaRegistered">true</value>
+    <value name="docTypeDomain">7545019007c311e29621e5c8e7d7042d</value>
+    <value name="modifiable">true</value>
+    <value name="modelType">1</value>
+    <value name="preserveText">false</value>
+    <value name="namedText">false</value>
+    <value name="leadingText">false</value>
+  </record>
+</Values>

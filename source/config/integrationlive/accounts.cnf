@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<IDataXMLCoder version="1.0">
+  <record javaclass="com.wm.data.ISMemDataImpl">
+    <record name="default" javaclass="com.wm.data.ISMemDataImpl">
+      <value name="accountName">default</value>
+      <value name="username">john.carter@softwareag.com</value>
+      <value name="pswdHandle">wm.is.admin.ilive.john.carter@softwareag.com</value>
+      <value name="iLiveURL">https://france.int-aws-us.webmethods.io</value>
+      <value name="umURL">nhps://um.int-aws-us.webmethods.io:443</value>
+      <jboolean name="authenticate">true</jboolean>
+      <array name="stages" type="record" depth="1">
+        <record javaclass="com.wm.data.ISMemDataImpl">
+          <value name="stageName">stage00</value>
+          <value name="stageDisplayName">Development</value>
+        </record>
+      </array>
+      <record name="queues" javaclass="com.wm.data.ISMemDataImpl">
+        <value name="fromOnPremiseQueueName">1956493595_4a440c322f3c48cd9a1dd9c49fa42e52_from_on_premise</value>
+        <value name="toOnPremiseQueueName">1956493595_4a440c322f3c48cd9a1dd9c49fa42e52_to_on_premise</value>
+      </record>
+      <value name="tenantId">1956493595</value>
+    </record>
+  </record>
+</IDataXMLCoder>

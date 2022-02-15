@@ -1,0 +1,11 @@
+Manifest-Version: 1.2
+Connector-Handler: com.softwareag.cloudstreams.metadata.handler.wsdl11
+ .WsdlConnectorMetadataHandler
+Connector-Group: Salesforce.com
+Connector-Bundle-Vendor: Software AG
+Connector-State: Disabled
+Connector-Bundle-Version: 1.0
+Connector-Name: Salesforce CRM
+Connector-Key: com.softwareag.cloudstreams.salesforce_v31
+Connector-Version: 31
+

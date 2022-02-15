@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="node_type">interface</value>
+  <value name="node_subtype">unknown</value>
+  <value name="node_nsName">wm.cloudstreams.salesforce.utils</value>
+  <value name="is_public">false</value>
+  <value name="shared">cHJpdmF0ZSBzdGF0aWMgdm9pZCBsb2coU3RyaW5nIG1zZ1RvTG9nKXsKCS8vbG9ncyB0aGUgZ2l2
+ZW4gbWVzc2FnZSB0byBzZXJ2ZXIgbG9nIHdpdGggSU5GTyBsZXZlbAoJdHJ5IHsKCQlOU05hbWUg
+bG9nU2VydmljZU5TTmFtZSA9IE5TTmFtZS5jcmVhdGUoIndtLmNsb3Vkc3RyZWFtcy5zZXJ2aWNl
+LnV0aWwucnVudGltZTpsb2ciKTsKCQkKCQlJRGF0YSBsb2dTZXJ2aWNlUGlwZWxpbmUgPSBJRGF0
+YUZhY3RvcnkuY3JlYXRlKCk7CgkJVmFsdWVzRW11bGF0b3IucHV0KGxvZ1NlcnZpY2VQaXBlbGlu
+ZSwgImNvbm5lY3RvcklEIiwgIlNhbGVzZm9yY2VDb25uZWN0b3IiKTsKCQlWYWx1ZXNFbXVsYXRv
+ci5wdXQobG9nU2VydmljZVBpcGVsaW5lLCAibWVzc2FnZSIsIG1zZ1RvTG9nKTsKCQkKCQlTZXJ2
+aWNlLmRvSW52b2tlKGxvZ1NlcnZpY2VOU05hbWUsIGxvZ1NlcnZpY2VQaXBlbGluZSk7CgkJCgl9
+IGNhdGNoIChFeGNlcHRpb24gZSkgewoJCWUucHJpbnRTdGFja1RyYWNlKCk7Cgl9Cn0=</value>
+  <value name="encodeutf8">true</value>
+  <value name="extends"></value>
+  <array name="implements" type="value" depth="1">
+  </array>
+  <array name="imports" type="value" depth="1">
+    <value>com.wm.lang.ns.NSName</value>
+    <value>com.wm.app.b2b.server.ServerAPI</value>
+    <value>java.net.MalformedURLException</value>
+    <value>java.net.URL</value>
+  </array>
+</Values>

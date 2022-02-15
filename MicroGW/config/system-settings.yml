@@ -1,0 +1,101 @@
+---
+faults:
+   default_error_message: "API Gateway encountered an error. Error Message: $ERROR_MESSAGE. Request Details: Service - $SERVICE, Operation - $OPERATION, Invocation Time:$TIME, Date:$DATE,  Client IP - $CLIENT_IP, User - $USER and Application:$CONSUMER_APPLICATION"
+   native_provider_fault: "false"
+
+
+extended_settings:
+   defaultEncoding: "UTF-8"
+   defaultLanguage: "en"
+
+   apiKeyHeader: "x-Gateway-APIKey"
+
+   apig_MENConfiguration_tickInterval: "60"
+   apig_schemaValidationPoolSize: "10"
+   apig_rest_service_redirect: "false"
+
+   pg.snmp.communityTarget.sendTimeOut: "500"
+   pg.snmp.communityTarget.maxRequestSize: "65535"
+   pg.snmp.customTarget.connTimeout: "0"
+   pg.snmp.communityTarget.retries: "1"
+   pg.snmp.communityTarget.base64Encoded: "false"
+   pg.snmp.userTarget.maxRequestSize: "65535"
+   pg.snmp.userTarget.retries: "1"
+   pg.snmp.userTarget.sendTimeOut: "500"
+
+   pg.cs.snmpTarget.base64Encoded: "false"
+   pg.cs.snmpTarget.connTimeout: "0"
+   pg.cs.snmpTarget.maxRequestSize: "10485760"
+   pg.cs.snmpTarget.retries: "1"
+   pg.cs.snmpTarget.sendTimeOut: "500"
+
+   pg_Cache_autoScalerRunInterval: "120"
+   pg_Cache_averageObjectSize: "64"
+   pg_Cache_boundedCacheResizerRunInterval: "30"
+   pg_Cache_minCachePercent: "20"
+   pg_Cache_minCacheSize: "1024"
+   pg_Cache_maxCacheSize: "1048576"
+   pg_Cache_statisticsProcessorRunInterval: "15"
+
+   pg_xslt_disableDoctypeDeclarations: "true"
+   pg_xslt_enableSecureProcessing: "true"
+   pg_xslt_enableDOM: "false"
+
+   pg.lb.failoverOnDowntimeErrorOnly: "true"
+   pg.3pSnmpSender.sendDelay: "0"
+   pg_Active_OpenID_Provider: ""
+   pg_JWT_isHTTPS: "true"
+   pg_OpenID_isHTTPS: "true"
+   pg_oauth2_isHTTPS: "true"
+   pg.uddiClient.publish.maxThreads: "2"
+   pg.uddiClient.uddiClientTimeout: "15000"
+
+   pgmen.quotaSurvival.interval: "1"
+   pgmen.quotaSurvival.addLostIntervals: "true"
+
+   events.collectionPool.maxThreads: "8"
+   events.collectionPool.minThreads: "1"   
+   events.collectionQueue.size: "10000"
+   events.reportingPool.maxThreads: "4"
+   events.reportingPool.minThreads: "2"
+   events.reportingQueue.size: "5000"
+
+   decodeAllDelimitersInURI: "false"
+   forwardInternalAPIsRequest: "false"
+   retainResponseStatus: "false"
+   sendClientRequestURI: "false"
+   setDefaultContentType: "true"
+   transformerPoolSize: "5"
+
+
+gateway_destination:
+   metricsPublishInterval: "60"
+   sendErrorEvent: "true"
+   sendLifecycleEvent: "true"
+   sendPerformanceMetrics: "true"
+   sendPolicyViolationEvent: "true"
+
+   sendAuditlogAliasManagementEvent: "true"
+   sendAuditlogPackageManagementEvent: "true"
+   sendAuditlogRuntimeDataManagementEvent: "true"
+   sendAuditlogPolicyManagementEvent: "true"
+   sendAuditlogPlanManagementEvent: "true"
+   sendAuditlogApprovalManagementEvent: "true"
+   sendAuditlogUserManagementEvent: "true"
+   sendAuditlogApplicationManagementEvent: "true"
+   sendAuditlogAdministrationEvent: "true"
+   sendAuditlogGroupManagementEvent: "true"
+   sendAuditlogAccessProfileManagementEvent: "true"
+   sendAuditlogAPIManagementEvent: "true"
+   sendAuditlogPromotionManagementEvent: "true"
+
+
+key_store:
+   type: JKS
+   provider: SUN
+   location: config/keystore.jks
+   password: manage
+
+system:
+   version: "10.11.0.5.107"
+---

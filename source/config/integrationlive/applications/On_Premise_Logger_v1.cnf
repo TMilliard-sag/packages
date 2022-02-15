@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<IDataXMLCoder version="1.0">
+  <record javaclass="com.wm.data.ISMemDataImpl">
+    <value name="name">On_Premise_Logger_v1</value>
+    <value name="description">demo for hybrid services</value>
+    <number name="lastUploadedTime" type="java.lang.Long">1578480496652</number>
+    <number name="lastSavedTime" type="java.lang.Long">1576500628447</number>
+    <array name="packages" type="record" depth="1">
+      <record javaclass="com.wm.data.ISMemDataImpl">
+        <value name="package">JcHelloWorld</value>
+        <array name="details" type="record" depth="1">
+          <record javaclass="com.wm.data.ISMemDataImpl">
+            <value name="serviceName">jc.api.helloworld_.services.v1:getLog</value>
+            <value name="displayName">getLog</value>
+            <jboolean name="isShared">true</jboolean>
+            <jboolean name="useBatch">true</jboolean>
+          </record>
+          <record javaclass="com.wm.data.ISMemDataImpl">
+            <value name="serviceName">jc.api.helloworld_.services.v1:helloWorld</value>
+            <value name="displayName">helloWorld</value>
+            <jboolean name="isShared">true</jboolean>
+            <jboolean name="useBatch">false</jboolean>
+          </record>
+        </array>
+      </record>
+    </array>
+    <array name="connections" type="record" depth="1">
+      <record javaclass="com.wm.data.ISMemDataImpl">
+        <value name="connectionName">Johns Macintosh</value>
+        <value name="connectionStage">stage00</value>
+      </record>
+    </array>
+  </record>
+</IDataXMLCoder>

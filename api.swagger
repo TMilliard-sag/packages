@@ -1,0 +1,32 @@
+---
+swagger: "2.0"
+info:
+  version: "1.0"
+  title: "saleforce"
+host: "localhost:5555"
+basePath: "/rad/msr_demo.apiRest:salesforce_desc"
+schemes:
+- "http"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+  /userInfo:
+    get:
+      operationId: "userInfo_GET_1"
+      parameters: []
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/userInfo_GET_response"
+        "401":
+          description: "Access Denied"
+definitions:
+  userInfo_GET_response:
+    required:
+    - "jsonResult"
+    properties:
+      jsonResult:
+        type: "string"

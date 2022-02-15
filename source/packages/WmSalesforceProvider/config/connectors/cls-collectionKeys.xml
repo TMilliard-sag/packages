@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<services>
+    <cloudstreamsCollectionKeys serviceName="WmCloudStreams.SoapVS">
+        <servicesKeys>
+            <keyDetails collectionKey="wmSalesforceConnector_v25.lookup.interactions:describeGlobal" connectorServiceName="wmSalesforceConnector_v25.lookup.interactions:describeGlobal"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v25.lookup.interactions:describeSObject" connectorServiceName="wmSalesforceConnector_v25.lookup.interactions:describeSObject"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v29.lookup.interactions:describeGlobal" connectorServiceName="wmSalesforceConnector_v29.lookup.interactions:describeGlobal"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v29.lookup.interactions:describeSObject" connectorServiceName="wmSalesforceConnector_v29.lookup.interactions:describeSObject"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v31.lookup.interactions:describeGlobal" connectorServiceName="wmSalesforceConnector_v31.lookup.interactions:describeGlobal"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v31.lookup.interactions:describeSObject" connectorServiceName="wmSalesforceConnector_v31.lookup.interactions:describeSObject"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v37.lookup.interactions:describeGlobal" connectorServiceName="wmSalesforceConnector_v37.lookup.interactions:describeGlobal"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v37.lookup.interactions:describeSObject" connectorServiceName="wmSalesforceConnector_v37.lookup.interactions:describeSObject"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v42.lookup.interactions:describeGlobal" connectorServiceName="wmSalesforceConnector_v42.lookup.interactions:describeGlobal"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v42.lookup.interactions:describeSObject" connectorServiceName="wmSalesforceConnector_v42.lookup.interactions:describeSObject"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v42.lookup.interactions:describeSObjects" connectorServiceName="wmSalesforceConnector_v42.lookup.interactions:describeSObjects"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v44.lookup.interactions.jwt:describeGlobal" connectorServiceName="wmSalesforceConnector_v44.lookup.interactions.jwt:describeGlobal"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v44.lookup.interactions.jwt:describeSObject" connectorServiceName="wmSalesforceConnector_v44.lookup.interactions.jwt:describeSObject"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v44.lookup.interactions.jwt:describeSObjects" connectorServiceName="wmSalesforceConnector_v44.lookup.interactions.jwt:describeSObjects"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v44.lookup.interactions.jwt:queryForIds" connectorServiceName="wmSalesforceConnector_v44.lookup.interactions.jwt:queryForIds"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v44.lookup.interactions.jwt:queryForMoreIds" connectorServiceName="wmSalesforceConnector_v44.lookup.interactions.jwt:queryForMoreIds"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v44.lookup.interactions.oAuth:describeGlobal" connectorServiceName="wmSalesforceConnector_v44.lookup.interactions.oAuth:describeGlobal"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v44.lookup.interactions.oAuth:describeSObject" connectorServiceName="wmSalesforceConnector_v44.lookup.interactions.oAuth:describeSObject"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v44.lookup.interactions.oAuth:describeSObjects" connectorServiceName="wmSalesforceConnector_v44.lookup.interactions.oAuth:describeSObjects"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v44.lookup.interactions.oAuth:queryForIds" connectorServiceName="wmSalesforceConnector_v44.lookup.interactions.oAuth:queryForIds"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v44.lookup.interactions.oAuth:queryForMoreIds" connectorServiceName="wmSalesforceConnector_v44.lookup.interactions.oAuth:queryForMoreIds"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v44.lookup.interactions:deleteAccount" connectorServiceName="wmSalesforceConnector_v44.lookup.interactions:deleteAccount"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v44.lookup.interactions:describeGlobal" connectorServiceName="wmSalesforceConnector_v44.lookup.interactions:describeGlobal"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v44.lookup.interactions:describeSObject" connectorServiceName="wmSalesforceConnector_v44.lookup.interactions:describeSObject"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v44.lookup.interactions:describeSObjects" connectorServiceName="wmSalesforceConnector_v44.lookup.interactions:describeSObjects"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v44.lookup.interactions:queryForIds" connectorServiceName="wmSalesforceConnector_v44.lookup.interactions:queryForIds"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v44.lookup.interactions:queryForMoreIds" connectorServiceName="wmSalesforceConnector_v44.lookup.interactions:queryForMoreIds"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v44.lookup.interactions:queryForPushTopics" connectorServiceName="wmSalesforceConnector_v44.lookup.interactions:queryForPushTopics"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v48.lookup.interactions.jwt:describeGlobal" connectorServiceName="wmSalesforceConnector_v48.lookup.interactions.jwt:describeGlobal"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v48.lookup.interactions.jwt:describeSObject" connectorServiceName="wmSalesforceConnector_v48.lookup.interactions.jwt:describeSObject"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v48.lookup.interactions.jwt:describeSObjects" connectorServiceName="wmSalesforceConnector_v48.lookup.interactions.jwt:describeSObjects"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v48.lookup.interactions.jwt:queryForIds" connectorServiceName="wmSalesforceConnector_v48.lookup.interactions.jwt:queryForIds"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v48.lookup.interactions.jwt:queryForMoreIds" connectorServiceName="wmSalesforceConnector_v48.lookup.interactions.jwt:queryForMoreIds"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v48.lookup.interactions.oAuth:describeGlobal" connectorServiceName="wmSalesforceConnector_v48.lookup.interactions.oAuth:describeGlobal"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v48.lookup.interactions.oAuth:describeSObject" connectorServiceName="wmSalesforceConnector_v48.lookup.interactions.oAuth:describeSObject"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v48.lookup.interactions.oAuth:describeSObjects" connectorServiceName="wmSalesforceConnector_v48.lookup.interactions.oAuth:describeSObjects"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v48.lookup.interactions.oAuth:queryForIds" connectorServiceName="wmSalesforceConnector_v48.lookup.interactions.oAuth:queryForIds"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v48.lookup.interactions.oAuth:queryForMoreIds" connectorServiceName="wmSalesforceConnector_v48.lookup.interactions.oAuth:queryForMoreIds"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v48.lookup.interactions:deleteAccount" connectorServiceName="wmSalesforceConnector_v48.lookup.interactions:deleteAccount"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v48.lookup.interactions:describeGlobal" connectorServiceName="wmSalesforceConnector_v48.lookup.interactions:describeGlobal"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v48.lookup.interactions:describeSObject" connectorServiceName="wmSalesforceConnector_v48.lookup.interactions:describeSObject"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v48.lookup.interactions:describeSObjects" connectorServiceName="wmSalesforceConnector_v48.lookup.interactions:describeSObjects"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v48.lookup.interactions:queryForIds" connectorServiceName="wmSalesforceConnector_v48.lookup.interactions:queryForIds"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v48.lookup.interactions:queryForMoreIds" connectorServiceName="wmSalesforceConnector_v48.lookup.interactions:queryForMoreIds"/>
+            <keyDetails collectionKey="wmSalesforceConnector_v48.lookup.interactions:queryForPushTopics" connectorServiceName="wmSalesforceConnector_v48.lookup.interactions:queryForPushTopics"/>
+        </servicesKeys>
+    </cloudstreamsCollectionKeys>
+</services>

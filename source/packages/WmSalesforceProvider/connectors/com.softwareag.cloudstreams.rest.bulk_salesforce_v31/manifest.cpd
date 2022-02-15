@@ -1,0 +1,11 @@
+Manifest-Version: 1.2
+Connector-Handler: com.softwareag.cloudstreams.metadata.handler.rest.R
+ estConnectorMetadataHandler
+Connector-Group: Salesforce.com
+Connector-Bundle-Vendor: Software AG
+Connector-State: Disabled
+Connector-Bundle-Version: 1.0
+Connector-Name: Salesforce Bulk Data Loader
+Connector-Key: com.softwareag.cloudstreams.rest.bulk_salesforce_v31
+Connector-Version: 31
+

@@ -1,0 +1,11 @@
+api_gateway:
+    url: 'http://api-gateway-service:5555/rest/apigateway'
+    user: 'Administrator'
+    password: 'manage'
+ports:
+    http: '9090'
+downloads:
+    apis: "Address"
+microgatewayPool:
+    microgatewayPoolName: msr-service-mcgw
+    microgatewayPoolDescription: Microgateways of msr springboot service.

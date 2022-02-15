@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="enabled">yes</value>
+  <value name="publisher">Software AG</value>
+  <value name="system_package">yes</value>
+  <record name="startup_services" javaclass="com.wm.util.Values">
+    <null name="wm.cloudstreams.analytics.admin:startup"/>
+  </record>
+  <null name="shutdown_services"/>
+  <null name="replication_services"/>
+  <record name="requires" javaclass="com.wm.util.Values">
+    <value name="WmCloudStreams">*.*</value>
+  </record>
+  <value name="listACL">Default</value>
+  <value name="webappLoad">yes</value>
+  <value name="description">CloudStreams Analytics</value>
+  <value name="version">10.11.0.0.588</value>
+  <value name="build">588</value>
+  <value name="jvm_version">1.8</value>
+</Values>

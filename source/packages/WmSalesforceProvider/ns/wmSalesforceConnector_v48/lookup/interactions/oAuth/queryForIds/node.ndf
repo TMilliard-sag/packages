@@ -1,0 +1,2023 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="svc_type">CloudService</value>
+  <value name="svc_subtype">SOAP</value>
+  <value name="svc_sigtype">unknown</value>
+  <record name="svc_sig" javaclass="com.wm.util.Values">
+    <record name="sig_in" javaclass="com.wm.util.Values">
+      <value name="node_type">record</value>
+      <value name="node_subtype">unknown</value>
+      <value name="is_public">false</value>
+      <value name="field_type">record</value>
+      <value name="field_dim">0</value>
+      <value name="wrapper_type">IData</value>
+      <value name="nillable">true</value>
+      <value name="form_qualified">false</value>
+      <value name="is_global">false</value>
+      <array name="rec_fields" type="record" depth="1">
+        <record javaclass="com.wm.util.Values">
+          <value name="node_type">record</value>
+          <value name="node_subtype">unknown</value>
+          <value name="is_public">false</value>
+          <value name="field_name">queryForIdsInput</value>
+          <value name="field_type">record</value>
+          <value name="field_dim">0</value>
+          <value name="wrapper_type">IData</value>
+          <value name="nillable">true</value>
+          <value name="form_qualified">false</value>
+          <value name="is_global">false</value>
+          <array name="rec_fields" type="record" depth="1">
+            <record javaclass="com.wm.util.Values">
+              <value name="node_type">record</value>
+              <value name="node_subtype">unknown</value>
+              <value name="is_public">false</value>
+              <value name="field_name">requestHeaders</value>
+              <value name="field_type">record</value>
+              <value name="field_dim">0</value>
+              <value name="wrapper_type">IData</value>
+              <value name="nillable">true</value>
+              <value name="form_qualified">false</value>
+              <value name="is_global">false</value>
+              <array name="rec_fields" type="record" depth="1">
+                <record javaclass="com.wm.util.Values">
+                  <value name="node_type">record</value>
+                  <value name="node_subtype">unknown</value>
+                  <record name="node_hints" javaclass="com.wm.util.Values">
+                    <Boolean name="field_fixed">true</Boolean>
+                  </record>
+                  <value name="is_public">false</value>
+                  <value name="field_name">tns:SessionHeader</value>
+                  <value name="field_type">record</value>
+                  <value name="field_dim">0</value>
+                  <value name="wrapper_type">IData</value>
+                  <value name="nillable">false</value>
+                  <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+                  <value name="form_qualified">false</value>
+                  <value name="is_global">false</value>
+                  <array name="rec_fields" type="record" depth="1">
+                    <record javaclass="com.wm.util.Values">
+                      <value name="node_type">record</value>
+                      <value name="node_subtype">unknown</value>
+                      <record name="node_hints" javaclass="com.wm.util.Values">
+                        <value name="field_default_value">oauth.accessToken</value>
+                        <Boolean name="field_fixed">true</Boolean>
+                      </record>
+                      <value name="is_public">false</value>
+                      <value name="field_name">tns:sessionId</value>
+                      <value name="field_type">string</value>
+                      <value name="field_dim">0</value>
+                      <record name="field_content_type" javaclass="com.wm.util.Values">
+                        <value name="contentType">1</value>
+                        <value name="internalType">reference</value>
+                        <value name="dataTypeVersion">dtVersion2</value>
+                        <array name="targetNames" type="record" depth="1">
+                          <record javaclass="com.wm.util.Values">
+                            <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+                            <value name="ncName">string</value>
+                          </record>
+                        </array>
+                      </record>
+                      <value name="nillable">false</value>
+                      <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+                      <value name="form_qualified">true</value>
+                      <value name="is_global">false</value>
+                    </record>
+                  </array>
+                  <value name="rec_closed">true</value>
+                  <value name="modifiable">true</value>
+                </record>
+                <record javaclass="com.wm.util.Values">
+                  <value name="node_type">record</value>
+                  <value name="node_subtype">unknown</value>
+                  <value name="is_public">false</value>
+                  <value name="field_name">tns:QueryOptions</value>
+                  <value name="field_type">record</value>
+                  <value name="field_dim">0</value>
+                  <value name="wrapper_type">IData</value>
+                  <value name="nillable">false</value>
+                  <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+                  <value name="form_qualified">false</value>
+                  <value name="is_global">false</value>
+                  <array name="rec_fields" type="record" depth="1">
+                    <record javaclass="com.wm.util.Values">
+                      <value name="node_type">record</value>
+                      <value name="node_subtype">unknown</value>
+                      <record name="node_hints" javaclass="com.wm.util.Values">
+                        <value name="field_default_value">500</value>
+                        <Boolean name="field_fixed">false</Boolean>
+                      </record>
+                      <value name="is_public">false</value>
+                      <value name="field_name">tns:batchSize</value>
+                      <value name="field_type">string</value>
+                      <value name="field_dim">0</value>
+                      <value name="field_opt">true</value>
+                      <record name="field_content_type" javaclass="com.wm.util.Values">
+                        <value name="contentType">1</value>
+                        <value name="internalType">reference</value>
+                        <value name="dataTypeVersion">dtVersion2</value>
+                        <array name="targetNames" type="record" depth="1">
+                          <record javaclass="com.wm.util.Values">
+                            <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+                            <value name="ncName">int</value>
+                          </record>
+                        </array>
+                      </record>
+                      <value name="nillable">false</value>
+                      <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+                      <value name="form_qualified">true</value>
+                      <value name="is_global">false</value>
+                    </record>
+                  </array>
+                  <value name="rec_closed">true</value>
+                  <value name="modifiable">true</value>
+                </record>
+              </array>
+              <value name="modifiable">true</value>
+            </record>
+            <record javaclass="com.wm.util.Values">
+              <value name="node_type">record</value>
+              <value name="node_subtype">unknown</value>
+              <value name="is_public">false</value>
+              <value name="field_name">requestBody</value>
+              <value name="field_type">record</value>
+              <value name="field_dim">0</value>
+              <value name="wrapper_type">IData</value>
+              <value name="nillable">true</value>
+              <value name="form_qualified">false</value>
+              <value name="is_global">false</value>
+              <array name="rec_fields" type="record" depth="1">
+                <record javaclass="com.wm.util.Values">
+                  <value name="node_type">record</value>
+                  <value name="node_subtype">unknown</value>
+                  <record name="node_hints" javaclass="com.wm.util.Values">
+                    <Boolean name="field_fixed">true</Boolean>
+                  </record>
+                  <value name="is_public">false</value>
+                  <value name="field_name">tns:query</value>
+                  <value name="field_type">record</value>
+                  <value name="field_dim">0</value>
+                  <value name="field_opt">true</value>
+                  <value name="wrapper_type">IData</value>
+                  <value name="nillable">false</value>
+                  <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+                  <value name="form_qualified">false</value>
+                  <value name="is_global">false</value>
+                  <array name="rec_fields" type="record" depth="1">
+                    <record javaclass="com.wm.util.Values">
+                      <value name="node_type">record</value>
+                      <value name="node_subtype">unknown</value>
+                      <record name="node_hints" javaclass="com.wm.util.Values">
+                        <value name="field_default_value">SELECT [${core.objectFieldList}] | [${select}] FROM ${core.businessObject} [[WHERE ${where}] [LIMIT ${limit}]] | [${filter}]</value>
+                        <Boolean name="field_fixed">true</Boolean>
+                      </record>
+                      <value name="is_public">false</value>
+                      <value name="field_name">tns:queryString</value>
+                      <value name="field_type">string</value>
+                      <value name="field_dim">0</value>
+                      <record name="field_content_type" javaclass="com.wm.util.Values">
+                        <value name="contentType">1</value>
+                        <value name="internalType">reference</value>
+                        <value name="dataTypeVersion">dtVersion2</value>
+                        <array name="targetNames" type="record" depth="1">
+                          <record javaclass="com.wm.util.Values">
+                            <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+                            <value name="ncName">string</value>
+                          </record>
+                        </array>
+                      </record>
+                      <value name="nillable">false</value>
+                      <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+                      <value name="form_qualified">true</value>
+                      <value name="is_global">false</value>
+                    </record>
+                  </array>
+                  <value name="rec_closed">true</value>
+                  <value name="modifiable">true</value>
+                </record>
+              </array>
+              <value name="modifiable">true</value>
+            </record>
+            <record javaclass="com.wm.util.Values">
+              <value name="node_type">record</value>
+              <value name="node_subtype">unknown</value>
+              <value name="is_public">false</value>
+              <value name="field_name">$parameters</value>
+              <value name="field_type">record</value>
+              <value name="field_dim">0</value>
+              <value name="field_opt">true</value>
+              <value name="wrapper_type">IData</value>
+              <value name="nillable">true</value>
+              <value name="form_qualified">false</value>
+              <value name="is_global">false</value>
+              <array name="rec_fields" type="record" depth="1">
+                <record javaclass="com.wm.util.Values">
+                  <value name="node_type">unknown</value>
+                  <value name="node_subtype">unknown</value>
+                  <record name="node_hints" javaclass="com.wm.util.Values">
+                    <null name="field_default_value"/>
+                    <Boolean name="field_fixed">false</Boolean>
+                  </record>
+                  <value name="is_public">false</value>
+                  <value name="field_name">select</value>
+                  <value name="field_type">string</value>
+                  <value name="field_dim">0</value>
+                  <value name="field_opt">true</value>
+                  <value name="nillable">true</value>
+                  <value name="form_qualified">false</value>
+                  <value name="is_global">false</value>
+                </record>
+                <record javaclass="com.wm.util.Values">
+                  <value name="node_type">unknown</value>
+                  <value name="node_subtype">unknown</value>
+                  <record name="node_hints" javaclass="com.wm.util.Values">
+                    <null name="field_default_value"/>
+                    <Boolean name="field_fixed">false</Boolean>
+                  </record>
+                  <value name="is_public">false</value>
+                  <value name="field_name">where</value>
+                  <value name="field_type">string</value>
+                  <value name="field_dim">0</value>
+                  <value name="field_opt">true</value>
+                  <value name="nillable">true</value>
+                  <value name="form_qualified">false</value>
+                  <value name="is_global">false</value>
+                </record>
+                <record javaclass="com.wm.util.Values">
+                  <value name="node_type">unknown</value>
+                  <value name="node_subtype">unknown</value>
+                  <record name="node_hints" javaclass="com.wm.util.Values">
+                    <null name="field_default_value"/>
+                    <Boolean name="field_fixed">false</Boolean>
+                  </record>
+                  <value name="is_public">false</value>
+                  <value name="field_name">limit</value>
+                  <value name="field_type">string</value>
+                  <value name="field_dim">0</value>
+                  <value name="field_opt">true</value>
+                  <value name="nillable">true</value>
+                  <value name="form_qualified">false</value>
+                  <value name="is_global">false</value>
+                </record>
+                <record javaclass="com.wm.util.Values">
+                  <value name="node_type">unknown</value>
+                  <value name="node_subtype">unknown</value>
+                  <record name="node_hints" javaclass="com.wm.util.Values">
+                    <null name="field_default_value"/>
+                    <Boolean name="field_fixed">false</Boolean>
+                  </record>
+                  <value name="is_public">false</value>
+                  <value name="field_name">filter</value>
+                  <value name="field_type">string</value>
+                  <value name="field_dim">0</value>
+                  <value name="field_opt">true</value>
+                  <value name="nillable">true</value>
+                  <value name="form_qualified">false</value>
+                  <value name="is_global">false</value>
+                </record>
+              </array>
+              <value name="modifiable">true</value>
+            </record>
+          </array>
+          <value name="modifiable">true</value>
+        </record>
+        <record javaclass="com.wm.util.Values">
+          <value name="node_type">unknown</value>
+          <value name="node_subtype">unknown</value>
+          <value name="is_public">false</value>
+          <value name="field_name">$connectionAlias</value>
+          <value name="field_type">string</value>
+          <value name="field_dim">0</value>
+          <value name="field_opt">true</value>
+          <value name="nillable">true</value>
+          <value name="form_qualified">false</value>
+          <value name="is_global">false</value>
+        </record>
+      </array>
+      <value name="modifiable">true</value>
+    </record>
+    <record name="sig_out" javaclass="com.wm.util.Values">
+      <value name="node_type">record</value>
+      <value name="node_subtype">unknown</value>
+      <value name="is_public">false</value>
+      <value name="field_type">record</value>
+      <value name="field_dim">0</value>
+      <value name="wrapper_type">IData</value>
+      <value name="nillable">true</value>
+      <value name="form_qualified">false</value>
+      <value name="is_global">false</value>
+      <array name="rec_fields" type="record" depth="1">
+        <record javaclass="com.wm.util.Values">
+          <value name="node_type">record</value>
+          <value name="node_subtype">unknown</value>
+          <value name="is_public">false</value>
+          <value name="field_name">queryForIdsOutput</value>
+          <value name="field_type">record</value>
+          <value name="field_dim">0</value>
+          <value name="wrapper_type">IData</value>
+          <value name="nillable">true</value>
+          <value name="form_qualified">false</value>
+          <value name="is_global">false</value>
+          <array name="rec_fields" type="record" depth="1">
+            <record javaclass="com.wm.util.Values">
+              <value name="node_type">record</value>
+              <value name="node_subtype">unknown</value>
+              <value name="is_public">false</value>
+              <value name="field_name">responseHeaders</value>
+              <value name="field_type">record</value>
+              <value name="field_dim">0</value>
+              <value name="field_opt">true</value>
+              <value name="wrapper_type">IData</value>
+              <value name="nillable">true</value>
+              <value name="form_qualified">false</value>
+              <value name="is_global">false</value>
+              <array name="rec_fields" type="record" depth="1">
+              </array>
+              <value name="modifiable">true</value>
+            </record>
+            <record javaclass="com.wm.util.Values">
+              <value name="node_type">record</value>
+              <value name="node_subtype">unknown</value>
+              <value name="is_public">false</value>
+              <value name="field_name">responseBody</value>
+              <value name="field_type">record</value>
+              <value name="field_dim">0</value>
+              <value name="field_opt">true</value>
+              <value name="wrapper_type">IData</value>
+              <value name="nillable">true</value>
+              <value name="form_qualified">false</value>
+              <value name="is_global">false</value>
+              <array name="rec_fields" type="record" depth="1">
+                <record javaclass="com.wm.util.Values">
+                  <value name="node_type">record</value>
+                  <value name="node_subtype">unknown</value>
+                  <value name="is_public">false</value>
+                  <value name="field_name">tns:queryResponse</value>
+                  <value name="field_type">record</value>
+                  <value name="field_dim">0</value>
+                  <value name="field_opt">true</value>
+                  <value name="wrapper_type">IData</value>
+                  <value name="nillable">false</value>
+                  <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+                  <value name="form_qualified">false</value>
+                  <value name="is_global">false</value>
+                  <array name="rec_fields" type="record" depth="1">
+                    <record javaclass="com.wm.util.Values">
+                      <value name="node_type">record</value>
+                      <value name="node_subtype">unknown</value>
+                      <value name="is_public">false</value>
+                      <value name="field_name">tns:result</value>
+                      <value name="field_type">record</value>
+                      <value name="field_dim">0</value>
+                      <value name="wrapper_type">IData</value>
+                      <value name="nillable">true</value>
+                      <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+                      <value name="form_qualified">false</value>
+                      <value name="is_global">false</value>
+                      <value name="schemaDomain">com.softwareag.cloudstreams.salesforce_v48#SforceService</value>
+                      <value name="docTypeDomain">ed820b8b543c40d193f7fceb431a11e3</value>
+                      <array name="rec_fields" type="record" depth="1">
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">tns:done</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <record name="field_content_type" javaclass="com.wm.util.Values">
+                            <value name="contentType">1</value>
+                            <value name="internalType">reference</value>
+                            <value name="dataTypeVersion">dtVersion2</value>
+                            <array name="targetNames" type="record" depth="1">
+                              <record javaclass="com.wm.util.Values">
+                                <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+                                <value name="ncName">boolean</value>
+                              </record>
+                            </array>
+                          </record>
+                          <value name="nillable">false</value>
+                          <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+                          <value name="form_qualified">true</value>
+                          <value name="is_global">false</value>
+                        </record>
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">tns:queryLocator</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <record name="field_content_type" javaclass="com.wm.util.Values">
+                            <value name="contentType">1</value>
+                            <value name="internalType">reference</value>
+                            <value name="dataTypeVersion">dtVersion2</value>
+                            <array name="targetNames" type="record" depth="1">
+                              <record javaclass="com.wm.util.Values">
+                                <value name="xmlns">urn:partner.soap.sforce.com</value>
+                                <value name="ncName">QueryLocator</value>
+                              </record>
+                            </array>
+                            <value name="schemaDomain">com.softwareag.cloudstreams.salesforce_v48#SforceService</value>
+                          </record>
+                          <value name="nillable">true</value>
+                          <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+                          <value name="form_qualified">true</value>
+                          <value name="is_global">false</value>
+                        </record>
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">tns:records</value>
+                          <value name="field_type">record</value>
+                          <value name="field_dim">1</value>
+                          <value name="field_opt">true</value>
+                          <value name="wrapper_type">IData</value>
+                          <value name="nillable">true</value>
+                          <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+                          <value name="form_qualified">false</value>
+                          <value name="is_global">false</value>
+                          <value name="schemaDomain">com.softwareag.cloudstreams.salesforce_v48#SforceService</value>
+                          <value name="docTypeDomain">ed820b8b543c40d193f7fceb431a11e3</value>
+                          <value name="is_soap_array_encoding_used">false</value>
+                          <array name="rec_fields" type="record" depth="1">
+                            <record javaclass="com.wm.util.Values">
+                              <value name="node_type">record</value>
+                              <value name="node_subtype">unknown</value>
+                              <value name="is_public">false</value>
+                              <value name="field_name">ens:type</value>
+                              <value name="field_type">string</value>
+                              <value name="field_dim">0</value>
+                              <record name="field_content_type" javaclass="com.wm.util.Values">
+                                <value name="contentType">1</value>
+                                <value name="internalType">reference</value>
+                                <value name="dataTypeVersion">dtVersion2</value>
+                                <array name="targetNames" type="record" depth="1">
+                                  <record javaclass="com.wm.util.Values">
+                                    <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+                                    <value name="ncName">string</value>
+                                  </record>
+                                </array>
+                              </record>
+                              <value name="nillable">false</value>
+                              <value name="field_xmlns">urn:sobject.partner.soap.sforce.com</value>
+                              <value name="form_qualified">true</value>
+                              <value name="is_global">false</value>
+                            </record>
+                            <record javaclass="com.wm.util.Values">
+                              <value name="node_type">record</value>
+                              <value name="node_subtype">unknown</value>
+                              <value name="is_public">false</value>
+                              <value name="field_name">ens:fieldsToNull</value>
+                              <value name="field_type">string</value>
+                              <value name="field_dim">1</value>
+                              <value name="field_opt">true</value>
+                              <record name="field_content_type" javaclass="com.wm.util.Values">
+                                <value name="contentType">1</value>
+                                <value name="internalType">reference</value>
+                                <value name="dataTypeVersion">dtVersion2</value>
+                                <array name="targetNames" type="record" depth="1">
+                                  <record javaclass="com.wm.util.Values">
+                                    <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+                                    <value name="ncName">string</value>
+                                  </record>
+                                </array>
+                              </record>
+                              <value name="nillable">true</value>
+                              <value name="field_xmlns">urn:sobject.partner.soap.sforce.com</value>
+                              <value name="form_qualified">true</value>
+                              <value name="is_global">false</value>
+                              <value name="is_soap_array_encoding_used">false</value>
+                            </record>
+                            <record javaclass="com.wm.util.Values">
+                              <value name="node_type">record</value>
+                              <value name="node_subtype">unknown</value>
+                              <value name="is_public">false</value>
+                              <value name="field_name">ens:Id</value>
+                              <value name="field_type">string</value>
+                              <value name="field_dim">0</value>
+                              <record name="field_content_type" javaclass="com.wm.util.Values">
+                                <value name="contentType">1</value>
+                                <value name="internalType">reference</value>
+                                <value name="dataTypeVersion">dtVersion2</value>
+                                <array name="targetNames" type="record" depth="1">
+                                  <record javaclass="com.wm.util.Values">
+                                    <value name="xmlns">urn:partner.soap.sforce.com</value>
+                                    <value name="ncName">ID</value>
+                                  </record>
+                                </array>
+                                <value name="schemaDomain">com.softwareag.cloudstreams.salesforce_v48#SforceService</value>
+                              </record>
+                              <value name="nillable">true</value>
+                              <value name="field_xmlns">urn:sobject.partner.soap.sforce.com</value>
+                              <value name="form_qualified">true</value>
+                              <value name="is_global">false</value>
+                            </record>
+                            <record javaclass="com.wm.util.Values">
+                              <value name="node_type">field</value>
+                              <value name="node_subtype">unknown</value>
+                              <value name="node_comment">Account ID</value>
+                              <value name="is_public">false</value>
+                              <value name="field_name">ens:Id</value>
+                              <value name="field_type">string</value>
+                              <value name="field_dim">0</value>
+                              <value name="field_opt">true</value>
+                              <record name="field_content_type" javaclass="com.wm.util.Values">
+                                <value name="contentType">1</value>
+                                <value name="internalType">reference</value>
+                                <value name="dataTypeVersion">dtVersion2</value>
+                                <array name="targetNames" type="record" depth="1">
+                                  <record javaclass="com.wm.util.Values">
+                                    <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+                                    <value name="ncName">ID</value>
+                                  </record>
+                                </array>
+                              </record>
+                              <value name="nillable">false</value>
+                              <value name="field_xmlns">urn:sobject.partner.soap.sforce.com</value>
+                              <value name="form_qualified">false</value>
+                              <value name="is_global">false</value>
+                            </record>
+                            <record javaclass="com.wm.util.Values">
+                              <value name="node_type">field</value>
+                              <value name="node_subtype">unknown</value>
+                              <value name="node_comment">Account Name</value>
+                              <value name="is_public">false</value>
+                              <value name="field_name">ens:Name</value>
+                              <value name="field_type">string</value>
+                              <value name="field_dim">0</value>
+                              <value name="field_opt">true</value>
+                              <record name="field_content_type" javaclass="com.wm.util.Values">
+                                <value name="contentType">1</value>
+                                <value name="internalType">reference</value>
+                                <value name="dataTypeVersion">dtVersion2</value>
+                                <array name="targetNames" type="record" depth="1">
+                                  <record javaclass="com.wm.util.Values">
+                                    <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+                                    <value name="ncName">string</value>
+                                  </record>
+                                </array>
+                              </record>
+                              <value name="nillable">false</value>
+                              <value name="field_xmlns">urn:sobject.partner.soap.sforce.com</value>
+                              <value name="form_qualified">false</value>
+                              <value name="is_global">false</value>
+                            </record>
+                          </array>
+                          <record name="schemaType" javaclass="com.wm.util.Values">
+                            <value name="xmlns">urn:sobject.partner.soap.sforce.com</value>
+                            <value name="ncName">sObject</value>
+                          </record>
+                          <value name="schemaRegistered">true</value>
+                          <value name="modifiable">true</value>
+                        </record>
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">tns:size</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <record name="field_content_type" javaclass="com.wm.util.Values">
+                            <value name="contentType">1</value>
+                            <value name="internalType">reference</value>
+                            <value name="dataTypeVersion">dtVersion2</value>
+                            <array name="targetNames" type="record" depth="1">
+                              <record javaclass="com.wm.util.Values">
+                                <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+                                <value name="ncName">int</value>
+                              </record>
+                            </array>
+                          </record>
+                          <value name="nillable">false</value>
+                          <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+                          <value name="form_qualified">true</value>
+                          <value name="is_global">false</value>
+                        </record>
+                      </array>
+                      <record name="schemaType" javaclass="com.wm.util.Values">
+                        <value name="xmlns">urn:partner.soap.sforce.com</value>
+                        <value name="ncName">QueryResult</value>
+                      </record>
+                      <value name="schemaRegistered">true</value>
+                      <value name="modifiable">true</value>
+                    </record>
+                  </array>
+                  <value name="rec_closed">true</value>
+                  <value name="modifiable">true</value>
+                </record>
+              </array>
+              <value name="modifiable">true</value>
+            </record>
+            <record javaclass="com.wm.util.Values">
+              <value name="node_type">record</value>
+              <value name="node_subtype">unknown</value>
+              <value name="is_public">false</value>
+              <value name="field_name">fault</value>
+              <value name="field_type">record</value>
+              <value name="field_dim">0</value>
+              <value name="field_opt">true</value>
+              <value name="wrapper_type">IData</value>
+              <value name="nillable">true</value>
+              <value name="form_qualified">false</value>
+              <value name="is_global">false</value>
+              <array name="rec_fields" type="record" depth="1">
+                <record javaclass="com.wm.util.Values">
+                  <value name="node_type">record</value>
+                  <value name="node_subtype">unknown</value>
+                  <value name="node_comment"></value>
+                  <record name="node_hints" javaclass="com.wm.util.Values">
+                    <value name="field_largerEditor">false</value>
+                    <value name="field_password">false</value>
+                  </record>
+                  <value name="is_public">false</value>
+                  <value name="field_name">code</value>
+                  <value name="field_type">record</value>
+                  <value name="field_dim">0</value>
+                  <value name="field_opt">true</value>
+                  <value name="wrapper_type">IData</value>
+                  <value name="nillable">false</value>
+                  <value name="form_qualified">false</value>
+                  <value name="is_global">false</value>
+                  <array name="rec_fields" type="record" depth="1">
+                    <record javaclass="com.wm.util.Values">
+                      <value name="node_type">record</value>
+                      <value name="node_subtype">unknown</value>
+                      <value name="node_comment"></value>
+                      <record name="node_hints" javaclass="com.wm.util.Values">
+                        <value name="field_usereditable">true</value>
+                        <value name="field_largerEditor">false</value>
+                        <value name="field_password">false</value>
+                      </record>
+                      <value name="is_public">false</value>
+                      <value name="field_name">namespaceName</value>
+                      <value name="field_type">string</value>
+                      <value name="field_dim">0</value>
+                      <value name="field_opt">true</value>
+                      <value name="nillable">false</value>
+                      <value name="form_qualified">false</value>
+                      <value name="is_global">false</value>
+                    </record>
+                    <record javaclass="com.wm.util.Values">
+                      <value name="node_type">record</value>
+                      <value name="node_subtype">unknown</value>
+                      <value name="node_comment"></value>
+                      <record name="node_hints" javaclass="com.wm.util.Values">
+                        <value name="field_usereditable">true</value>
+                        <value name="field_largerEditor">false</value>
+                        <value name="field_password">false</value>
+                      </record>
+                      <value name="is_public">false</value>
+                      <value name="field_name">localName</value>
+                      <value name="field_type">string</value>
+                      <value name="field_dim">0</value>
+                      <value name="nillable">false</value>
+                      <value name="form_qualified">false</value>
+                      <value name="is_global">false</value>
+                    </record>
+                    <record javaclass="com.wm.util.Values">
+                      <value name="node_type">record</value>
+                      <value name="node_subtype">unknown</value>
+                      <value name="node_comment"></value>
+                      <record name="node_hints" javaclass="com.wm.util.Values">
+                        <value name="field_largerEditor">false</value>
+                        <value name="field_password">false</value>
+                      </record>
+                      <value name="is_public">false</value>
+                      <value name="field_name">subCodes</value>
+                      <value name="field_type">record</value>
+                      <value name="field_dim">1</value>
+                      <value name="field_opt">true</value>
+                      <value name="wrapper_type">IData</value>
+                      <value name="nillable">false</value>
+                      <value name="form_qualified">false</value>
+                      <value name="is_global">false</value>
+                      <value name="is_soap_array_encoding_used">false</value>
+                      <array name="rec_fields" type="record" depth="1">
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="node_comment"></value>
+                          <record name="node_hints" javaclass="com.wm.util.Values">
+                            <value name="field_usereditable">true</value>
+                            <value name="field_largerEditor">false</value>
+                            <value name="field_password">false</value>
+                          </record>
+                          <value name="is_public">false</value>
+                          <value name="field_name">namespaceName</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <value name="field_opt">true</value>
+                          <value name="nillable">false</value>
+                          <value name="form_qualified">false</value>
+                          <value name="is_global">false</value>
+                        </record>
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="node_comment"></value>
+                          <record name="node_hints" javaclass="com.wm.util.Values">
+                            <value name="field_usereditable">true</value>
+                            <value name="field_largerEditor">false</value>
+                            <value name="field_password">false</value>
+                          </record>
+                          <value name="is_public">false</value>
+                          <value name="field_name">localName</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <value name="nillable">false</value>
+                          <value name="form_qualified">false</value>
+                          <value name="is_global">false</value>
+                        </record>
+                      </array>
+                      <value name="rec_closed">true</value>
+                      <value name="modifiable">true</value>
+                    </record>
+                  </array>
+                  <value name="rec_closed">true</value>
+                  <value name="modifiable">true</value>
+                </record>
+                <record javaclass="com.wm.util.Values">
+                  <value name="node_type">record</value>
+                  <value name="node_subtype">unknown</value>
+                  <value name="node_comment"></value>
+                  <record name="node_hints" javaclass="com.wm.util.Values">
+                    <value name="field_largerEditor">false</value>
+                    <value name="field_password">false</value>
+                  </record>
+                  <value name="is_public">false</value>
+                  <value name="field_name">reasons</value>
+                  <value name="field_type">record</value>
+                  <value name="field_dim">1</value>
+                  <value name="field_opt">true</value>
+                  <value name="wrapper_type">IData</value>
+                  <value name="nillable">false</value>
+                  <value name="form_qualified">false</value>
+                  <value name="is_global">false</value>
+                  <value name="is_soap_array_encoding_used">false</value>
+                  <array name="rec_fields" type="record" depth="1">
+                    <record javaclass="com.wm.util.Values">
+                      <value name="node_type">record</value>
+                      <value name="node_subtype">unknown</value>
+                      <value name="node_comment"></value>
+                      <record name="node_hints" javaclass="com.wm.util.Values">
+                        <value name="field_usereditable">true</value>
+                        <value name="field_largerEditor">false</value>
+                        <value name="field_password">false</value>
+                      </record>
+                      <value name="is_public">false</value>
+                      <value name="field_name">@lang</value>
+                      <value name="field_type">string</value>
+                      <value name="field_dim">0</value>
+                      <value name="field_opt">true</value>
+                      <value name="nillable">false</value>
+                      <value name="form_qualified">false</value>
+                      <value name="is_global">false</value>
+                    </record>
+                    <record javaclass="com.wm.util.Values">
+                      <value name="node_type">record</value>
+                      <value name="node_subtype">unknown</value>
+                      <value name="node_comment"></value>
+                      <record name="node_hints" javaclass="com.wm.util.Values">
+                        <value name="field_usereditable">true</value>
+                        <value name="field_largerEditor">false</value>
+                        <value name="field_password">false</value>
+                      </record>
+                      <value name="is_public">false</value>
+                      <value name="field_name">*body</value>
+                      <value name="field_type">string</value>
+                      <value name="field_dim">0</value>
+                      <value name="nillable">false</value>
+                      <value name="form_qualified">false</value>
+                      <value name="is_global">false</value>
+                    </record>
+                  </array>
+                  <value name="rec_closed">true</value>
+                  <value name="modifiable">true</value>
+                </record>
+                <record javaclass="com.wm.util.Values">
+                  <value name="node_type">record</value>
+                  <value name="node_subtype">unknown</value>
+                  <value name="node_comment"></value>
+                  <record name="node_hints" javaclass="com.wm.util.Values">
+                    <value name="field_usereditable">true</value>
+                    <value name="field_largerEditor">false</value>
+                    <value name="field_password">false</value>
+                  </record>
+                  <value name="is_public">false</value>
+                  <value name="field_name">node</value>
+                  <value name="field_type">string</value>
+                  <value name="field_dim">0</value>
+                  <value name="field_opt">true</value>
+                  <array name="field_options" type="value" depth="1">
+                  </array>
+                  <value name="nillable">false</value>
+                  <value name="form_qualified">false</value>
+                  <value name="is_global">false</value>
+                </record>
+                <record javaclass="com.wm.util.Values">
+                  <value name="node_type">record</value>
+                  <value name="node_subtype">unknown</value>
+                  <value name="node_comment"></value>
+                  <record name="node_hints" javaclass="com.wm.util.Values">
+                    <value name="field_usereditable">true</value>
+                    <value name="field_largerEditor">false</value>
+                    <value name="field_password">false</value>
+                  </record>
+                  <value name="is_public">false</value>
+                  <value name="field_name">role</value>
+                  <value name="field_type">string</value>
+                  <value name="field_dim">0</value>
+                  <value name="field_opt">true</value>
+                  <array name="field_options" type="value" depth="1">
+                  </array>
+                  <value name="nillable">false</value>
+                  <value name="form_qualified">false</value>
+                  <value name="is_global">false</value>
+                </record>
+                <record javaclass="com.wm.util.Values">
+                  <value name="node_type">record</value>
+                  <value name="node_subtype">unknown</value>
+                  <value name="node_comment"></value>
+                  <record name="node_hints" javaclass="com.wm.util.Values">
+                    <value name="field_largerEditor">false</value>
+                    <value name="field_password">false</value>
+                  </record>
+                  <value name="is_public">false</value>
+                  <value name="field_name">detail</value>
+                  <value name="field_type">record</value>
+                  <value name="field_dim">0</value>
+                  <value name="field_opt">true</value>
+                  <value name="wrapper_type">IData</value>
+                  <value name="nillable">false</value>
+                  <value name="form_qualified">false</value>
+                  <value name="is_global">false</value>
+                  <array name="rec_fields" type="record" depth="1">
+                    <record javaclass="com.wm.util.Values">
+                      <value name="node_type">record</value>
+                      <value name="node_subtype">unknown</value>
+                      <value name="is_public">false</value>
+                      <value name="field_name">fns:InvalidSObjectFault</value>
+                      <value name="field_type">record</value>
+                      <value name="field_dim">0</value>
+                      <value name="field_opt">true</value>
+                      <value name="wrapper_type">IData</value>
+                      <value name="nillable">true</value>
+                      <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                      <value name="form_qualified">false</value>
+                      <value name="is_global">false</value>
+                      <value name="schemaDomain">com.softwareag.cloudstreams.salesforce_v48#SforceService</value>
+                      <value name="docTypeDomain">ed820b8b543c40d193f7fceb431a11e3</value>
+                      <array name="rec_fields" type="record" depth="1">
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">fns:exceptionCode</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <record name="field_content_type" javaclass="com.wm.util.Values">
+                            <value name="contentType">1</value>
+                            <value name="internalType">reference</value>
+                            <value name="dataTypeVersion">dtVersion2</value>
+                            <array name="targetNames" type="record" depth="1">
+                              <record javaclass="com.wm.util.Values">
+                                <value name="xmlns">urn:fault.partner.soap.sforce.com</value>
+                                <value name="ncName">ExceptionCode</value>
+                              </record>
+                            </array>
+                            <value name="schemaDomain">com.softwareag.cloudstreams.salesforce_v48#SforceService</value>
+                          </record>
+                          <value name="nillable">false</value>
+                          <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                          <value name="form_qualified">true</value>
+                          <value name="is_global">false</value>
+                        </record>
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">fns:exceptionMessage</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <record name="field_content_type" javaclass="com.wm.util.Values">
+                            <value name="contentType">1</value>
+                            <value name="internalType">reference</value>
+                            <value name="dataTypeVersion">dtVersion2</value>
+                            <array name="targetNames" type="record" depth="1">
+                              <record javaclass="com.wm.util.Values">
+                                <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+                                <value name="ncName">string</value>
+                              </record>
+                            </array>
+                          </record>
+                          <value name="nillable">false</value>
+                          <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                          <value name="form_qualified">true</value>
+                          <value name="is_global">false</value>
+                        </record>
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">fns:extendedErrorDetails</value>
+                          <value name="field_type">record</value>
+                          <value name="field_dim">1</value>
+                          <value name="field_opt">true</value>
+                          <value name="wrapper_type">IData</value>
+                          <value name="nillable">true</value>
+                          <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                          <value name="form_qualified">false</value>
+                          <value name="is_global">false</value>
+                          <value name="schemaDomain">com.softwareag.cloudstreams.salesforce_v48#SforceService</value>
+                          <value name="docTypeDomain">ed820b8b543c40d193f7fceb431a11e3</value>
+                          <value name="is_soap_array_encoding_used">false</value>
+                          <array name="rec_fields" type="record" depth="1">
+                            <record javaclass="com.wm.util.Values">
+                              <value name="node_type">record</value>
+                              <value name="node_subtype">unknown</value>
+                              <value name="is_public">false</value>
+                              <value name="field_name">tns:extendedErrorCode</value>
+                              <value name="field_type">string</value>
+                              <value name="field_dim">0</value>
+                              <record name="field_content_type" javaclass="com.wm.util.Values">
+                                <value name="contentType">1</value>
+                                <value name="internalType">reference</value>
+                                <value name="dataTypeVersion">dtVersion2</value>
+                                <array name="targetNames" type="record" depth="1">
+                                  <record javaclass="com.wm.util.Values">
+                                    <value name="xmlns">urn:partner.soap.sforce.com</value>
+                                    <value name="ncName">ExtendedErrorCode</value>
+                                  </record>
+                                </array>
+                                <value name="schemaDomain">com.softwareag.cloudstreams.salesforce_v48#SforceService</value>
+                              </record>
+                              <value name="nillable">false</value>
+                              <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+                              <value name="form_qualified">true</value>
+                              <value name="is_global">false</value>
+                            </record>
+                          </array>
+                          <record name="schemaType" javaclass="com.wm.util.Values">
+                            <value name="xmlns">urn:partner.soap.sforce.com</value>
+                            <value name="ncName">ExtendedErrorDetails</value>
+                          </record>
+                          <value name="schemaRegistered">true</value>
+                          <value name="modifiable">true</value>
+                        </record>
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">fns:row</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <record name="field_content_type" javaclass="com.wm.util.Values">
+                            <value name="contentType">1</value>
+                            <value name="internalType">reference</value>
+                            <value name="dataTypeVersion">dtVersion2</value>
+                            <array name="targetNames" type="record" depth="1">
+                              <record javaclass="com.wm.util.Values">
+                                <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+                                <value name="ncName">int</value>
+                              </record>
+                            </array>
+                          </record>
+                          <value name="nillable">false</value>
+                          <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                          <value name="form_qualified">true</value>
+                          <value name="is_global">false</value>
+                        </record>
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">fns:column</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <record name="field_content_type" javaclass="com.wm.util.Values">
+                            <value name="contentType">1</value>
+                            <value name="internalType">reference</value>
+                            <value name="dataTypeVersion">dtVersion2</value>
+                            <array name="targetNames" type="record" depth="1">
+                              <record javaclass="com.wm.util.Values">
+                                <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+                                <value name="ncName">int</value>
+                              </record>
+                            </array>
+                          </record>
+                          <value name="nillable">false</value>
+                          <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                          <value name="form_qualified">true</value>
+                          <value name="is_global">false</value>
+                        </record>
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">*doctype</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <value name="field_opt">true</value>
+                          <array name="field_options" type="value" depth="1">
+                            <value>wmSalesforceConnector_v48.doctypes:docTypeRef_fns_InvalidSObjectFault</value>
+                          </array>
+                          <value name="nillable">false</value>
+                          <value name="form_qualified">false</value>
+                          <value name="is_global">false</value>
+                        </record>
+                      </array>
+                      <record name="schemaType" javaclass="com.wm.util.Values">
+                        <value name="xmlns">urn:fault.partner.soap.sforce.com</value>
+                        <value name="ncName">InvalidSObjectFault</value>
+                      </record>
+                      <value name="schemaRegistered">true</value>
+                      <value name="modifiable">true</value>
+                    </record>
+                    <record javaclass="com.wm.util.Values">
+                      <value name="node_type">record</value>
+                      <value name="node_subtype">unknown</value>
+                      <value name="is_public">false</value>
+                      <value name="field_name">fns:InvalidFieldFault</value>
+                      <value name="field_type">record</value>
+                      <value name="field_dim">0</value>
+                      <value name="field_opt">true</value>
+                      <value name="wrapper_type">IData</value>
+                      <value name="nillable">true</value>
+                      <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                      <value name="form_qualified">false</value>
+                      <value name="is_global">false</value>
+                      <value name="schemaDomain">com.softwareag.cloudstreams.salesforce_v48#SforceService</value>
+                      <value name="docTypeDomain">ed820b8b543c40d193f7fceb431a11e3</value>
+                      <array name="rec_fields" type="record" depth="1">
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">fns:exceptionCode</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <record name="field_content_type" javaclass="com.wm.util.Values">
+                            <value name="contentType">1</value>
+                            <value name="internalType">reference</value>
+                            <value name="dataTypeVersion">dtVersion2</value>
+                            <array name="targetNames" type="record" depth="1">
+                              <record javaclass="com.wm.util.Values">
+                                <value name="xmlns">urn:fault.partner.soap.sforce.com</value>
+                                <value name="ncName">ExceptionCode</value>
+                              </record>
+                            </array>
+                            <value name="schemaDomain">com.softwareag.cloudstreams.salesforce_v48#SforceService</value>
+                          </record>
+                          <value name="nillable">false</value>
+                          <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                          <value name="form_qualified">true</value>
+                          <value name="is_global">false</value>
+                        </record>
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">fns:exceptionMessage</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <record name="field_content_type" javaclass="com.wm.util.Values">
+                            <value name="contentType">1</value>
+                            <value name="internalType">reference</value>
+                            <value name="dataTypeVersion">dtVersion2</value>
+                            <array name="targetNames" type="record" depth="1">
+                              <record javaclass="com.wm.util.Values">
+                                <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+                                <value name="ncName">string</value>
+                              </record>
+                            </array>
+                          </record>
+                          <value name="nillable">false</value>
+                          <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                          <value name="form_qualified">true</value>
+                          <value name="is_global">false</value>
+                        </record>
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">fns:extendedErrorDetails</value>
+                          <value name="field_type">record</value>
+                          <value name="field_dim">1</value>
+                          <value name="field_opt">true</value>
+                          <value name="wrapper_type">IData</value>
+                          <value name="nillable">true</value>
+                          <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                          <value name="form_qualified">false</value>
+                          <value name="is_global">false</value>
+                          <value name="schemaDomain">com.softwareag.cloudstreams.salesforce_v48#SforceService</value>
+                          <value name="docTypeDomain">ed820b8b543c40d193f7fceb431a11e3</value>
+                          <value name="is_soap_array_encoding_used">false</value>
+                          <array name="rec_fields" type="record" depth="1">
+                            <record javaclass="com.wm.util.Values">
+                              <value name="node_type">record</value>
+                              <value name="node_subtype">unknown</value>
+                              <value name="is_public">false</value>
+                              <value name="field_name">tns:extendedErrorCode</value>
+                              <value name="field_type">string</value>
+                              <value name="field_dim">0</value>
+                              <record name="field_content_type" javaclass="com.wm.util.Values">
+                                <value name="contentType">1</value>
+                                <value name="internalType">reference</value>
+                                <value name="dataTypeVersion">dtVersion2</value>
+                                <array name="targetNames" type="record" depth="1">
+                                  <record javaclass="com.wm.util.Values">
+                                    <value name="xmlns">urn:partner.soap.sforce.com</value>
+                                    <value name="ncName">ExtendedErrorCode</value>
+                                  </record>
+                                </array>
+                                <value name="schemaDomain">com.softwareag.cloudstreams.salesforce_v48#SforceService</value>
+                              </record>
+                              <value name="nillable">false</value>
+                              <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+                              <value name="form_qualified">true</value>
+                              <value name="is_global">false</value>
+                            </record>
+                          </array>
+                          <record name="schemaType" javaclass="com.wm.util.Values">
+                            <value name="xmlns">urn:partner.soap.sforce.com</value>
+                            <value name="ncName">ExtendedErrorDetails</value>
+                          </record>
+                          <value name="schemaRegistered">true</value>
+                          <value name="modifiable">true</value>
+                        </record>
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">fns:row</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <record name="field_content_type" javaclass="com.wm.util.Values">
+                            <value name="contentType">1</value>
+                            <value name="internalType">reference</value>
+                            <value name="dataTypeVersion">dtVersion2</value>
+                            <array name="targetNames" type="record" depth="1">
+                              <record javaclass="com.wm.util.Values">
+                                <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+                                <value name="ncName">int</value>
+                              </record>
+                            </array>
+                          </record>
+                          <value name="nillable">false</value>
+                          <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                          <value name="form_qualified">true</value>
+                          <value name="is_global">false</value>
+                        </record>
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">fns:column</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <record name="field_content_type" javaclass="com.wm.util.Values">
+                            <value name="contentType">1</value>
+                            <value name="internalType">reference</value>
+                            <value name="dataTypeVersion">dtVersion2</value>
+                            <array name="targetNames" type="record" depth="1">
+                              <record javaclass="com.wm.util.Values">
+                                <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+                                <value name="ncName">int</value>
+                              </record>
+                            </array>
+                          </record>
+                          <value name="nillable">false</value>
+                          <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                          <value name="form_qualified">true</value>
+                          <value name="is_global">false</value>
+                        </record>
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">*doctype</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <value name="field_opt">true</value>
+                          <array name="field_options" type="value" depth="1">
+                            <value>wmSalesforceConnector_v48.doctypes:docTypeRef_fns_InvalidFieldFault</value>
+                          </array>
+                          <value name="nillable">false</value>
+                          <value name="form_qualified">false</value>
+                          <value name="is_global">false</value>
+                        </record>
+                      </array>
+                      <record name="schemaType" javaclass="com.wm.util.Values">
+                        <value name="xmlns">urn:fault.partner.soap.sforce.com</value>
+                        <value name="ncName">InvalidFieldFault</value>
+                      </record>
+                      <value name="schemaRegistered">true</value>
+                      <value name="modifiable">true</value>
+                    </record>
+                    <record javaclass="com.wm.util.Values">
+                      <value name="node_type">record</value>
+                      <value name="node_subtype">unknown</value>
+                      <value name="is_public">false</value>
+                      <value name="field_name">fns:MalformedQueryFault</value>
+                      <value name="field_type">record</value>
+                      <value name="field_dim">0</value>
+                      <value name="field_opt">true</value>
+                      <value name="wrapper_type">IData</value>
+                      <value name="nillable">true</value>
+                      <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                      <value name="form_qualified">false</value>
+                      <value name="is_global">false</value>
+                      <value name="schemaDomain">com.softwareag.cloudstreams.salesforce_v48#SforceService</value>
+                      <value name="docTypeDomain">ed820b8b543c40d193f7fceb431a11e3</value>
+                      <array name="rec_fields" type="record" depth="1">
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">fns:exceptionCode</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <record name="field_content_type" javaclass="com.wm.util.Values">
+                            <value name="contentType">1</value>
+                            <value name="internalType">reference</value>
+                            <value name="dataTypeVersion">dtVersion2</value>
+                            <array name="targetNames" type="record" depth="1">
+                              <record javaclass="com.wm.util.Values">
+                                <value name="xmlns">urn:fault.partner.soap.sforce.com</value>
+                                <value name="ncName">ExceptionCode</value>
+                              </record>
+                            </array>
+                            <value name="schemaDomain">com.softwareag.cloudstreams.salesforce_v48#SforceService</value>
+                          </record>
+                          <value name="nillable">false</value>
+                          <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                          <value name="form_qualified">true</value>
+                          <value name="is_global">false</value>
+                        </record>
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">fns:exceptionMessage</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <record name="field_content_type" javaclass="com.wm.util.Values">
+                            <value name="contentType">1</value>
+                            <value name="internalType">reference</value>
+                            <value name="dataTypeVersion">dtVersion2</value>
+                            <array name="targetNames" type="record" depth="1">
+                              <record javaclass="com.wm.util.Values">
+                                <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+                                <value name="ncName">string</value>
+                              </record>
+                            </array>
+                          </record>
+                          <value name="nillable">false</value>
+                          <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                          <value name="form_qualified">true</value>
+                          <value name="is_global">false</value>
+                        </record>
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">fns:extendedErrorDetails</value>
+                          <value name="field_type">record</value>
+                          <value name="field_dim">1</value>
+                          <value name="field_opt">true</value>
+                          <value name="wrapper_type">IData</value>
+                          <value name="nillable">true</value>
+                          <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                          <value name="form_qualified">false</value>
+                          <value name="is_global">false</value>
+                          <value name="schemaDomain">com.softwareag.cloudstreams.salesforce_v48#SforceService</value>
+                          <value name="docTypeDomain">ed820b8b543c40d193f7fceb431a11e3</value>
+                          <value name="is_soap_array_encoding_used">false</value>
+                          <array name="rec_fields" type="record" depth="1">
+                            <record javaclass="com.wm.util.Values">
+                              <value name="node_type">record</value>
+                              <value name="node_subtype">unknown</value>
+                              <value name="is_public">false</value>
+                              <value name="field_name">tns:extendedErrorCode</value>
+                              <value name="field_type">string</value>
+                              <value name="field_dim">0</value>
+                              <record name="field_content_type" javaclass="com.wm.util.Values">
+                                <value name="contentType">1</value>
+                                <value name="internalType">reference</value>
+                                <value name="dataTypeVersion">dtVersion2</value>
+                                <array name="targetNames" type="record" depth="1">
+                                  <record javaclass="com.wm.util.Values">
+                                    <value name="xmlns">urn:partner.soap.sforce.com</value>
+                                    <value name="ncName">ExtendedErrorCode</value>
+                                  </record>
+                                </array>
+                                <value name="schemaDomain">com.softwareag.cloudstreams.salesforce_v48#SforceService</value>
+                              </record>
+                              <value name="nillable">false</value>
+                              <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+                              <value name="form_qualified">true</value>
+                              <value name="is_global">false</value>
+                            </record>
+                          </array>
+                          <record name="schemaType" javaclass="com.wm.util.Values">
+                            <value name="xmlns">urn:partner.soap.sforce.com</value>
+                            <value name="ncName">ExtendedErrorDetails</value>
+                          </record>
+                          <value name="schemaRegistered">true</value>
+                          <value name="modifiable">true</value>
+                        </record>
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">fns:row</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <record name="field_content_type" javaclass="com.wm.util.Values">
+                            <value name="contentType">1</value>
+                            <value name="internalType">reference</value>
+                            <value name="dataTypeVersion">dtVersion2</value>
+                            <array name="targetNames" type="record" depth="1">
+                              <record javaclass="com.wm.util.Values">
+                                <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+                                <value name="ncName">int</value>
+                              </record>
+                            </array>
+                          </record>
+                          <value name="nillable">false</value>
+                          <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                          <value name="form_qualified">true</value>
+                          <value name="is_global">false</value>
+                        </record>
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">fns:column</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <record name="field_content_type" javaclass="com.wm.util.Values">
+                            <value name="contentType">1</value>
+                            <value name="internalType">reference</value>
+                            <value name="dataTypeVersion">dtVersion2</value>
+                            <array name="targetNames" type="record" depth="1">
+                              <record javaclass="com.wm.util.Values">
+                                <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+                                <value name="ncName">int</value>
+                              </record>
+                            </array>
+                          </record>
+                          <value name="nillable">false</value>
+                          <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                          <value name="form_qualified">true</value>
+                          <value name="is_global">false</value>
+                        </record>
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">*doctype</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <value name="field_opt">true</value>
+                          <array name="field_options" type="value" depth="1">
+                            <value>wmSalesforceConnector_v48.doctypes:docTypeRef_fns_MalformedQueryFault</value>
+                          </array>
+                          <value name="nillable">false</value>
+                          <value name="form_qualified">false</value>
+                          <value name="is_global">false</value>
+                        </record>
+                      </array>
+                      <record name="schemaType" javaclass="com.wm.util.Values">
+                        <value name="xmlns">urn:fault.partner.soap.sforce.com</value>
+                        <value name="ncName">MalformedQueryFault</value>
+                      </record>
+                      <value name="schemaRegistered">true</value>
+                      <value name="modifiable">true</value>
+                    </record>
+                    <record javaclass="com.wm.util.Values">
+                      <value name="node_type">record</value>
+                      <value name="node_subtype">unknown</value>
+                      <value name="is_public">false</value>
+                      <value name="field_name">fns:InvalidIdFault</value>
+                      <value name="field_type">record</value>
+                      <value name="field_dim">0</value>
+                      <value name="field_opt">true</value>
+                      <value name="wrapper_type">IData</value>
+                      <value name="nillable">true</value>
+                      <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                      <value name="form_qualified">false</value>
+                      <value name="is_global">false</value>
+                      <value name="schemaDomain">com.softwareag.cloudstreams.salesforce_v48#SforceService</value>
+                      <value name="docTypeDomain">ed820b8b543c40d193f7fceb431a11e3</value>
+                      <array name="rec_fields" type="record" depth="1">
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">fns:exceptionCode</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <record name="field_content_type" javaclass="com.wm.util.Values">
+                            <value name="contentType">1</value>
+                            <value name="internalType">reference</value>
+                            <value name="dataTypeVersion">dtVersion2</value>
+                            <array name="targetNames" type="record" depth="1">
+                              <record javaclass="com.wm.util.Values">
+                                <value name="xmlns">urn:fault.partner.soap.sforce.com</value>
+                                <value name="ncName">ExceptionCode</value>
+                              </record>
+                            </array>
+                            <value name="schemaDomain">com.softwareag.cloudstreams.salesforce_v48#SforceService</value>
+                          </record>
+                          <value name="nillable">false</value>
+                          <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                          <value name="form_qualified">true</value>
+                          <value name="is_global">false</value>
+                        </record>
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">fns:exceptionMessage</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <record name="field_content_type" javaclass="com.wm.util.Values">
+                            <value name="contentType">1</value>
+                            <value name="internalType">reference</value>
+                            <value name="dataTypeVersion">dtVersion2</value>
+                            <array name="targetNames" type="record" depth="1">
+                              <record javaclass="com.wm.util.Values">
+                                <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+                                <value name="ncName">string</value>
+                              </record>
+                            </array>
+                          </record>
+                          <value name="nillable">false</value>
+                          <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                          <value name="form_qualified">true</value>
+                          <value name="is_global">false</value>
+                        </record>
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">fns:extendedErrorDetails</value>
+                          <value name="field_type">record</value>
+                          <value name="field_dim">1</value>
+                          <value name="field_opt">true</value>
+                          <value name="wrapper_type">IData</value>
+                          <value name="nillable">true</value>
+                          <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                          <value name="form_qualified">false</value>
+                          <value name="is_global">false</value>
+                          <value name="schemaDomain">com.softwareag.cloudstreams.salesforce_v48#SforceService</value>
+                          <value name="docTypeDomain">ed820b8b543c40d193f7fceb431a11e3</value>
+                          <value name="is_soap_array_encoding_used">false</value>
+                          <array name="rec_fields" type="record" depth="1">
+                            <record javaclass="com.wm.util.Values">
+                              <value name="node_type">record</value>
+                              <value name="node_subtype">unknown</value>
+                              <value name="is_public">false</value>
+                              <value name="field_name">tns:extendedErrorCode</value>
+                              <value name="field_type">string</value>
+                              <value name="field_dim">0</value>
+                              <record name="field_content_type" javaclass="com.wm.util.Values">
+                                <value name="contentType">1</value>
+                                <value name="internalType">reference</value>
+                                <value name="dataTypeVersion">dtVersion2</value>
+                                <array name="targetNames" type="record" depth="1">
+                                  <record javaclass="com.wm.util.Values">
+                                    <value name="xmlns">urn:partner.soap.sforce.com</value>
+                                    <value name="ncName">ExtendedErrorCode</value>
+                                  </record>
+                                </array>
+                                <value name="schemaDomain">com.softwareag.cloudstreams.salesforce_v48#SforceService</value>
+                              </record>
+                              <value name="nillable">false</value>
+                              <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+                              <value name="form_qualified">true</value>
+                              <value name="is_global">false</value>
+                            </record>
+                          </array>
+                          <record name="schemaType" javaclass="com.wm.util.Values">
+                            <value name="xmlns">urn:partner.soap.sforce.com</value>
+                            <value name="ncName">ExtendedErrorDetails</value>
+                          </record>
+                          <value name="schemaRegistered">true</value>
+                          <value name="modifiable">true</value>
+                        </record>
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">*doctype</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <value name="field_opt">true</value>
+                          <array name="field_options" type="value" depth="1">
+                            <value>wmSalesforceConnector_v48.doctypes:docTypeRef_fns_InvalidIdFault</value>
+                          </array>
+                          <value name="nillable">false</value>
+                          <value name="form_qualified">false</value>
+                          <value name="is_global">false</value>
+                        </record>
+                      </array>
+                      <record name="schemaType" javaclass="com.wm.util.Values">
+                        <value name="xmlns">urn:fault.partner.soap.sforce.com</value>
+                        <value name="ncName">InvalidIdFault</value>
+                      </record>
+                      <value name="schemaRegistered">true</value>
+                      <value name="modifiable">true</value>
+                    </record>
+                    <record javaclass="com.wm.util.Values">
+                      <value name="node_type">record</value>
+                      <value name="node_subtype">unknown</value>
+                      <value name="is_public">false</value>
+                      <value name="field_name">fns:UnexpectedErrorFault</value>
+                      <value name="field_type">record</value>
+                      <value name="field_dim">0</value>
+                      <value name="field_opt">true</value>
+                      <value name="wrapper_type">IData</value>
+                      <value name="nillable">true</value>
+                      <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                      <value name="form_qualified">false</value>
+                      <value name="is_global">false</value>
+                      <value name="schemaDomain">com.softwareag.cloudstreams.salesforce_v48#SforceService</value>
+                      <value name="docTypeDomain">ed820b8b543c40d193f7fceb431a11e3</value>
+                      <array name="rec_fields" type="record" depth="1">
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">fns:exceptionCode</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <record name="field_content_type" javaclass="com.wm.util.Values">
+                            <value name="contentType">1</value>
+                            <value name="internalType">reference</value>
+                            <value name="dataTypeVersion">dtVersion2</value>
+                            <array name="targetNames" type="record" depth="1">
+                              <record javaclass="com.wm.util.Values">
+                                <value name="xmlns">urn:fault.partner.soap.sforce.com</value>
+                                <value name="ncName">ExceptionCode</value>
+                              </record>
+                            </array>
+                            <value name="schemaDomain">com.softwareag.cloudstreams.salesforce_v48#SforceService</value>
+                          </record>
+                          <value name="nillable">false</value>
+                          <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                          <value name="form_qualified">true</value>
+                          <value name="is_global">false</value>
+                        </record>
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">fns:exceptionMessage</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <record name="field_content_type" javaclass="com.wm.util.Values">
+                            <value name="contentType">1</value>
+                            <value name="internalType">reference</value>
+                            <value name="dataTypeVersion">dtVersion2</value>
+                            <array name="targetNames" type="record" depth="1">
+                              <record javaclass="com.wm.util.Values">
+                                <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+                                <value name="ncName">string</value>
+                              </record>
+                            </array>
+                          </record>
+                          <value name="nillable">false</value>
+                          <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                          <value name="form_qualified">true</value>
+                          <value name="is_global">false</value>
+                        </record>
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">fns:extendedErrorDetails</value>
+                          <value name="field_type">record</value>
+                          <value name="field_dim">1</value>
+                          <value name="field_opt">true</value>
+                          <value name="wrapper_type">IData</value>
+                          <value name="nillable">true</value>
+                          <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                          <value name="form_qualified">false</value>
+                          <value name="is_global">false</value>
+                          <value name="schemaDomain">com.softwareag.cloudstreams.salesforce_v48#SforceService</value>
+                          <value name="docTypeDomain">ed820b8b543c40d193f7fceb431a11e3</value>
+                          <value name="is_soap_array_encoding_used">false</value>
+                          <array name="rec_fields" type="record" depth="1">
+                            <record javaclass="com.wm.util.Values">
+                              <value name="node_type">record</value>
+                              <value name="node_subtype">unknown</value>
+                              <value name="is_public">false</value>
+                              <value name="field_name">tns:extendedErrorCode</value>
+                              <value name="field_type">string</value>
+                              <value name="field_dim">0</value>
+                              <record name="field_content_type" javaclass="com.wm.util.Values">
+                                <value name="contentType">1</value>
+                                <value name="internalType">reference</value>
+                                <value name="dataTypeVersion">dtVersion2</value>
+                                <array name="targetNames" type="record" depth="1">
+                                  <record javaclass="com.wm.util.Values">
+                                    <value name="xmlns">urn:partner.soap.sforce.com</value>
+                                    <value name="ncName">ExtendedErrorCode</value>
+                                  </record>
+                                </array>
+                                <value name="schemaDomain">com.softwareag.cloudstreams.salesforce_v48#SforceService</value>
+                              </record>
+                              <value name="nillable">false</value>
+                              <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+                              <value name="form_qualified">true</value>
+                              <value name="is_global">false</value>
+                            </record>
+                          </array>
+                          <record name="schemaType" javaclass="com.wm.util.Values">
+                            <value name="xmlns">urn:partner.soap.sforce.com</value>
+                            <value name="ncName">ExtendedErrorDetails</value>
+                          </record>
+                          <value name="schemaRegistered">true</value>
+                          <value name="modifiable">true</value>
+                        </record>
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">*doctype</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <value name="field_opt">true</value>
+                          <array name="field_options" type="value" depth="1">
+                            <value>wmSalesforceConnector_v48.doctypes:docTypeRef_fns_UnexpectedErrorFault</value>
+                          </array>
+                          <value name="nillable">false</value>
+                          <value name="form_qualified">false</value>
+                          <value name="is_global">false</value>
+                        </record>
+                      </array>
+                      <record name="schemaType" javaclass="com.wm.util.Values">
+                        <value name="xmlns">urn:fault.partner.soap.sforce.com</value>
+                        <value name="ncName">UnexpectedErrorFault</value>
+                      </record>
+                      <value name="schemaRegistered">true</value>
+                      <value name="modifiable">true</value>
+                    </record>
+                    <record javaclass="com.wm.util.Values">
+                      <value name="node_type">record</value>
+                      <value name="node_subtype">unknown</value>
+                      <value name="is_public">false</value>
+                      <value name="field_name">fns:InvalidQueryLocatorFault</value>
+                      <value name="field_type">record</value>
+                      <value name="field_dim">0</value>
+                      <value name="field_opt">true</value>
+                      <value name="wrapper_type">IData</value>
+                      <value name="nillable">true</value>
+                      <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                      <value name="form_qualified">false</value>
+                      <value name="is_global">false</value>
+                      <value name="schemaDomain">com.softwareag.cloudstreams.salesforce_v48#SforceService</value>
+                      <value name="docTypeDomain">ed820b8b543c40d193f7fceb431a11e3</value>
+                      <array name="rec_fields" type="record" depth="1">
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">fns:exceptionCode</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <record name="field_content_type" javaclass="com.wm.util.Values">
+                            <value name="contentType">1</value>
+                            <value name="internalType">reference</value>
+                            <value name="dataTypeVersion">dtVersion2</value>
+                            <array name="targetNames" type="record" depth="1">
+                              <record javaclass="com.wm.util.Values">
+                                <value name="xmlns">urn:fault.partner.soap.sforce.com</value>
+                                <value name="ncName">ExceptionCode</value>
+                              </record>
+                            </array>
+                            <value name="schemaDomain">com.softwareag.cloudstreams.salesforce_v48#SforceService</value>
+                          </record>
+                          <value name="nillable">false</value>
+                          <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                          <value name="form_qualified">true</value>
+                          <value name="is_global">false</value>
+                        </record>
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">fns:exceptionMessage</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <record name="field_content_type" javaclass="com.wm.util.Values">
+                            <value name="contentType">1</value>
+                            <value name="internalType">reference</value>
+                            <value name="dataTypeVersion">dtVersion2</value>
+                            <array name="targetNames" type="record" depth="1">
+                              <record javaclass="com.wm.util.Values">
+                                <value name="xmlns">http://www.w3.org/2001/XMLSchema</value>
+                                <value name="ncName">string</value>
+                              </record>
+                            </array>
+                          </record>
+                          <value name="nillable">false</value>
+                          <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                          <value name="form_qualified">true</value>
+                          <value name="is_global">false</value>
+                        </record>
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">fns:extendedErrorDetails</value>
+                          <value name="field_type">record</value>
+                          <value name="field_dim">1</value>
+                          <value name="field_opt">true</value>
+                          <value name="wrapper_type">IData</value>
+                          <value name="nillable">true</value>
+                          <value name="field_xmlns">urn:fault.partner.soap.sforce.com</value>
+                          <value name="form_qualified">false</value>
+                          <value name="is_global">false</value>
+                          <value name="schemaDomain">com.softwareag.cloudstreams.salesforce_v48#SforceService</value>
+                          <value name="docTypeDomain">ed820b8b543c40d193f7fceb431a11e3</value>
+                          <value name="is_soap_array_encoding_used">false</value>
+                          <array name="rec_fields" type="record" depth="1">
+                            <record javaclass="com.wm.util.Values">
+                              <value name="node_type">record</value>
+                              <value name="node_subtype">unknown</value>
+                              <value name="is_public">false</value>
+                              <value name="field_name">tns:extendedErrorCode</value>
+                              <value name="field_type">string</value>
+                              <value name="field_dim">0</value>
+                              <record name="field_content_type" javaclass="com.wm.util.Values">
+                                <value name="contentType">1</value>
+                                <value name="internalType">reference</value>
+                                <value name="dataTypeVersion">dtVersion2</value>
+                                <array name="targetNames" type="record" depth="1">
+                                  <record javaclass="com.wm.util.Values">
+                                    <value name="xmlns">urn:partner.soap.sforce.com</value>
+                                    <value name="ncName">ExtendedErrorCode</value>
+                                  </record>
+                                </array>
+                                <value name="schemaDomain">com.softwareag.cloudstreams.salesforce_v48#SforceService</value>
+                              </record>
+                              <value name="nillable">false</value>
+                              <value name="field_xmlns">urn:partner.soap.sforce.com</value>
+                              <value name="form_qualified">true</value>
+                              <value name="is_global">false</value>
+                            </record>
+                          </array>
+                          <record name="schemaType" javaclass="com.wm.util.Values">
+                            <value name="xmlns">urn:partner.soap.sforce.com</value>
+                            <value name="ncName">ExtendedErrorDetails</value>
+                          </record>
+                          <value name="schemaRegistered">true</value>
+                          <value name="modifiable">true</value>
+                        </record>
+                        <record javaclass="com.wm.util.Values">
+                          <value name="node_type">record</value>
+                          <value name="node_subtype">unknown</value>
+                          <value name="is_public">false</value>
+                          <value name="field_name">*doctype</value>
+                          <value name="field_type">string</value>
+                          <value name="field_dim">0</value>
+                          <value name="field_opt">true</value>
+                          <array name="field_options" type="value" depth="1">
+                            <value>wmSalesforceConnector_v48.doctypes:docTypeRef_fns_InvalidQueryLocatorFault</value>
+                          </array>
+                          <value name="nillable">false</value>
+                          <value name="form_qualified">false</value>
+                          <value name="is_global">false</value>
+                        </record>
+                      </array>
+                      <record name="schemaType" javaclass="com.wm.util.Values">
+                        <value name="xmlns">urn:fault.partner.soap.sforce.com</value>
+                        <value name="ncName">InvalidQueryLocatorFault</value>
+                      </record>
+                      <value name="schemaRegistered">true</value>
+                      <value name="modifiable">true</value>
+                    </record>
+                  </array>
+                  <value name="modifiable">true</value>
+                </record>
+              </array>
+              <value name="modifiable">true</value>
+            </record>
+          </array>
+          <value name="modifiable">true</value>
+        </record>
+      </array>
+      <value name="modifiable">true</value>
+    </record>
+  </record>
+  <value name="node_comment"></value>
+  <value name="stateless">yes</value>
+  <value name="caching">no</value>
+  <value name="prefetch">no</value>
+  <value name="cache_ttl">15</value>
+  <value name="prefetch_level">1</value>
+  <value name="audit_level">off</value>
+  <value name="check_internal_acls">no</value>
+  <value name="icontext_policy">$null</value>
+  <value name="system_service">no</value>
+  <value name="retry_max">0</value>
+  <value name="retry_interval">0</value>
+  <value name="svc_in_validator_options">none</value>
+  <value name="svc_out_validator_options">none</value>
+  <value name="auditoption">0</value>
+  <null name="auditfields_input"/>
+  <null name="auditfields_output"/>
+  <record name="auditsettings" javaclass="com.wm.util.Values">
+    <value name="document_data">0</value>
+    <value name="startExecution">false</value>
+    <value name="stopExecution">false</value>
+    <value name="onError">true</value>
+  </record>
+  <record name="circuitbreakersettings" javaclass="com.wm.util.Values">
+    <value name="enabled">false</value>
+    <value name="failureEvent">1</value>
+    <value name="timeoutPeriod">60</value>
+    <value name="failureThreshold">5</value>
+    <value name="failurePeriod">60</value>
+    <value name="openAction">1</value>
+    <null name="serviceToInvoke"/>
+    <value name="resetPeriod">300</value>
+    <value name="cancelThreadOnTimeout">false</value>
+  </record>
+  <array name="allowedHTTPMethods" type="value" depth="1">
+    <value>HEAD</value>
+    <value>DELETE</value>
+    <value>POST</value>
+    <value>GET</value>
+    <value>OPTIONS</value>
+    <value>PUT</value>
+    <value>PATCH</value>
+  </array>
+  <value name="pipeline_option">1</value>
+  <null name="originURI"/>
+  <value name="modifiable">true</value>
+  <value name="is_public">false</value>
+  <value name="node_type">service</value>
+  <value name="cloudNodeVersion">1</value>
+  <record name="cloudNodeProperties" javaclass="com.wm.util.Values">
+    <value name="interactionName">query</value>
+    <value name="serviceName">SforceService</value>
+    <value name="virtualServiceName">WmCloudStreams.SoapVS</value>
+    <value name="connectionName">{connectionName}</value>
+    <value name="connectionType">sagcloud_oauth_v20_authorization_code</value>
+    <value name="connectorID">com.softwareag.cloudstreams.salesforce_v48</value>
+    <record name="customData" javaclass="com.wm.util.Values">
+      <array name="customInputHeaders" type="record" depth="1">
+        <record javaclass="com.wm.util.Values">
+          <value name="nsName">wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+          <value name="active">true</value>
+          <value name="mandatory">true</value>
+          <record name="defaultValue" javaclass="com.wm.util.Values">
+            <record name="tns:SessionHeader" javaclass="com.wm.util.Values">
+              <value name="tns:sessionId">oauth.accessToken</value>
+            </record>
+          </record>
+          <value name="fixed">true</value>
+        </record>
+        <record javaclass="com.wm.util.Values">
+          <value name="nsName">wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+          <value name="active">false</value>
+          <value name="mandatory">false</value>
+          <null name="defaultValue"/>
+          <value name="fixed">false</value>
+        </record>
+        <record javaclass="com.wm.util.Values">
+          <value name="nsName">wmSalesforceConnector_v48.doctypes:Header_QueryOptions</value>
+          <value name="active">true</value>
+          <value name="mandatory">true</value>
+          <record name="defaultValue" javaclass="com.wm.util.Values">
+            <record name="tns:QueryOptions" javaclass="com.wm.util.Values">
+              <value name="tns:batchSize">500</value>
+            </record>
+          </record>
+          <value name="fixed">false</value>
+        </record>
+        <record javaclass="com.wm.util.Values">
+          <value name="nsName">wmSalesforceConnector_v48.doctypes:Header_MruHeader</value>
+          <value name="active">false</value>
+          <value name="mandatory">false</value>
+          <null name="defaultValue"/>
+          <value name="fixed">false</value>
+        </record>
+        <record javaclass="com.wm.util.Values">
+          <value name="nsName">wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+          <value name="active">false</value>
+          <value name="mandatory">false</value>
+          <null name="defaultValue"/>
+          <value name="fixed">false</value>
+        </record>
+      </array>
+      <array name="customOutputHeaders" type="record" depth="1">
+        <record javaclass="com.wm.util.Values">
+          <value name="nsName">wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+          <value name="active">false</value>
+          <value name="mandatory">false</value>
+          <null name="defaultValue"/>
+          <value name="fixed">false</value>
+        </record>
+      </array>
+      <array name="customParameters" type="record" depth="1">
+        <record javaclass="com.wm.util.Values">
+          <value name="name">select</value>
+          <value name="dataType">String</value>
+          <value name="type">SOAP</value>
+          <null name="defaultValue"/>
+          <value name="description">custom select field list with optional subquery</value>
+          <value name="isRequired">false</value>
+          <value name="isActive">true</value>
+          <value name="isFixed">false</value>
+          <value name="isCustom">false</value>
+        </record>
+        <record javaclass="com.wm.util.Values">
+          <value name="name">where</value>
+          <value name="dataType">String</value>
+          <value name="type">SOAP</value>
+          <null name="defaultValue"/>
+          <value name="description">where clause for query operation</value>
+          <value name="isRequired">false</value>
+          <value name="isActive">true</value>
+          <value name="isFixed">false</value>
+          <value name="isCustom">false</value>
+        </record>
+        <record javaclass="com.wm.util.Values">
+          <value name="name">limit</value>
+          <value name="dataType">String</value>
+          <value name="type">SOAP</value>
+          <null name="defaultValue"/>
+          <value name="description">limit parameter for query operation</value>
+          <value name="isRequired">false</value>
+          <value name="isActive">true</value>
+          <value name="isFixed">false</value>
+          <value name="isCustom">false</value>
+        </record>
+        <record javaclass="com.wm.util.Values">
+          <value name="name">filter</value>
+          <value name="dataType">String</value>
+          <value name="type">SOAP</value>
+          <null name="defaultValue"/>
+          <value name="description">custom filter condition. If specified overrides 'where' and 'limit' parameters</value>
+          <value name="isRequired">false</value>
+          <value name="isActive">true</value>
+          <value name="isFixed">false</value>
+          <value name="isCustom">false</value>
+        </record>
+      </array>
+      <array name="customInputTypeSetting" type="record" depth="1">
+      </array>
+      <array name="customOutputTypeSetting" type="record" depth="1">
+      </array>
+      <value name="interactionStyle">businessObject</value>
+      <record name="businessObject" javaclass="com.wm.util.Values">
+        <value name="boName">${businessObject}</value>
+        <value name="boDisplayName">${businessObject}</value>
+        <value name="boPath">tns:queryResponse/tns:result/tns:records</value>
+        <null name="boType"/>
+        <array name="boAttributes" type="record" depth="1">
+        </array>
+        <array name="businessParams" type="record" depth="1">
+          <record javaclass="com.wm.util.Values">
+            <value name="fieldName">Id</value>
+            <value name="fieldLabel">Account ID</value>
+            <value name="fieldDimension">0</value>
+            <value name="nativeType">id</value>
+            <value name="soapType">tns:ID</value>
+            <null name="wrapperType"/>
+            <Boolean name="isRequired">false</Boolean>
+            <Boolean name="isNillable">false</Boolean>
+            <null name="picklist"/>
+            <null name="xmlNamespace"/>
+            <Boolean name="isCustom">false</Boolean>
+            <Boolean name="allowUnspecifiedFields">false</Boolean>
+            <null name="attributes"/>
+          </record>
+          <record javaclass="com.wm.util.Values">
+            <value name="fieldName">Name</value>
+            <value name="fieldLabel">Account Name</value>
+            <value name="fieldDimension">0</value>
+            <value name="nativeType">string</value>
+            <value name="soapType">xsd:string</value>
+            <null name="wrapperType"/>
+            <Boolean name="isRequired">false</Boolean>
+            <Boolean name="isNillable">false</Boolean>
+            <null name="picklist"/>
+            <null name="xmlNamespace"/>
+            <Boolean name="isCustom">false</Boolean>
+            <Boolean name="allowUnspecifiedFields">false</Boolean>
+            <null name="attributes"/>
+          </record>
+        </array>
+        <null name="customBusinessParams"/>
+      </record>
+      <value name="soapAction"></value>
+    </record>
+  </record>
+</Values>

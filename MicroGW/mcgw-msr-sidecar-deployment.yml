@@ -1,0 +1,65 @@
+#
+# Input file to create a Kubernetes deployment with a Microgateway
+# Docker image including health checks
+#
+# Prerequisites:
+#   1. Create Microgateway Docker Image
+#   2. Push Microgateway Docker image to Docker registry
+#   3. Create Native Service Docker Image
+#   4. Push Native Service Docker image to Docker registry
+#
+# Execute to create a Kubernetes deployment:
+#
+#   kubectl create -f mcgw-msr-sidecar-deployment.yml
+#
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mcgw-msr-sidecar
+  labels:
+    app: mcgw-msr-sidecar
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mcgw-msr-sidecar
+  template:
+    metadata:
+      labels:
+        app: mcgw-msr-sidecar
+      annotations:
+        prometheus.io/scrape: "true"
+    spec:
+      containers:
+      - name: mcgw-msr-sidecar
+        image: tmilliard/awsdemo:mcgw-msr-sidecar
+      - env:
+        - name: mcgw_api_gateway_url
+          value: http://10.20.198.90:31929/rest/apigateway
+        - name: mcgw_api_gateway_user
+          value: Administrator
+        - name: mcgw_api_gateway_password
+          value: manage
+        livenessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -c
+            - /opt/softwareag/Microgateway/files/k8s-lifenesscheck.sh
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -c
+            - /opt/softwareag/Microgateway/files/k8s-readinesscheck.sh
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+      - name: msr-3-service-pod
+        image: tmilliard/awsdemo:spring-0.1
+

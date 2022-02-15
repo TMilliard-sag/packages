@@ -1,0 +1,1463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<IDataXMLCoder version="1.0">
+  <record javaclass="com.wm.data.ISMemDataImpl">
+    <array name="services" type="record" depth="1">
+      <record javaclass="com.wm.data.ISMemDataImpl">
+        <record name="serviceName" javaclass="com.wm.data.ISMemDataImpl">
+          <value name="xmlns">urn:partner.soap.sforce.com</value>
+          <value name="ncName">SforceService</value>
+        </record>
+        <array name="ports" type="record" depth="1">
+          <record javaclass="com.wm.data.ISMemDataImpl">
+            <value name="name">Soap</value>
+            <value name="addressLocation">https://login.salesforce.com/services/Soap/u/48.0</value>
+            <record name="binding" javaclass="com.wm.data.ISMemDataImpl">
+              <record name="bindingName" javaclass="com.wm.data.ISMemDataImpl">
+                <value name="xmlns">urn:partner.soap.sforce.com</value>
+                <value name="ncName">SoapBinding</value>
+              </record>
+              <record name="portTypeName" javaclass="com.wm.data.ISMemDataImpl">
+                <value name="xmlns">urn:partner.soap.sforce.com</value>
+                <value name="ncName">Soap</value>
+              </record>
+              <array name="operations" type="record" depth="1">
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">login</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_login_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LoginScopeHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_login_Output</value>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:LoginFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidIdFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">describeSObject</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeSObject_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LocaleOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeSObject_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidSObjectFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">describeSObjects</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeSObjects_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LocaleOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeSObjects_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidSObjectFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">describeGlobal</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeGlobal_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeGlobal_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">describeDataCategoryGroups</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeDataCategoryGroups_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LocaleOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeDataCategoryGroups_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidSObjectFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">describeDataCategoryGroupStructures</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeDataCategoryGroupStructures_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LocaleOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeDataCategoryGroupStructures_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidSObjectFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">describeDataCategoryMappings</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeDataCategoryMappings_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LocaleOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeDataCategoryMappings_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">describeKnowledgeSettings</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeKnowledgeSettings_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LocaleOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeKnowledgeSettings_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">describeAppMenu</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeAppMenu_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeAppMenu_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">describeGlobalTheme</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeGlobalTheme_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeGlobalTheme_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">describeTheme</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeTheme_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeTheme_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">describeLayout</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeLayout_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeLayout_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidSObjectFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidIdFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">describeSoftphoneLayout</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeSoftphoneLayout_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeSoftphoneLayout_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">describeSearchLayouts</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeSearchLayouts_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeSearchLayouts_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidSObjectFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">describeSearchableEntities</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeSearchableEntities_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeSearchableEntities_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">describeSearchScopeOrder</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeSearchScopeOrder_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeSearchScopeOrder_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">describeCompactLayouts</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeCompactLayouts_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeCompactLayouts_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">describePathAssistants</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describePathAssistants_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describePathAssistants_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">describeApprovalLayout</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeApprovalLayout_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeApprovalLayout_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">describeSoqlListViews</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeSoqlListViews_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeSoqlListViews_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidSObjectFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">executeListView</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_executeListView_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_MruHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_executeListView_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">describeSObjectListViews</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeSObjectListViews_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeSObjectListViews_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidSObjectFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">describeTabs</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeTabs_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeTabs_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">describeAllTabs</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeAllTabs_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeAllTabs_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">describePrimaryCompactLayouts</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describePrimaryCompactLayouts_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describePrimaryCompactLayouts_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">create</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_create_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_AssignmentRuleHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_MruHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_AllowFieldTruncationHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DisableFeedTrackingHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_StreamingEnabledHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_AllOrNoneHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DuplicateRuleHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LocaleOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DebuggingHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_EmailHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_create_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DebuggingInfo</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidSObjectFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidIdFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidFieldFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">update</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_update_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_AssignmentRuleHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_MruHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_AllowFieldTruncationHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DisableFeedTrackingHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_StreamingEnabledHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_AllOrNoneHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DuplicateRuleHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LocaleOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DebuggingHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_EmailHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_OwnerChangeOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_update_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DebuggingInfo</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidSObjectFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidIdFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidFieldFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">upsert</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_upsert_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_AssignmentRuleHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_MruHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_AllowFieldTruncationHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DisableFeedTrackingHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_StreamingEnabledHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_AllOrNoneHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DuplicateRuleHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LocaleOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DebuggingHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_EmailHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_OwnerChangeOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_upsert_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DebuggingInfo</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidSObjectFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidIdFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidFieldFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">merge</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_merge_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_AssignmentRuleHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_MruHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_AllowFieldTruncationHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DisableFeedTrackingHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_StreamingEnabledHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DuplicateRuleHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LocaleOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DebuggingHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_EmailHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_merge_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DebuggingInfo</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidSObjectFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidIdFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidFieldFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">delete</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_delete_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_UserTerritoryDeleteHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_EmailHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_AllowFieldTruncationHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DisableFeedTrackingHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_StreamingEnabledHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_AllOrNoneHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DuplicateRuleHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LocaleOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DebuggingHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_delete_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DebuggingInfo</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">undelete</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_undelete_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_AllowFieldTruncationHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DisableFeedTrackingHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_StreamingEnabledHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_AllOrNoneHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DuplicateRuleHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LocaleOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DebuggingHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_undelete_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DebuggingInfo</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">emptyRecycleBin</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_emptyRecycleBin_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_emptyRecycleBin_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">retrieve</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_retrieve_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_QueryOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_MruHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_retrieve_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidSObjectFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidFieldFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:MalformedQueryFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidIdFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">process</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_process_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_AllowFieldTruncationHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DisableFeedTrackingHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_StreamingEnabledHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DuplicateRuleHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LocaleOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DebuggingHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_process_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DebuggingInfo</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidIdFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">convertLead</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_convertLead_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_AllowFieldTruncationHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DisableFeedTrackingHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_StreamingEnabledHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DuplicateRuleHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LocaleOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DebuggingHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_convertLead_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DebuggingInfo</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">logout</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_logout_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_logout_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">invalidateSessions</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_invalidateSessions_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_invalidateSessions_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">getDeleted</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_getDeleted_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_getDeleted_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidSObjectFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">getUpdated</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_getUpdated_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_getUpdated_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidSObjectFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">query</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_query_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_QueryOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_MruHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_query_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidSObjectFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidFieldFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:MalformedQueryFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidIdFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidQueryLocatorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">queryAll</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_queryAll_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_QueryOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_queryAll_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidSObjectFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidFieldFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:MalformedQueryFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidIdFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidQueryLocatorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">queryMore</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_queryMore_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_QueryOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_queryMore_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidQueryLocatorFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidFieldFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:MalformedQueryFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">search</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_search_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_search_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidSObjectFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidFieldFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:MalformedSearchFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">getServerTimestamp</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_getServerTimestamp_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_getServerTimestamp_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">setPassword</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_setPassword_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_setPassword_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidIdFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidNewPasswordFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">changeOwnPassword</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_changeOwnPassword_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_changeOwnPassword_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidNewPasswordFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidOldPasswordFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">resetPassword</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_resetPassword_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_EmailHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_resetPassword_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidIdFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">getUserInfo</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_getUserInfo_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_getUserInfo_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">deleteByExample</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_deleteByExample_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_UserTerritoryDeleteHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_EmailHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_AllowFieldTruncationHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DisableFeedTrackingHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_StreamingEnabledHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_AllOrNoneHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DuplicateRuleHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LocaleOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DebuggingHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_deleteByExample_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DebuggingInfo</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">sendEmailMessage</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_sendEmailMessage_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_sendEmailMessage_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">sendEmail</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_sendEmail_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_sendEmail_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">renderEmailTemplate</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_renderEmailTemplate_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_renderEmailTemplate_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">renderStoredEmailTemplate</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_renderStoredEmailTemplate_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_renderStoredEmailTemplate_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">performQuickActions</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_performQuickActions_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_AssignmentRuleHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_MruHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_AllowFieldTruncationHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DisableFeedTrackingHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_StreamingEnabledHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_AllOrNoneHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DuplicateRuleHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LocaleOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DebuggingHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_EmailHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_OwnerChangeOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_performQuickActions_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">describeQuickActions</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeQuickActions_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LocaleOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeQuickActions_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">describeQuickActionsForRecordType</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeQuickActionsForRecordType_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LocaleOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeQuickActionsForRecordType_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">describeAvailableQuickActions</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeAvailableQuickActions_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LocaleOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeAvailableQuickActions_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">retrieveQuickActionTemplates</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_retrieveQuickActionTemplates_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LocaleOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_retrieveQuickActionTemplates_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">retrieveMassQuickActionTemplates</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_retrieveMassQuickActionTemplates_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LocaleOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_retrieveMassQuickActionTemplates_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">describeVisualForce</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeVisualForce_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeVisualForce_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">findDuplicates</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_findDuplicates_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DuplicateRuleHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_findDuplicates_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidSObjectFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidFieldFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">findDuplicatesByIds</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_findDuplicatesByIds_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_DuplicateRuleHeader</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_findDuplicatesByIds_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                    <array name="faults" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:InvalidIdFault</value>
+                      <value>wmSalesforceConnector_v48.doctypes:UnexpectedErrorFault</value>
+                    </array>
+                  </record>
+                </record>
+                <record javaclass="com.wm.data.ISMemDataImpl">
+                  <value name="name">describeNouns</value>
+                  <value name="soapAction"></value>
+                  <record name="inputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeNouns_Input</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_SessionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_CallOptions</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_PackageVersionHeader</value>
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LocaleOptions</value>
+                    </array>
+                  </record>
+                  <record name="outputSignature" javaclass="com.wm.data.ISMemDataImpl">
+                    <value name="body">wmSalesforceConnector_v48.doctypes:Soap_describeNouns_Output</value>
+                    <array name="headers" type="value" depth="1">
+                      <value>wmSalesforceConnector_v48.doctypes:Header_LimitInfoHeader</value>
+                    </array>
+                  </record>
+                </record>
+              </array>
+            </record>
+          </record>
+        </array>
+      </record>
+    </array>
+  </record>
+</IDataXMLCoder>

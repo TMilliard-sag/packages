@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rest-connector xmlns="http://www.softwareag.com/cloudstreams/metadata/handler/model" id="com.softwareag.cloudstreams.rest.bulk_salesforce_v48" version="48" group="Salesforce" name="Salesforce Bulk Data Loader" displayName="Salesforce Bulk Data Loader" xmlns:urn="urn:partner.soap.sforce.com" xmlns:sf="http//www.force.com/2009/06/asyncapi/dataload" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <description>Salesforce RESTful asynchronous Bulk API</description>
+    <connections>
+        <connection type="sagcloud" name="SalesForceConnection_soap" displayName="Credentials">
+			<description>Connection for SalesForce back-end using SOAP (Can be
+				used for Bulk REST)</description>
+				<interoperability>
+				<refs>
+					<ref type="connection" values="*"/>
+				</refs>
+			</interoperability>
+            <groups>
+                <group type="connection" name="connection" displayName="connection">
+                    <fields>
+                        <field defaultValue="https://login.salesforce.com/services/Soap/u/48.0" name="cn.providerUrl" displayName="Server URL"/>
+                        <field defaultValue="180000" name="cn.connectTimeout" displayName="Connection TimeOut"/>
+						<field defaultValue="300000" name="cn.keepAliveInterval" displayName="Keep Alive Interval" isOverride="true"/>
+                        <field defaultValue="180000" name="cn.readTimeout" displayName="Socket Read Timeout"/>
+                        <field defaultValue="false" name="cn.socketStaleCheck" displayName="Use Stale Checking"/>
+                        <field defaultValue="3" name="cn.retryCount" displayName="Connection Retry Count"/>
+                        <field defaultValue="true" name="cn.retryIfRequestSentOk" displayName="Retry on Response Failure"/>
+                        <field defaultValue="false" name="cn.tcpNoDelay" displayName="Use TCP NoDelay"/>
+                        <field defaultValue="-1" name="cn.socketLinger" displayName="Socket Linger"/>
+                        <field defaultValue="8192" name="cn.sockBuffSize" displayName="Socket Buffer Size"/>
+                        <field defaultValue="false" name="cn.reuseAddr" displayName="Socket Reuse Address"/>
+                        <field defaultValue="org.apache.http.conn.ssl.StrictHostnameVerifier" name="cn.hostnameVerifier" displayName="Hostname verifier"/>
+						<!-- Custom field definition for caching the runtime server URL-->
+						<field type="custom" name="cx.serverUrl" isHidden="true"/>
+						<!-- Custom field definition for preserving the runtime errors during connection creation-->
+						<field type="custom" name="cx.faultString" isHidden="true"/>	
+                    </fields>
+                </group>
+                <group type="credentials" name="credentials" displayName="credentials">
+                    <fields>
+						<field name="cr.username" isRequired="true"/>
+						<field name="cr.password" isRequired="true"/>
+                    </fields>
+                </group>
+                <group type="requestHeaders" name="requestHeaders" displayName="requestHeaders">
+                    <fields>
+                        <field defaultValue="Content-Type,SOAPAction" name="rh.requestHeaderNames" displayName="Request Header Names"/>
+                        <field defaultValue="text/xml,login" name="rh.requestHeaderValues" displayName="Request Header Values"/>
+                    </fields>
+                </group>
+                <group type="protocol" displayName="Transport Protocol" name="protocol" />
+				<group type="custom" name="custom" displayName="Custom">
+                    <description>Custom variable to hold temporary server url for internal use only</description>
+                    <fields>
+                        <field defaultValue="" name="cx.tempProviderUrl" isHidden="true"/>                   
+                    </fields>
+                </group>
+				<group type="connectionManager" displayName="Connection Manager" name="connectionManager">
+					<fields>
+                        <field defaultValue="true" name="poolable"/>                
+						<field defaultValue="1" name="minimumPoolSize"/>
+						<field defaultValue="10" name="maximumPoolSize"/>
+						<field defaultValue="1" name="poolIncrementSize"/>                
+						<field defaultValue="1000" name="blockTimeout"/>
+						<field defaultValue="1000" name="expireTimeout"/>
+						<field defaultValue="0" name="startupRetryCount"/>                
+						<field defaultValue="10" name="startupBackoffSecs"/>
+						<field defaultValue="fixed" name="timeoutType"/>
+						<field defaultValue="14" name="sessionExpiry"/>
+                    </fields>
+				</group>
+            </groups>
+            <start>
+				<resource displayName="login" method="POST"
+					name="login" path=""
+					type="LOGIN">
+					<description>Login</description>
+					<mappings>
+						<map context="IN" isRequired="true" displayName="Login call input 1"
+							name="start_operation_input_1">
+							<description>Login call input - username</description>
+							<source type="IDATA">cr.username</source>
+							<target type="XPATH"
+								documentRef="wmSalesforceBulkConnector_v48.customDoctypes:docTypeRef_LoginInput">
+								<xpath>soapenv:Envelope/soapenv:Body/urn:login/urn:username</xpath>
+							</target>
+						</map>
+						<map context="IN" isRequired="true" displayName="Login call input 2"
+							name="start_operation_input_2">
+							<description>Login call input - password</description>
+							<source type="IDATA">cr.password</source>
+							<target type="XPATH"
+								documentRef="wmSalesforceBulkConnector_v48.customDoctypes:docTypeRef_LoginInput">
+								<xpath>soapenv:Envelope/soapenv:Body/urn:login/urn:password</xpath>
+							</target>
+						</map>
+						<map context="OUT" isRequired="true" displayName="Login call output 1" name="store_provider_url_in_temp">
+                            <description>Store Provider Url in temporary variable</description>
+							<source type="IDATA">cn.providerUrl</source>
+                            <target type="IDATA">cx.tempProviderUrl</target>
+                        </map>
+						<map context="OUT" isRequired="true" displayName="Login call output 1"
+							name="start_operation_output_1">
+							<description>Login call output - serverUrl</description>
+							<source type="XPATH"
+								documentRef="wmSalesforceBulkConnector_v48.customDoctypes:docTypeRef_LoginOutput">
+								<xpath>soapenv:Envelope/soapenv:Body/loginResponse/result/tns:serverUrl</xpath>
+							</source>
+							<target type="IDATA">cx.serverUrl</target>
+						</map>
+						<map context="OUT" isRequired="true" displayName="Login call output 2"
+							name="start_operation_output_2" translator="com.softwareag.cloudstreams.vs.impl.translators.RemovePathFromUrl">
+							<description>Login call output - serverUrl</description>
+							<source type="XPATH"
+								documentRef="wmSalesforceBulkConnector_v48.customDoctypes:docTypeRef_LoginOutput">
+								<xpath>soapenv:Envelope/soapenv:Body/loginResponse/result/tns:serverUrl</xpath>
+							</source>
+							<target type="IDATA">cn.providerUrl</target>
+						</map>
+						<map context="OUT" isRequired="true" name="UpdateServerUrl" displayName="Update Server url">
+				                <description>Update provider url if required</description>
+				               <source type="SERVICE">
+				                 <service nsName="wm.cloudstreams.salesforce.utils:UpdateServerUrl">
+				                  <arg name="responseUrl">${cn.providerUrl}</arg>
+				                  <arg name="tempProviderUrl">${cx.tempProviderUrl}</arg>
+				                 </service>
+				                </source>
+				               <target type="IDATA">cn.providerUrl</target>
+						</map>
+						<map context="OUT" isRequired="true" displayName="Login call output 3"
+							name="start_operation_output_3">
+							<description>Login call output - sessionId</description>
+							<source type="XPATH"
+								documentRef="wmSalesforceBulkConnector_v48.customDoctypes:docTypeRef_LoginOutput">
+								<xpath>soapenv:Envelope/soapenv:Body/loginResponse/result/tns:sessionId</xpath>
+							</source>
+							<target type="IDATA">cn.sessionToken</target>
+						</map>
+						<map context="OUT" isRequired="true" displayName="Login call output 1 in case of fault"
+							name="start_operation_output_3">
+							<description>Login call output - faultstring</description>
+							<source type="XPATH"
+								documentRef="wmSalesforceBulkConnector_v48.customDoctypes:docTypeRef_LoginOutput">
+								<xpath>soapenv:Envelope/soapenv:Body/soapenv:Fault/faultstring</xpath>
+							</source>
+							<target type="IDATA">cx.faultString</target>
+						</map>
+
+					</mappings>
+
+					<request builderType="application/octet+idataoref" messageFormatterType="application/xml" 
+						documentRef="wmSalesforceBulkConnector_v48.customDoctypes:docTypeRef_LoginInput"/>
+
+					<responses>
+						<response code="200-505" builderType="application/xml" messageFormatterType="application/octet+idataoref" 
+							documentRef="wmSalesforceBulkConnector_v48.customDoctypes:docTypeRef_LoginOutput" />
+					</responses>
+				</resource>
+			</start>
+            <stop>
+			<!--	<resource displayName="logout" method="POST" name="logout"
+					path="" type="LOGOUT">
+					<description>Logout</description>
+					<mappings>
+						<map context="IN" displayName="Setting the server URL for logout" isRequired="true" name="URLMap">
+							<source type="IDATA">cx.serverUrl</source>
+							<target type="IDATA">cn.providerUrl</target>
+						</map>					
+						<map context="IN" displayName="Session ID" isRequired="true" name="sessionIDMap">
+							<source type="IDATA">cn.sessionToken</source>
+							<target type="XPATH"
+								documentRef="wmSalesforceBulkConnector_v48.customDoctypes:docTypeRef_LogoutInput">
+								<xpath>soapenv:Envelope/soapenv:Header/urn:SessionHeader/urn:sessionId</xpath>
+							</target>
+						</map>
+						<map context="OUT" isRequired="true" displayName="Login call output 1 in case fault"
+							name="start_operation_output_3">
+							<description>Login call output - faultstring</description>
+							<source type="XPATH"
+								documentRef="wmSalesforceBulkConnector_v48.customDoctypes:docTypeRef_LogoutOutput">
+								<xpath>soapenv:Envelope/soapenv:Body/soapenv:Fault/faultstring</xpath>
+							</source>
+							<target type="IDATA">cx.faultString</target>
+						</map>			
+					</mappings>
+
+					<request builderType="application/octet+idataoref" messageFormatterType="application/xml" 
+						documentRef="wmSalesforceBulkConnector_v48.customDoctypes:docTypeRef_LogoutInput"/>
+
+					<responses>
+						<response code="200-505" builderType="application/xml" messageFormatterType="application/octet+idataoref" 
+							documentRef="wmSalesforceBulkConnector_v48.customDoctypes:docTypeRef_LogoutOutput" />
+					</responses>
+
+				</resource>-->
+
+			</stop>
+        </connection>
+		<connection type="sagcloud_oauth_v20_authorization_code" name="sagcloud_oauth_2_web_server_authentication" displayName="OAuth V2.0(Authorization Code Flow)">
+			<description>Connection using OAuth 2.0 Web Server Authentication Flow</description>
+			<interoperability>
+				<refs>
+					<ref type="connection" values="*"/>
+				</refs>
+			</interoperability>
+			<groups>
+				<group type="connection" name="web_server_authentication" displayName="OAuth 2.0 Web Server Authentication">
+					<fields>
+						<field defaultValue="https://&lt;instance&gt;.salesforce.com/" name="cn.providerUrl" displayName="Server URL" />
+						<field defaultValue="180000" name="cn.connectTimeout" displayName="Connection TimeOut" />
+						<field defaultValue="300000" name="cn.keepAliveInterval" displayName="Keep Alive Interval" isOverride="true"/>
+						<field defaultValue="180000" name="cn.readTimeout" displayName="Socket Read Timeout" />
+						<field defaultValue="3" name="cn.retryCount" displayName="Connection Retry Count" />
+						<field defaultValue="true" name="cn.retryIfRequestSentOk" displayName="Retry on Response Failure" />
+					</fields>
+				</group>
+				<group type="oauth_v20_authorization_code" name="oauth_v20_authorization_code" displayName="OAuth V2.0 (Web Server Authentication Flow)">
+					<description>Define configurations needed for the OAuth version 2.0 authentication scheme.</description>
+					<fields>
+						
+						<field name="oauth_v20.scope" displayName="Scope" defaultValue="offline_access api refresh_token" modelType="Meta" isRequired="true"/>
+						<field name="oauth.consumerSecret" displayName="Consumer Secret" isRequired="true"  isOverride="true"/>
+						<field name="oauth_v20.authorizationServerUrl" displayName="Authorization Server URL" isHidden="true" defaultValue="https://login.salesforce.com/services/oauth2/authorize" modelType="Meta" />
+						<field name="oauth_v20.authenticationServerUrl" displayName="Authentication Server URL" isHidden="true" defaultValue="https://login.salesforce.com/services/oauth2/token" modelType="Meta" />
+						<field name="oauth_v20.accessTokenRefreshURL" displayName="Refresh URL" defaultValue="https://login.salesforce.com/services/oauth2/token" isRequired="true" isOverride="true" />
+						<field name="oauth_v20.refreshAccessToken" displayName="Refresh Access Token" defaultValue="true" isRequired="true" isOverride="true"/>
+						<field name="oauth_v20.refreshToken" displayName="Refresh Token" isRequired="true" isOverride="true"/>
+						<field defaultValue="URL Query String" name="oauth_v20.accessTokenRefreshURLRequest" displayName="Refresh URL Request"  isOverride="true" isRequired="true"/>
+													
+					</fields>
+				</group>
+				<group type="connectionManager" displayName="Connection Manager" name="connectionManager">
+					<fields>
+                        <field defaultValue="true" name="poolable"/>                
+						<field defaultValue="1" name="minimumPoolSize"/>
+						<field defaultValue="10" name="maximumPoolSize"/>
+						<field defaultValue="1" name="poolIncrementSize"/>                
+						<field defaultValue="1000" name="blockTimeout"/>
+						<field defaultValue="1000" name="expireTimeout"/>
+						<field defaultValue="0" name="startupRetryCount"/>                
+						<field defaultValue="10" name="startupBackoffSecs"/>
+						<field defaultValue="auto" name="timeoutType"/>
+						<field defaultValue="0" name="sessionExpiry"/>
+                    </fields>
+				</group>
+			</groups>
+			<start />
+			<stop />
+		</connection>
+		<connection type="sagcloud_oauth_v20_jwt" name="sagcloud_oauth_v20_jwt" displayName="OAuth V2.0(JWT Flow)">
+			<description>Connection using OAuth 2.0 JWT Bearer Token Flow</description>
+			<interoperability>
+				<refs>
+					<ref type="connection" values="*"/>
+				</refs>
+			</interoperability>
+			<groups>
+				<group type="connection" name="jwt_token" displayName="OAuth 2.0 JWT Token Flow">
+					<fields>
+						<field defaultValue="https://&lt;instance&gt;.salesforce.com/" name="cn.providerUrl" displayName="Server URL" />
+						<field defaultValue="180000" name="cn.connectTimeout" displayName="Connection TimeOut" />
+						<field defaultValue="300000" name="cn.keepAliveInterval" displayName="Keep Alive Interval" isOverride="true"/>
+						<field defaultValue="180000" name="cn.readTimeout" displayName="Socket Read Timeout" />
+						<field defaultValue="8192" name="cn.sockBuffSize" displayName="Socket Buffer Size" />
+						<field defaultValue="4" name="cn.retryCount"/>
+                        <field defaultValue="true" name="cn.retryIfRequestSentOk"/>
+					</fields>
+				</group>
+				<group type="oauth_v20_jwt" name="oauth_v20_jwt" displayName="OAuth V2.0 (JWT Token Flow)">
+					<description>Define configurations needed for the OAuth version 2.0 authentication scheme.</description>
+					<fields>
+						<field name="jwt.authenticationServerUrl" displayName="Authentication Server URL" isHidden="true" defaultValue="https://login.salesforce.com/services/oauth2/token" modelType="Meta" />
+						<field name="jwt.claim.aud" displayName="Audience" defaultValue="https://login.salesforce.com" isHidden="true" modelType="Meta" />
+						<field name="jwt.claim.exp" displayName="Expiration Time (mins)" defaultValue="60" modelType="Meta" />
+						<field name="jwt.header.alg" displayName="Signing with" defaultValue="RS256" isHidden="true" allowedValues="RS256,RS356" modelType="Meta" />
+					</fields>
+				</group>
+				<group type="connectionManager" displayName="Connection Manager" name="connectionManager">
+					<fields>
+                        <field defaultValue="true" name="poolable"/>                
+						<field defaultValue="1" name="minimumPoolSize"/>
+						<field defaultValue="10" name="maximumPoolSize"/>
+						<field defaultValue="1" name="poolIncrementSize"/>                
+						<field defaultValue="1000" name="blockTimeout"/>
+						<field defaultValue="1000" name="expireTimeout"/>
+						<field defaultValue="0" name="startupRetryCount"/>                
+						<field defaultValue="10" name="startupBackoffSecs"/>
+						<field defaultValue="auto" name="timeoutType"/>
+						<field defaultValue="0" name="sessionExpiry"/>
+                    </fields>
+				</group>
+			</groups>
+			<start />
+			<stop />
+		</connection>
+    </connections>
+    <services>
+        <service xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="RESTServiceType" endpoint="${cn.providerUrl}" schemaLocation="BulkREST.xsd" name="BulkRest" displayName="BulkRest">
+            <documentModel packageName="WmSalesforceBulkConnector_v48" nsName="wmSalesforceBulkConnector_v48.doctypes" useInlineModel="false"/>
+            <resources>
+				<mappings>
+					<map context="IN" isRequired="true" isFixed="true" name="global_session_1" connection-context="sagcloud">
+						<source type="IDATA">cn.sessionToken</source>
+						<target type="HEADER">X-SFDC-Session</target>
+					</map>
+					<map context="IN" isRequired="true" isFixed="true" name="global_session_1" connection-context="sagcloud_oauth_v20_authorization_code"> 
+						<source type="IDATA">oauth.accessToken</source>
+						<target type="HEADER">X-SFDC-Session</target>
+					</map>
+					<map context="IN" isRequired="true" isFixed="true" name="global_session_1" connection-context=
+					"sagcloud_oauth_v20_jwt">
+						<source type="IDATA">oauth.accessToken</source>
+						<target type="HEADER">X-SFDC-Session</target>
+					</map>
+				</mappings>
+				
+				<!-- 1. CreateJob -->
+				<resource displayName="CreateJob" method="POST"
+					name="CreateJob" path="services/async/48.0/job">
+
+					<description>Creates a Job.</description>
+
+					<mappings>
+						<map context="IN" isRequired="true" isFixed="false" name="createJob_mapping_1">
+							<source type="LITERAL">application/xml; charset=UTF-8</source>
+							<target type="HEADER">Content-Type</target>
+						</map>
+					</mappings>
+
+					<request name="tns:jobInfoRequest" builderType="application/octet+idataoref" messageFormatterType="application/xml"						
+						documentRef="wmSalesforceBulkConnector_v48.doctypes:docTypeRef_tns_JobInfoRequest"/>
+					
+					<responses>
+						<response code="201" name="tns:jobInfo" builderType="application/xml"
+							messageFormatterType="application/octet+idataoref"
+							documentRef="wmSalesforceBulkConnector_v48.doctypes:docTypeRef_tns_JobInfo" />
+						<response code="400-499" name="tns:error" builderType="application/xml"
+							messageFormatterType="application/octet+idataoref"
+							documentRef="wmSalesforceBulkConnector_v48.doctypes:docTypeRef_tns_Error" />
+					</responses>
+				
+
+				</resource>
+				
+				<!-- 2. CreateBatch -->
+				<resource displayName="CreateBatch" method="POST"
+					name="CreateBatch" path="services/async/48.0/job/{jobId}/batch">
+
+					<description>Creates a Batch.</description>
+
+					<mappings>
+						<map context="IN" isRequired="true" isFixed="false" name="createBatch_mapping_1">
+							<source type="LITERAL">application/xml; charset=UTF-8</source>
+							<target type="HEADER">Content-Type</target>
+						</map>
+					</mappings>
+
+					<parameters>
+						<parameter name="jobId" isRequired="true" style="URI_CONTEXT">
+							<description>jobId is captured from job resource invoke</description>
+						</parameter>
+					</parameters>
+
+					<request name="stream"  builderType="vnd.sag.cloudstreams+binary" messageFormatterType="vnd.sag.cloudstreams+binary"/>
+
+					<responses>
+						<response code="201" name="tns:batchInfo" builderType="application/xml"
+							messageFormatterType="application/octet+idataoref"
+							documentRef="wmSalesforceBulkConnector_v48.doctypes:docTypeRef_tns_BatchInfo" />
+						<response code="400-499" name="tns:error" builderType="application/xml"
+							messageFormatterType="application/octet+idataoref"
+							documentRef="wmSalesforceBulkConnector_v48.doctypes:docTypeRef_tns_Error" />
+					</responses>
+					
+				</resource>
+				
+				<!-- 3. Job -->
+				<resource displayName="Job" method="POST"
+					name="Job" path="services/async/48.0/job/{jobId}">
+
+					<description>Abort/Closes a Job.</description>
+
+					<mappings>
+						<map context="IN" isRequired="true" name="closeJob_mapping_1">
+							<source type="LITERAL">application/xml; charset=UTF-8</source>
+							<target type="HEADER">Content-Type</target>
+						</map>
+					</mappings>
+
+					<parameters>
+						<parameter name="jobId" isRequired="true" style="URI_CONTEXT">
+							<description>jobId is captured from job resource invoke.</description>
+						</parameter>
+					</parameters>
+
+					<request name="tns:JobRequest" builderType="application/octet+idataoref" messageFormatterType="application/xml" 						
+						documentRef="wmSalesforceBulkConnector_v48.doctypes:docTypeRef_tns_JobRequest"/>
+
+					<responses>
+						<response code="200" name="tns:jobInfo" builderType="application/xml"
+							messageFormatterType="application/octet+idataoref"
+							documentRef="wmSalesforceBulkConnector_v48.doctypes:docTypeRef_tns_JobInfo" />
+						<response code="400-499" name="tns:error" builderType="application/xml"
+							messageFormatterType="application/octet+idataoref"
+							documentRef="wmSalesforceBulkConnector_v48.doctypes:docTypeRef_tns_Error" />
+					</responses>
+
+				</resource>
+				
+				<!-- 3.1 getJobDetails -->
+				<resource displayName="JobDetails" method="GET"
+					name="JobDetails" path="services/async/48.0/job/{jobId}">
+
+					<description>Retrieves Job details.</description>
+
+					<parameters>
+						<parameter name="jobId" isRequired="true" style="URI_CONTEXT">
+							<description>jobId is captured from job resource invoke.</description>
+						</parameter>
+					</parameters>
+
+					<responses>
+						<response code="200" name="tns:jobInfo" builderType="application/xml"
+							messageFormatterType="application/octet+idataoref"
+							documentRef="wmSalesforceBulkConnector_v48.doctypes:docTypeRef_tns_JobInfo" />
+						<response code="400-499" name="tns:error" builderType="application/xml"
+							messageFormatterType="application/octet+idataoref"
+							documentRef="wmSalesforceBulkConnector_v48.doctypes:docTypeRef_tns_Error" />
+					</responses>
+
+				</resource>
+				
+				<!-- 4. BatchInfoList -->
+				<resource displayName="BatchInfoList" method="GET"
+					name="BatchInfoList" path="services/async/48.0/job/{jobId}/batch">
+
+					<description>Returns the list of batches for the given jobId.</description>
+
+					<mappings>
+						<map context="IN" isRequired="true" name="batchInfoList_mapping_1">
+							<source type="LITERAL">application/xml; charset=UTF-8</source>
+							<target type="HEADER">Content-Type</target>
+						</map>
+					</mappings>
+
+					<parameters>
+						<parameter name="jobId" isRequired="true" style="URI_CONTEXT">
+							<description>jobId is captured from job resource invoke.</description>
+						</parameter>
+					</parameters>
+
+					<responses>
+						<response code="200" name="tns:batchInfoList" builderType="application/xml"
+							messageFormatterType="application/octet+idataoref"
+							documentRef="wmSalesforceBulkConnector_v48.doctypes:docTypeRef_tns_BatchInfoList" />
+						<response code="400-499" name="tns:error"
+							messageFormatterType="application/octet+idataoref" builderType="application/xml"
+							documentRef="wmSalesforceBulkConnector_v48.doctypes:docTypeRef_tns_Error" />
+					</responses>
+
+				</resource>
+				
+				
+				<!-- 5. BatchStatus -->
+				<resource displayName="BatchStatus" method="GET"
+					name="BatchStatus" path="services/async/48.0/job/{jobId}/batch/{batchId}">
+
+					<description>Returns high level details of a given batchId.</description>
+
+					<mappings>
+						<map context="IN" isRequired="true" name="batchStatus_mapping_1">
+							<source type="LITERAL">application/xml; charset=UTF-8</source>
+							<target type="HEADER">Content-Type</target>
+						</map>
+					</mappings>
+
+					<parameters>
+						<parameter name="jobId" isRequired="true" style="URI_CONTEXT">
+							<description>jobId is captured from job resource invoke.</description>
+						</parameter>
+						<parameter name="batchId" isRequired="true" style="URI_CONTEXT">
+							<description>batchId is captured from batch resource invoke.</description>
+						</parameter>
+					</parameters>
+
+					<responses>
+						<response code="200" name="tns:batchInfo" builderType="application/xml"
+							messageFormatterType="application/octet+idataoref"
+							documentRef="wmSalesforceBulkConnector_v48.doctypes:docTypeRef_tns_BatchInfo" />
+						<response code="400-499" name="tns:error" builderType="application/xml"
+							messageFormatterType="application/octet+idataoref"
+							documentRef="wmSalesforceBulkConnector_v48.doctypes:docTypeRef_tns_Error" />
+					</responses>
+
+				</resource>
+				
+				<!-- 6. BatchResult -->
+				<resource displayName="BatchResult" method="GET"
+					name="BatchResult" path="services/async/48.0/job/{jobId}/batch/{batchId}/result">
+					<description>Retrieves the Result of a Batch for operations other than Query.</description>
+					<mappings>
+						<map context="IN" isRequired="true" name="batchResult_mapping_1">
+							<source type="LITERAL">application/xml; charset=UTF-8</source>
+							<target type="HEADER">Content-Type</target>
+						</map>
+					</mappings>
+					
+					<parameters>
+						<parameter name="jobId" isRequired="true" style="URI_CONTEXT">
+							<description>jobId is captured from job resource invoke.</description>
+						</parameter>
+						<parameter name="batchId" isRequired="true" style="URI_CONTEXT">
+							<description>batchId is captured from batch resource invoke.</description>
+						</parameter>
+					</parameters>
+					
+					<responses>
+						<response code="200" name="tns:results" builderType="application/xml"
+							messageFormatterType="application/octet+idataoref"
+							documentRef="wmSalesforceBulkConnector_v48.doctypes:docTypeRef_tns_BatchResult" />
+						<response code="400-499" name="tns:error" builderType="application/xml"
+							messageFormatterType="application/octet+idataoref"
+							documentRef="wmSalesforceBulkConnector_v48.doctypes:docTypeRef_tns_Error" />
+					</responses>
+				</resource>
+				
+				<!-- 7. ResultList -->
+				<resource displayName="ResultList" method="GET"
+					name="ResultList" path="services/async/48.0/job/{jobId}/batch/{batchId}/result">
+					<description>Retrieves the Result List for a Query operation.</description>
+					<mappings>
+						<map context="IN" isRequired="true" name="resultList_mapping_1">
+							<source type="LITERAL">application/xml; charset=UTF-8</source>
+							<target type="HEADER">Content-Type</target>
+						</map>
+					</mappings>
+					
+					<parameters>
+						<parameter name="jobId" isRequired="true" style="URI_CONTEXT">
+							<description>jobId is captured from job resource invoke.</description>
+						</parameter>
+						<parameter name="batchId" isRequired="true" style="URI_CONTEXT">
+							<description>batchId is captured from batch resource invoke.</description>
+						</parameter>
+					</parameters>
+					
+					<responses>
+						<response code="200" name="tns:result-list" builderType="application/xml"
+							messageFormatterType="application/octet+idataoref"
+							documentRef="wmSalesforceBulkConnector_v48.doctypes:docTypeRef_tns_ResultList" />
+						<response code="400-499" name="tns:error" builderType="application/xml"
+							messageFormatterType="application/octet+idataoref"
+							documentRef="wmSalesforceBulkConnector_v48.doctypes:docTypeRef_tns_Error" />
+					</responses>
+				</resource>
+				
+				<!-- 8. QueryResult -->
+				<resource displayName="QueryResult" method="GET"
+					name="QueryResult" path="services/async/48.0/job/{jobId}/batch/{batchId}/result/{resultId}">
+					<description>Retrieves the result of a Query.</description>
+					<mappings>
+						<map context="IN" isRequired="true" name="queryResult_mapping_1">
+							<source type="LITERAL">application/xml; charset=UTF-8</source>
+							<target type="HEADER">Content-Type</target>
+						</map>
+					</mappings>
+					
+					<parameters>
+						<parameter name="jobId" isRequired="true" style="URI_CONTEXT">
+							<description>jobId is captured from job resource invoke.</description>
+						</parameter>
+						<parameter name="batchId" isRequired="true" style="URI_CONTEXT">
+							<description>batchId is captured from batch resource invoke</description>
+						</parameter>
+						<parameter name="resultId" isRequired="true" style="URI_CONTEXT">
+							<description>resultId is captured from BatchResult resource	invoke.</description>
+						</parameter>
+					</parameters>
+					
+					<responses>
+						<response code="200-599" name="stream" builderType="vnd.sag.cloudstreams+binary"
+							messageFormatterType="vnd.sag.cloudstreams+binary" />
+					</responses>
+				</resource>
+				
+				<!--  9. GetBatchRequestDetails --> 
+				<resource displayName="GetBatchRequest" method="GET" 
+					name="GetBatchRequest" path="services/async/48.0/job/{jobId}/batch/{batchId}/request">
+				 	<description>Retrieves Request details of a Batch.</description> 
+					<mappings>
+						<map context="IN" isRequired="true" name="getBatchRequest_mapping_1">
+					  		<source type="LITERAL">application/xml; charset=UTF-8</source> 
+							<target type="HEADER">Content-Type</target> 
+				  		</map>
+				  	</mappings>
+					<parameters>
+						<parameter name="jobId" isRequired="true" style="URI_CONTEXT">
+				  			<description>jobId is captured from job resource invoke.</description> 
+				  		</parameter>
+						<parameter name="batchId" isRequired="true" style="URI_CONTEXT">
+				  			<description>batchId is captured from batch resource invoke.</description> 
+				  		</parameter>
+				  	</parameters>
+					<responses>
+				  		<response code="200-599" name="stream" builderType="vnd.sag.cloudstreams+binary" messageFormatterType="vnd.sag.cloudstreams+binary" /> 
+				  	</responses>
+				  </resource>
+				 
+				<!--10.BatchResultInStream -->
+				<resource displayName="BatchResultInStream" method="GET"
+					name="BatchResultInStream" path="services/async/48.0/job/{jobId}/batch/{batchId}/result">
+					<description>Retrieves the Result of a Batch for operations other than query in stream.</description>
+					<mappings>
+						<map context="IN" isRequired="true" name="batchResult_mapping_1">
+							<source type="LITERAL"></source>
+							<target type="HEADER">Content-Type</target>
+						</map>
+					</mappings>
+					<parameters>
+						<parameter name="jobId" isRequired="true" style="URI_CONTEXT">
+							<description>jobId is captured from job resource invoke.</description>
+						</parameter>
+						<parameter name="batchId" isRequired="true" style="URI_CONTEXT">
+							<description>batchId is captured from batch resource invoke.</description>
+						</parameter>
+					</parameters>
+					<responses>
+						<response name="BatchResultInStreamResponse" code="200-500" messageFormatterType="vnd.sag.cloudstreams+binary" builderType="vnd.sag.cloudstreams+binary"
+						excludeRoot="false"/>
+					</responses>
+				</resource>
+				
+			</resources>
+        </service>
+    </services>
+</rest-connector>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FLOW VERSION="3.0" CLEANUP="true">
+
+  <!-- nodes -->
+
+<SEQUENCE EXIT-ON="FAILURE">
+
+  <!-- nodes -->
+
+<INVOKE SERVICE="pub.client:restClient">
+
+  <!-- nodes -->
+
+<MAP MODE="INPUT">
+
+  <!-- nodes -->
+
+<MAPSET OVERWRITE="true" VARIABLES="true" GLOBALVARIABLES="false" FIELD="/basePath;1;0">
+  <DATA ENCODING="XMLValues" I18N="true">
+
+<Values version="2.0">
+  <value name="xml">/integration/restv2/development/fl2d53548d632c55a41f0879/demoHybride</value>
+</Values>
+</DATA>
+</MAPSET>
+
+<MAPSET OVERWRITE="true" VARIABLES="true" GLOBALVARIABLES="false" FIELD="/path;1;0">
+  <DATA ENCODING="XMLValues" I18N="true">
+
+<Values version="2.0">
+  <value name="xml">/write</value>
+</Values>
+</DATA>
+</MAPSET>
+
+<MAPSET OVERWRITE="true" VARIABLES="true" GLOBALVARIABLES="false" FIELD="/httpMethod;1;0">
+  <DATA ENCODING="XMLValues" I18N="true">
+
+<Values version="2.0">
+  <value name="xml">GET</value>
+</Values>
+</DATA>
+</MAPSET>
+
+<MAPSET OVERWRITE="false" VARIABLES="true" GLOBALVARIABLES="false" FIELD="/host;1;0">
+  <DATA ENCODING="XMLValues" I18N="true">
+
+<Values version="2.0">
+  <value name="xml">france.int-aws-us.webmethods.io</value>
+</Values>
+</DATA>
+</MAPSET>
+
+<MAPSET OVERWRITE="false" VARIABLES="true" GLOBALVARIABLES="false" FIELD="/consumes;1;0">
+  <DATA ENCODING="XMLValues" I18N="true">
+
+<Values version="2.0">
+  <value name="xml">application/json</value>
+</Values>
+</DATA>
+</MAPSET>
+
+<MAPSET OVERWRITE="false" VARIABLES="true" GLOBALVARIABLES="false" FIELD="/produces;1;0">
+  <DATA ENCODING="XMLValues" I18N="true">
+
+<Values version="2.0">
+  <value name="xml">application/json</value>
+</Values>
+</DATA>
+</MAPSET>
+
+<MAPSET OVERWRITE="false" VARIABLES="true" GLOBALVARIABLES="false" FIELD="/scheme;1;0">
+  <DATA ENCODING="XMLValues" I18N="true">
+
+<Values version="2.0">
+  <value name="xml">https</value>
+</Values>
+</DATA>
+</MAPSET>
+
+<MAPCOPY FROM="/body;4;0;msr_demo.SAP_services.API.hybride_.docTypes:body_1" TO="/body;2;0">
+</MAPCOPY>
+
+<MAPSET OVERWRITE="false" VARIABLES="true" GLOBALVARIABLES="false" FIELD="/radName;1;0">
+  <DATA ENCODING="XMLValues" I18N="true">
+
+<Values version="2.0">
+  <value name="xml">msr_demo.SAP_services.API:hybride</value>
+</Values>
+</DATA>
+</MAPSET>
+</MAP>
+
+<MAP MODE="OUTPUT">
+</MAP>
+</INVOKE>
+
+<BRANCH SWITCH="/code">
+
+  <!-- nodes -->
+
+<SEQUENCE NAME="$default" EXIT-ON="FAILURE">
+
+  <!-- nodes -->
+
+<INVOKE SERVICE="pub.flow:clearPipeline">
+
+  <!-- nodes -->
+
+<MAP MODE="INPUT">
+
+  <!-- nodes -->
+
+<MAPSET OVERWRITE="true" VARIABLES="true" GLOBALVARIABLES="false" FIELD="/preserve;1;1">
+  <DATA ENCODING="XMLValues" I18N="true">
+
+<Values version="2.0">
+  <array name="xml" type="value" depth="1">
+    <value>code</value>
+    <value>phrase</value>
+  </array>
+</Values>
+</DATA>
+</MAPSET>
+</MAP>
+</INVOKE>
+</SEQUENCE>
+</BRANCH>
+</SEQUENCE>
+</FLOW>
